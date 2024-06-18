@@ -608,6 +608,10 @@ video {
   top: 7rem;
 }
 
+.-m-3 {
+  margin: -0.75rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -615,6 +619,10 @@ video {
 
 .-ml-8 {
   margin-left: -2rem;
+}
+
+.-mt-12 {
+  margin-top: -3rem;
 }
 
 .mb-2 {
@@ -651,6 +659,10 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .mt-8 {

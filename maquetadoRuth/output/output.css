@@ -588,8 +588,16 @@ video {
   }
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
+}
+
+.bottom-0 {
+  bottom: 0px;
 }
 
 .right-20 {
@@ -934,7 +942,7 @@ video {
 /* Tus estilos personalizados */
 
 .bg-gradient {
-  background: linear-gradient(145deg, #1e3a8a, #5C97C1, #763626);
+  background: linear-gradient(145deg, #1e3a8a, #5C97C1, #1b1753);
 }
 
 .login-container {
@@ -963,7 +971,7 @@ video {
   align-items: center;
   padding: 2rem;
   color: white;
-  background: linear-gradient(145deg, #1e3a8a, #5C97C1, #763626);
+  background: linear-gradient(145deg, #4c6cc3, #1b1753);
 }
 
 .login-section {

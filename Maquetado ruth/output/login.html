@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="bg-gradient">
+
+<div class="login-container">
+    <div class="login-wrapper">
+        <div class="welcome-section">
+            <img src="images/logo.png">
+            <h1 class="text-4xl font-bold">Bienvenido a MasControl</h1>
+            <p class="text-lg mt-4 text-pretty text-center">
+                Somos una plataforma escolar enfocada en la eficiencia en el trabajo y la eficacia en procesos escolares. 
+                <br>Asegúrese de ingresar con la cuenta que le fue proporcionada por su institución.
+            </p>
+        </div>
+        <div class="login-section">
+            <form class="bg-white p-8 rounded-lg shadow-2xl w-96">
+                <h2 class="text-2xl font-semibold mb-6 text-center">Ingreso</h2>
+                <div class="mb-4">
+                    <label class="block mb-2 text-gray-700" for="username">Nombre de Usuario</label>
+                    <input class="border border-gray-300 p-2 w-full rounded" type="text" id="username" name="username">
+                </div>
+                <div class="mb-4">
+                    <label class="block mb-2 text-gray-700" for="password">Contraseña</label>
+                    <input class="border border-gray-300 p-2 w-full rounded" type="password" id="password" name="password">
+                </div>
+                <div class="flex items-center justify-between mb-4">
+                    <a href="register.html" class="flex items-center text-sm text-gray-500 ">¿No tienes una cuenta? <br> Regístrese aquí.</a>
+                    <a href="#" class="text-sm text-blue-700">Forgot password?</a>
+                </div>
+                <button class="bg-gradient-to-r from-stone-600 to-stone-800 text-white font-semibold py-2 w-full rounded">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

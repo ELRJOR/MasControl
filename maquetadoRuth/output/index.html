@@ -11,12 +11,12 @@
 
 <body class="flex flex-col min-h-screen">
 
-  <header class=" mt-2 w-full ">
+  <header class="w-full">
     <div class="container mx-auto flex justify-between items-center">
       <img src="images/Icono.jpeg" alt="Company Logo" class="w-24 h-auto "> 
       <h1 class="text-3xl eb-garamond-Garamond"><span class="text-blue-600">Mas</span>Control</h1>
 
-      <nav class="flex-1 -ml-8 mt-3 text-lg button">
+      <nav class="flex-1 text-lg button">
         <ul class="flex justify-center space-x-10">  
           <li><a href="escuelasAs.html" class="text hover:shadow-xl text-black">Escuelas asociadas</a></li>
           <li><a href="#" class="text hover:shadow-xl text-black">¿Cómo funciona?</a></li>
@@ -25,7 +25,7 @@
       </nav>
       
       <nav>
-        <ul class="flex space-x-4 justify-center text-lg mt-3 ">
+        <ul class="flex space-x-4 justify-center text-lg">
           <li><a href="register.html" class="text hover:shadow-xl text-black">Registrarse</a></li>
           <li><a href="login.html" class="px-4 py-2 rounded-3xl bg-black text-white hover:bg-blue-600">Iniciar sesión</a></li>
         </ul>
@@ -33,24 +33,29 @@
     </div> 
   </header>
 
-  <main class="flex-grow p-4">
+  <main class=" p-4 flex-grow">
 
-    <div class="container mx-auto mt-4">
+    <div class="container mx-auto">
       <video class="absolute top-28 right-20 max-w-xl" src="images/Escuela.mp4" autoplay loop muted></video>
     </div>
     
-    <div class="text-container mx-auto max-w-xl p-4 playfair-display-playfair mt-6 text-7xl ml-20 text-center">El futuro del control</div>
-    <div class="text-containr mx-auto max-w-xl p-4 nanum-gothic-coding-regular -m-3 text-2xl ml-20 text-center text-gray-500">Aplicación diseñada para escuelas particulares que necesitan de una buena gestión de datos</div>
-    <a href="https://play.google.com/store/games?hl=es_MX&pli=1" class="block">
-    <img src="../output/images/google-play.png" class="w-40 ml-40 mt-3">
-    </a>
+    <div class="text-container mx-auto max-w-xl p-4 playfair-display-playfair text-7xl ml-20 text-center">El futuro del control</div>
+    <div class="text-container mx-auto max-w-xl p-4 nanum-gothic-coding-regular  text-2xl ml-20 text-center text-gray-500">Aplicación diseñada para escuelas particulares que necesitan de una buena gestión de datos</div>
+    
+  <div class="flex flex-row h-auto">
     <a href="https://www.apple.com/mx/app-store/" class="block">
-    <img src="../output/images/appstore.png" class="w-40 ml-96 -mt-12">
+      <img src="../output/images/appstore.png" class="w-40">
+      </a>
+  
+    
+    <a href="https://play.google.com/store/games?hl=es_MX&pli=1" class="block">
+    <img src="../output/images/google-play.png" class="w-40">
     </a>
+  </div>
 
   </main>
 
-<footer class="bg-gray-800 text-white p-4 w-full text-center fixed bottom-0">
+<footer class="bg-gray-800 text-white p-4">
     <div class="container mx-auto px-4 ">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0">
@@ -79,6 +84,7 @@
             </div>
         </div>
     </div>
+
 </footer>
 
 </body>

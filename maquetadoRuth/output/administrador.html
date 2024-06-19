@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="shortcut icon" href="images/casa.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="w-full bg-gray-100">
+        <div class="container mx-auto flex justify-between items-center py-2">
+            <img src="images/logo.png" alt="Company Logo" class="w-24 h-auto">
+            <h1 class="text-3xl eb-garamond-Garamond"><span class="text-blue-600">Mas</span>Control</h1>
+        
+            <div class="block xl:hidden">
+                <button id="nav-toggle" class="focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        
+            <nav id="nav-content" class="hidden xl:flex xl:flex-1 text-lg">
+                <ul class="flex justify-center space-x-10 ml-60">
+                    <li><a href="dashboard.html" class="text hover:shadow-xl text-black eb-garamond-Garamond">Dashboard</a></li>
+                    <li><a href="gestion-usuarios.html" class="text hover:shadow-xl text-black eb-garamond-Garamond">Gestión de Usuarios</a></li>
+                    <li><a href="reportes.html" class="text hover:shadow-xl text-black eb-garamond-Garamond">Reportes</a></li>
+                    <li><a href="estadisticas.html" class="text hover:shadow-xl text-black eb-garamond-Garamond">Estadísticas</a></li>
+                </ul>
+            </nav>
+        
+            <nav id="nav-content-secondary" class="hidden xl:flex">
+                <ul class="flex space-x-4 justify-center text-lg">
+                    <li><a href="perfil.html" class="text hover:shadow-xl text-black eb-garamond-Garamond">Perfil</a></li>
+                    <li><a href="logout.html" class="px-4 py-2 rounded-3xl bg-black text-white hover:bg-blue-600 eb-garamond-Garamond">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden">
+            <nav class="bg-gray-100 p-4">
+                <ul>
+                    <li><a href="dashboard.html" class="block py-2">Dashboard</a></li>
+                    <li><a href="gestion-usuarios.html" class="block py-2">Gestión de Usuarios</a></li>
+                    <li><a href="reportes.html" class="block py-2">Reportes</a></li>
+                    <li><a href="estadisticas.html" class="block py-2">Estadísticas</a></li>
+                    <li><a href="perfil.html" class="block py-2">Perfil</a></li>
+                    <li><a href="logout.html" class="block py-2">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="flex flex-1 items-center mx-12 mt-0 pt-0">
+        <!-- Contenido principal -->
+        <main class="flex flex-col justify-center items-center w-full p-4">
+            <div class="text-container mx-auto max-w-xl p-4 text-4xl text-center playfair-display-playfair">Bienvenido, Administrador</div>
+            <div class="text-container mx-auto max-w-xl p-4 text-2xl text-center text-gray-500 nanum-gothic-coding-regular">
+                Desde aquí puede gestionar toda la información y los usuarios de la plataforma MasControl.
+            </div>
+        
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 w-full">
+                <a href="dashboard.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
+                    <h3 class="text-xl font-semibold mb-2">Dashboard</h3>
+                    <p class="text-gray-600">Resumen de la actividad y datos clave.</p>
+                </a>
+                <a href="gestion-usuarios.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100">
+                    <h3 class="text-xl font-semibold mb-2">Gestión de Usuarios</h3>
+                    <p class="text-gray-600">Administrar cuentas de usuarios y permisos.</p>
+                </a>
+                <a href="reportes.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100">
+                    <h3 class="text-xl font-semibold mb-2">Reportes</h3>
+                    <p class="text-gray-600">Generar y revisar reportes detallados.</p>
+                </a>
+                <a href="estadisticas.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100">
+                    <h3 class="text-xl font-semibold mb-2">Estadísticas</h3>
+                    <p class="text-gray-600">Ver estadísticas y tendencias.</p>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-lg font-bold">MasControl</h4>
+                    <p class="text-sm">© 2024 Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-4 mb-6 md:mb-0">
+                    <a href="#" class="hover:text-gray-400">¿Dónde encontrarnos?</a>
+                    <a href="#" class="hover:text-gray-400">Contactos</a>
+                    <a href="#" class="hover:text-gray-400">Servicios</a>
+                    <a href="#" class="hover:text-gray-400">Reportes</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/" class="hover:text-gray-400">
+                        <img src="../output/images/facebook.png" class="h-6 w-6">
+                    </a>
+                    <a href="https://x.com/?lang=es&mx=2" class="hover:text-gray-400">
+                        <img src="../output/images/Twitter.png" class="h-6 w-6">
+                    </a>
+                    <a href="https://www.instagram.com/" class="hover:text-gray-400">
+                        <img src="../output/images/Instagram.png" class="h-6 w-6">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
+</body>
+</html>

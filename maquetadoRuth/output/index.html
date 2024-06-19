@@ -24,11 +24,11 @@
         </button>
       </div>
       
-      <nav id="nav-content" class="hidden md:flex md:flex-1 text-lg button">
+      <nav id="nav-content" class="hidden md:flex md:flex-1 text-lg">
         <ul class="flex justify-center space-x-10 ml-32">
           <li><a href="escuelasAs.html" class="text hover:shadow-xl text-black">Escuelas asociadas</a></li>
           <li><a href="comofunciona.html" class="text hover:shadow-xl text-black">¿Cómo funciona?</a></li>
-          <li><a href="preguntasFrecuentes.html" class="text hover:shadow-xl text-black">Preguntas Frecuentes</a></li>
+          <li><a href="#" class="text hover:shadow-xl text-black">Preguntas Frecuentes</a></li>
         </ul>
       </nav>
       
@@ -38,15 +38,28 @@
           <li><a href="login.html" class="px-4 py-2 rounded-3xl bg-black text-white hover:bg-blue-600">Iniciar sesión</a></li>
         </ul>
       </nav>
-    </div> 
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden">
+      <nav class="bg-gray-100 p-4">
+        <ul>
+          <li><a href="escuelasAs.html" class="block py-2">Escuelas asociadas</a></li>
+          <li><a href="comofunciona.html" class="block py-2">¿Cómo funciona?</a></li>
+          <li><a href="#" class="block py-2">Preguntas Frecuentes</a></li>
+          <li><a href="register.html" class="block py-2">Registrarse</a></li>
+          <li><a href="login.html" class="block py-2">Iniciar sesión</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <!-- Contenedor principal -->
   <div class="flex flex-1 items-center mx-12 mt-0 pt-0">
     <!-- Contenido principal -->
     <main class="flex flex-col justify-center items-center w-1/2 p-4">
-      <div class="text-container mx-auto max-w-xl p-4 text-7xl text-center eb-garamond-Garamond">El futuro del control</div>
-      <div class="text-container mx-auto max-w-xl p-4 text-2xl text-center text-gray-500 playfair-display-playfair">Aplicación diseñada para escuelas particulares que necesitan de una buena gestión de datos</div>
+      <div class="text-container mx-auto max-w-xl p-4 text-7xl text-center">El futuro del control</div>
+      <div class="text-container mx-auto max-w-xl p-4 text-2xl text-center text-gray-500">Aplicación diseñada para escuelas particulares que necesitan de una buena gestión de datos</div>
       
       <div class="flex justify-center mt-8 space-x-4">
         <a href="https://www.apple.com/mx/app-store/" class="block">
@@ -67,7 +80,7 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white p-2">
+  <footer class="bg-gray-800 text-white p-4">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-6 md:mb-0">

@@ -1,11 +1,12 @@
-document.getElementById('nav-toggle').onclick = function() {
-    var navContent = document.getElementById('nav-content');
-    var navContentSecondary = document.getElementById('nav-content-secondary');
-    if (navContent.classList.contains('hidden')) {
-      navContent.classList.remove('hidden');
-      navContentSecondary.classList.remove('hidden');
-    } else {
-      navContent.classList.add('hidden');
-      navContentSecondary.classList.add('hidden');
-    }
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+  
+    navToggle.addEventListener('click', function() {
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  });

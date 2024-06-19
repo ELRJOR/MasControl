@@ -952,6 +952,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pt-0 {
   padding-top: 0px;
 }
@@ -1043,11 +1048,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-blue-800 {
-  --tw-text-opacity: 1;
-  color: rgb(30 64 175 / var(--tw-text-opacity));
 }
 
 .shadow-2xl {
@@ -1176,10 +1176,6 @@ video {
   opacity: 1;
 }
 
-.border-1{
-  border: 1px;
-}
-
 .hover\:bg-blue-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
@@ -1301,5 +1297,4 @@ video {
   .xl\:flex-1 {
     flex: 1 1 0%;
   }
-}
-
+}    

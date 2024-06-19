@@ -600,6 +600,14 @@ video {
   top: 7rem;
 }
 
+.m-7 {
+  margin: 1.75rem;
+}
+
+.m-32 {
+  margin: 8rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -639,6 +647,30 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.ml-14 {
+  margin-left: 3.5rem;
+}
+
+.ml-28 {
+  margin-left: 7rem;
+}
+
+.ml-44 {
+  margin-left: 11rem;
+}
+
+.ml-40 {
+  margin-left: 10rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.ml-48 {
+  margin-left: 12rem;
 }
 
 .block {

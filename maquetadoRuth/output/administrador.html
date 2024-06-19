@@ -15,38 +15,43 @@
 <body>
     <!-- Barra de navegación lateral -->
     <nav class="bg-gray-100 fixed h-full left-0 flex flex-col items-center justify-between py-8 px-0 text-black">
-        <!-- Logo -->
-        <img src="./images/logo.png" alt="Logo" class="h-20 w-auto">
+        <div class="flex flex-col items-center">
+            <!-- Perfil con foto -->
+            <button class="text-black hover:text-white rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                <span class="sr-only">View notifications</span>
+                <img class="h-12 w-12 rounded-full" src="../output/images/persona.jpg" alt="Foto de perfil">
+            </button>
+        </div>
         
         <!-- Enlaces de navegación -->
-        <div class="flex flex-col space-y-8">
-            <a href="index.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium">
+        <div class="flex flex-col space-y-9">
+            <a href="index.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg  text-m font-medium">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                 </svg>
                 <span class="ml-2">Home</span>
             </a>
-            <a href="#services" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium">
+            <a href="#services" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium">
                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 <span class="ml-2">Services</span>
             </a>
             <div class="relative group">
-                <button class="nav-link flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium">
+                <button class="nav-link flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium">
                     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                     <span class="ml-2">Menu</span>
                 </button>
             </div>
-            <a href="#about" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium">
+            <a href="#about" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium">
                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 <span class="ml-2">About</span>
             </a>
-            <a href="#contact" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-sm font-medium">
+            <a href="#contact" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium">
                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -55,13 +60,7 @@
         </div>
 
         <!-- Botones adicionales a la izquierda del perfil -->
-        <div class="flex flex-col items-center">
-            <!-- Perfil con foto -->
-            <button class="text-black hover:text-white rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                <span class="sr-only">View notifications</span>
-                <img class="h-12 w-12 rounded-full" src="../output/images/persona.jpg" alt="Foto de perfil">
-            </button>
-        </div>
+
     </nav>
 <body class="flex flex-col min-h-screen">
 

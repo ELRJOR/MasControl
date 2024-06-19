@@ -9,32 +9,56 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <header class="mt-2 w-full">
-        <div class="container mx-auto flex justify-between items-center">
-        
-        <a href="index.html"><img src="images/Icono.jpeg" alt="Company Logo" class="w-24 h-auto"></a>
-        
-        <a href="index.html"><h1 class="text-3xl eb-garamond-Garamond"><span class="text-blue-600">Mas</span>Control</h1></a>
-
-        <nav class="flex-1 mt-3 text-lg button">
-            <ul class="flex justify-center space-x-10">
-            <li><a href="escuelasAs.html" class="text hover:shadow-xl text-black">Escuelas asociadas</a></li>
-            <li><a href="comofunciona.html" class="text hover:shadow-xl text-black">¿Cómo funciona?</a></li>
-            <li><a href="#" class="text hover:shadow-xl text-black">Preguntas Frecuentes</a></li>
-            </ul>
-        </nav>
-        <nav>
-            <ul class="flex space-x-4 justify-center text-lg mt-3">
-            <li><a href="register.html" class="text hover:shadow-xl text-black">Registrarse</a></li>
-            <li><a href="login.html" class="px-4 py-2 rounded-3xl bg-black text-white hover:bg-blue-600">Iniciar sesión</a></li>
-            </ul>
-        </nav>
-        </div>
-    </header>
+      <!-- Header -->
+  <header class="w-full bg-gray-100">
+    <div class="container mx-auto flex justify-between items-center py-2">
+        <a href="index.html">
+      <img src="images/Icono.jpeg" alt="Company Logo" class="w-24 h-auto">
+        </a>
+        <a href="index.html">
+      <h1 class="text-3xl eb-garamond-Garamond"><span class="text-blue-600">Mas</span>Control</h1>
+        </a>    
+      <div class="block md:hidden">
+        <button id="nav-toggle" class="focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <nav id="nav-content" class="hidden md:flex md:flex-1 text-lg">
+        <ul class="flex justify-center space-x-10 ml-32">
+          <li><a href="escuelasAs.html" class="text hover:shadow-xl text-black">Escuelas asociadas</a></li>
+          <li><a href="comofunciona.html" class="text hover:shadow-xl text-black">¿Cómo funciona?</a></li>
+          <li><a href="preguntasFrecuentes.html" class="text hover:shadow-xl text-black">Preguntas Frecuentes</a></li>
+        </ul>
+      </nav>
+      
+      <nav id="nav-content-secondary" class="hidden md:flex">
+        <ul class="flex space-x-4 justify-center text-lg">
+          <li><a href="register.html" class="text hover:shadow-xl text-black">Registrarse</a></li>
+          <li><a href="login.html" class="px-4 py-2 rounded-3xl bg-black text-white hover:bg-blue-600">Iniciar sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden">
+      <nav class="bg-gray-100 p-4">
+        <ul>
+          <li><a href="escuelasAs.html" class="block py-2">Escuelas asociadas</a></li>
+          <li><a href="comofunciona.html" class="block py-2">¿Cómo funciona?</a></li>
+          <li><a href="preguntasFrecuentes.html" class="block py-2">Preguntas Frecuentes</a></li>
+          <li><a href="register.html" class="block py-2">Registrarse</a></li>
+          <li><a href="login.html" class="block py-2">Iniciar sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
     <main class="container mx-auto mt-4">
         <h2 class="text-4xl text-center mt-8 eb-garamond-Garamond">Escuelas Asociadas</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="bg-gray-200 p-6 rounded-lg shadow-lg">
             <img src="images/colegioCristobal.jpeg" alt="Escuela Cristobal" class="w-full h-48 object-cover rounded-t-lg">
             <h3 class="text-2xl mt-4 eb-garamond-Garamond text-center">Colegio Cristobal Colon de Yucatán</h3>
             <p class="text-gray-600 mt-2 nanum-gothic-coding-regular text-justify"><span class="text-black"><strong>Ubicación:</strong></span> <a href="https://maps.app.goo.gl/DwdfKZQ7bBCJ1MnT6" class="text hover:text-blue-600">Calle 37 62, Centro, 97000 Mérida, Yuc.</a></p>
@@ -43,7 +67,7 @@
                 Destaca por su compromiso con la formación integral, enfatizando valores y preparando a los estudiantes para el futuro.
             </p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="bg-gray-200 p-6 rounded-lg shadow-lg">
             <img src="images/AlianzCom.webp" alt="Escuela" class="w-full h-48 object-cover rounded-t-lg">
             <h3 class="text-2xl mt-4 eb-garamond-Garamond text-center">Alianz Comunidad Estudiantil Campus La Paz Mérida Norte</h3>
             <p class="text-gray-600 mt-2 nanum-gothic-coding-regular text-justify"><span class="text-black"><strong>Ubicación:</strong></span> <a href="https://maps.app.goo.gl/RkcBcY5jcJGVsryX8" class="text hover:text-blue-600">Carretera A Progreso Tab. 22588, 16688 y 16687, 97110 Mérida, Yuc.</a></p>
@@ -52,7 +76,7 @@
                 Con un enfoque en el desarrollo integral de los estudiantes, Alianz promueve un ambiente educativo inclusivo y colaborativo, fomentando valores como la responsabilidad, el respeto y la excelencia académica.
             </p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="bg-gray-200 p-6 rounded-lg shadow-lg">
             <img src="images/ColTeresiano.webp" alt="papu ahhh" class="w-full h-48 object-cover rounded-t-lg">
             <h3 class="text-2xl mt-4 eb-garamond-Garamond text-center">Colegio Teresiano Enrique de Ossó Mérida</h3>
             <p class="text-gray-600 mt-2 nanum-gothic-coding-regular text-justifyq"><span class="text-black"><strong>Ubicación:</strong></span> <a href="https://maps.app.goo.gl/Zv7L9sgPdojvGMLL8" class="text hover:text-blue-600">Calle 58A No. 493 x, P.º de Montejo, Centro, 97050 Mérida, Yuc.</a></p>
@@ -63,5 +87,6 @@
         </div>
         </div>
     </main>
+    <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
 </html>

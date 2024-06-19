@@ -46,18 +46,6 @@
     padding-top: 3rem;
 }
 
-.welcome-section img {
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 80%;
-}
-
-.welcome-section img {
-    top: 5%;
-}
-
 .playwrite-pl-Playwrite {
     font-family: "Playwrite PL", cursive;
     font-optical-sizing: auto;

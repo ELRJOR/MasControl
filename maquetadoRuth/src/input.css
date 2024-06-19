@@ -91,3 +91,9 @@
     font-weight: 400;
     font-style: normal;
   }
+
+    .responsive-video {
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }

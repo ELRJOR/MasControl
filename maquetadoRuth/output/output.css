@@ -635,6 +635,10 @@ video {
   margin-left: 8rem;
 }
 
+.ml-60 {
+  margin-left: 15rem;
+}
+
 .mt-0 {
   margin-top: 0px;
 }

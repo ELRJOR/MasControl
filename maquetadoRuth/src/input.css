@@ -89,7 +89,12 @@
     .hidden { display: none; }
     .block { display: block; }
 
-  .border-1{
-    border: 1px;
-  }
+        /* Añadir algunos estilos adicionales */
+        .nav-link span {
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+      }
 
+      .nav-link:hover span {
+          opacity: 1;
+      }    

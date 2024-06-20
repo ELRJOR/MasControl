@@ -651,6 +651,10 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.ml-0 {
+  margin-left: 0px;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -683,80 +687,12 @@ video {
   margin-top: 2rem;
 }
 
-.ml-64 {
-  margin-left: 16rem;
-}
-
-.ml-48 {
-  margin-left: 12rem;
-}
-
-.ml-40 {
-  margin-left: 10rem;
-}
-
 .ml-44 {
   margin-left: 11rem;
 }
 
-.ml-28 {
-  margin-left: 7rem;
-}
-
-.ml-9 {
-  margin-left: 2.25rem;
-}
-
-.ml-96 {
-  margin-left: 24rem;
-}
-
-.mr-6 {
-  margin-right: 1.5rem;
-}
-
-.mr-36 {
-  margin-right: 9rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
-}
-
-.mr-44 {
-  margin-right: 11rem;
-}
-
-.mr-96 {
-  margin-right: 24rem;
-}
-
-.mr-auto {
-  margin-right: auto;
-}
-
-.ml-4 {
-  margin-left: 1rem;
-}
-
-.mr-20 {
-  margin-right: 5rem;
-}
-
-.mt-9 {
-  margin-top: 2.25rem;
-}
-
-.mt-28 {
-  margin-top: 7rem;
-}
-
 .ml-1 {
   margin-left: 0.25rem;
-}
-
-.ml-0 {
-  margin-left: 0px;
 }
 
 .block {
@@ -831,26 +767,6 @@ video {
   width: 100%;
 }
 
-.w-64 {
-  width: 16rem;
-}
-
-.w-3 {
-  width: 0.75rem;
-}
-
-.w-32 {
-  width: 8rem;
-}
-
-.w-40 {
-  width: 10rem;
-}
-
-.w-4 {
-  width: 1rem;
-}
-
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -883,10 +799,6 @@ video {
   align-items: center;
 }
 
-.justify-start {
-  justify-content: flex-start;
-}
-
 .justify-end {
   justify-content: flex-end;
 }
@@ -897,26 +809,6 @@ video {
 
 .justify-between {
   justify-content: space-between;
-}
-
-.justify-around {
-  justify-content: space-around;
-}
-
-.justify-evenly {
-  justify-content: space-evenly;
-}
-
-.justify-stretch {
-  justify-content: stretch;
-}
-
-.justify-items-end {
-  justify-items: end;
-}
-
-.justify-items-stretch {
-  justify-items: stretch;
 }
 
 .gap-8 {
@@ -947,8 +839,16 @@ video {
   margin-bottom: calc(2.25rem * var(--tw-space-y-reverse));
 }
 
-.justify-self-end {
-  justify-self: end;
+.space-y-14 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(3.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(3.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .text-pretty {
@@ -1073,62 +973,13 @@ video {
   padding-bottom: 2rem;
 }
 
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
-.py-0 {
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.py-14 {
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
-}
-
-.py-16 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.py-28 {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
-}
-
 .py-24 {
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
 
-.py-32 {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 .pt-0 {
   padding-top: 0px;
-}
-
-.text-left {
-  text-align: left;
 }
 
 .text-center {

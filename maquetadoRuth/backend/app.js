@@ -1,18 +1,16 @@
 const express = require('express');
+const { conectarBD } = require('./server.js');
+
 const app = express();
-const { sql, poolPromise } = require('./db');
 
-app.get('/datos', async (req, res) => {
-    try {
-    const pool = await poolPromise;
-    const result = await pool.request().query('SELECT * FROM tu_tabla');
-    res.json(result.recordset);
-    } catch (err) {
-    res.status(500).send('Error al realizar la consulta: ' + err);
-    }
-});
-
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
-});
+// Conectar a la base de datos al iniciar la aplicación
+conectarBD()
+    .then(() => {
+        // Lógica adicional de la aplicación Express aquí
+        app.listen(3000, () => {
+        console.log('Servidor iniciado en http://localhost:3000');
+        });
+    })
+    .catch(err => {
+        console.error('Error al conectar a la base de datos:', err.message);
+    });

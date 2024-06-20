@@ -93,8 +93,55 @@
         .nav-link span {
           opacity: 0;
           transition: opacity 0.3s ease-in-out;
-      }
-
+          -webkit-transition: opacity 0.3s ease-in-out;
+          -moz-transition: opacity 0.3s ease-in-out;
+          -ms-transition: opacity 0.3s ease-in-out;
+          -o-transition: opacity 0.3s ease-in-out;
+}
+      
       .nav-link:hover span {
           opacity: 1;
-      }    
+      }
+      
+      .nav-collapsed .nav-link span {
+          display: none; /* Oculta el span dentro de .nav-link cuando el sidebar está colapsado */
+      }
+      
+      .nav-collapsed .profile-image {
+          height: 24px; /* Ajusta la altura de la imagen de perfil cuando el sidebar está colapsado */
+          width: 24px; /* Ajusta el ancho de la imagen de perfil cuando el sidebar está colapsado */
+      }
+      
+      .nav-collapsed .nav-link {
+          justify-content: center; /* Centra el contenido dentro de .nav-link cuando el sidebar está colapsado */
+      }
+      
+      .nav-collapsed .nav-link svg {
+          margin-right: 0; /* Elimina el margen derecho del SVG dentro de .nav-link cuando el sidebar está colapsado */
+      }
+      
+      /* Ajustes de animación */
+      #sidebar, main, footer {
+          transition: margin-left 0.3s, width 0.3s; /* Transiciones para el margen izquierdo y el ancho del sidebar y el main content */
+      }
+
+      /* Ajusta el contenido principal cuando el sidebar está expandido */
+      #mainContent{
+        transition: margin-left 0.3s;
+        margin-left: 10rem;
+      }
+
+      #footerContent{
+        transition: margin-left 0.3s;
+        margin-left: 0;
+}
+
+      /* Ajuste adicional para cuando el sidebar está colapsado */
+      #sidebar.nav-collapsed + #mainContent {
+        margin-left: 6rem; /* Ajusta el margen izquierdo del contenido principal para compensar el ancho del sidebar colapsado */
+      }
+
+      #sidebar.nav-collapsed + #footerContent {
+        margin-left: 15rem;
+      }
+

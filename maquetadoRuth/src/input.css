@@ -149,4 +149,14 @@
         margin-left: 15rem;
       }
 
-      
+      .nav-expanded #mainContent {
+        margin-left: 24rem; /* Ajusta según el ancho del nav */
+    }
+
+            /* Add this custom CSS for handling expanded and collapsed states */
+            .expanded {
+              margin-left: 11rem; /* Adjust as needed for the expanded state */
+          }
+          .nav-collapsed ~ .expanded {
+              margin-left: 3.5rem; /* Adjust as needed for the collapsed state */
+          }

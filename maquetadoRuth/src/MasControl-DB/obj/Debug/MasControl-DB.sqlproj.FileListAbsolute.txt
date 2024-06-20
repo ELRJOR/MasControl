@@ -1,0 +1,10 @@
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\bin\Debug\MasControl-DB.dacpac
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\bin\Debug\MasControl-DB.dll
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\bin\Debug\MasControl-DB.pdb
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\obj\Debug\MasControl-DB.sqlproj.AssemblyReference.cache
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\obj\Debug\Model.xml
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\obj\Debug\refactor.xml
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\obj\Debug\postdeploy.sql
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\obj\Debug\predeploy.sql
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\obj\Debug\MasControl-DB.dll
+c:\Users\alexm\OneDrive - Universidad Tecnológica Metropolitana\Documentos\UTM\programasCuatri3\Periodo2\MasControl\maquetadoRuth\src\MasControl-DB\obj\Debug\MasControl-DB.pdb

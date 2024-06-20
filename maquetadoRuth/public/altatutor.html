@@ -57,74 +57,46 @@
             </a>
             <a href="#contact" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 6h9.75m-9.75 0a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0m-3.75 0H7.5m3 6h9.75m-9.75 0a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0m-3.75 0H7.5" />
                 </svg>
-                <span class="ml-1">Ajustes</span>
+                <span class="ml-1">Lista</span>
             </a>
         </div>
 
-        <!-- Botón para colapsar -->
-        <button id="toggleButton" class="text-black hover:bg-white rounded hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-offset-gray-800 hover:ring-white mt-8">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        </button>
+        <!-- Botón de colapso -->
+        <div class="flex flex-col items-center">
+            <button id="toggleButton" class="text-black hover:text-white transition-transform duration-300 transform focus:outline-none">
+                <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300 transform hover:scale-125" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
     </nav>
 
     <!-- Contenedor principal -->
-    <div class="flex flex-1 ml-44 mt-8 pt-0">
-
-    <div class="bg-white p-8 rounded shadow-md max-w-md w-full ml-96">
-        <h2 class="text-2xl font-bold mb-6 text-center">Formulario de Registro</h2>
-        <form action="#" method="POST">
-            <div class="mb-4">
-                <label for="name" class="block text-gray-700">Nombre</label>
-                <input type="text" id="name" name="name" class="mt-1 p-2 border rounded w-full" placeholder="Tu nombre">
-            </div>
-            <div class="mb-4">
-                <label for="email" class="block text-gray-700">Correo Electrónico</label>
-                <input type="email" id="email" name="email" class="mt-1 p-2 border rounded w-full" placeholder="Tu correo electrónico">
-            </div>
-            <div class="mb-4">
-                <label for="password" class="block text-gray-700">Contraseña</label>
-                <input type="password" id="password" name="password" class="mt-1 p-2 border rounded w-full" placeholder="Tu contraseña">
-            </div>
-            <div class="flex items-center justify-between">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
-            </div>
-        </form>
-    </div>
-
-    </div>
-
-    <!-- Footer -->
-    <footer id="footerContent" class="bg-gray-800 text-white p-4">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h4 class="text-lg font-bold">MasControl</h4>
-                    <p class="text-sm">© 2024 Todos los derechos reservados.</p>
+    <div id="mainContent" class="flex-1 ml-44 mt-1 pt-0 transition-all duration-300">
+        <div class="bg-white p-8 rounded shadow-md max-w-md w-full md:ml-80">
+            <h2 class="text-2xl font-bold mb-6 text-center">Formulario de Registro</h2>
+            <form action="#" method="POST">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700">Nombre</label>
+                    <input type="text" id="name" name="name" class="mt-1 p-2 border rounded w-full" placeholder="Tu nombre">
                 </div>
-                <div class="flex space-x-4 mb-6 md:mb-0">
-                    <a href="#" class="hover:text-gray-400">¿Dónde encontrarnos?</a>
-                    <a href="#" class="hover:text-gray-400">Contactos</a>
-                    <a href="#" class="hover:text-gray-400">Servicios</a>
-                    <a href="#" class="hover:text-gray-400">Reportes</a>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" class="mt-1 p-2 border rounded w-full" placeholder="Tu correo electrónico">
                 </div>
-                <div class="flex space-x-4">
-                    <a href="https://www.facebook.com/" class="hover:text-gray-400">
-                        <img src="images/facebook.png" class="h-6 w-6">
-                    </a>
-                    <a href="https://x.com/?lang=es&mx=2" class="hover:text-gray-400">
-                        <img src="images/Twitter.png" class="h-6 w-6">
-                    </a>
-                    <a href="https://www.instagram.com/" class="hover:text-gray-400">
-                        <img src="images/Instagram.png" class="h-6 w-6">
-                    </a>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700">Contraseña</label>
+                    <input type="password" id="password" name="password" class="mt-1 p-2 border rounded w-full" placeholder="Tu contraseña">
                 </div>
-            </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
+                </div>
+            </form>
         </div>
-    </footer>
+    </div>
+
 
     <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>

@@ -588,18 +588,6 @@ video {
   }
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
 .fixed {
   position: fixed;
 }
@@ -631,6 +619,10 @@ video {
   margin-bottom: auto;
 }
 
+.-ml-14 {
+  margin-left: -3.5rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -659,16 +651,8 @@ video {
   margin-left: 8rem;
 }
 
-.ml-44 {
-  margin-left: 11rem;
-}
-
 .ml-60 {
   margin-left: 15rem;
-}
-
-.ml-96 {
-  margin-left: 24rem;
 }
 
 .mt-0 {
@@ -689,6 +673,26 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.-ml-52 {
+  margin-left: -13rem;
+}
+
+.ml-44 {
+  margin-left: 11rem;
+}
+
+.ml-96 {
+  margin-left: 24rem;
+}
+
+.ml-8 {
+  margin-left: 2rem;
+}
+
+.ml-80 {
+  margin-left: 20rem;
 }
 
 .block {
@@ -732,14 +736,6 @@ video {
   height: 100%;
 }
 
-.h-11 {
-  height: 2.75rem;
-}
-
-.h-20 {
-  height: 5rem;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -776,14 +772,6 @@ video {
   width: 100%;
 }
 
-.w-11 {
-  width: 2.75rem;
-}
-
-.w-20 {
-  width: 5rem;
-}
-
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -802,6 +790,10 @@ video {
 
 .flex-grow {
   flex-grow: 1;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .grid-cols-1 {
@@ -1284,9 +1276,32 @@ video {
   margin-left: 15rem;
 }
 
+.nav-expanded #mainContent {
+  margin-left: 24rem;
+  /* Ajusta según el ancho del nav */
+}
+
+/* Add this custom CSS for handling expanded and collapsed states */
+
+.expanded {
+  margin-left: 11rem;
+  /* Adjust as needed for the expanded state */
+}
+
+.nav-collapsed ~ .expanded {
+  margin-left: 3.5rem;
+  /* Adjust as needed for the collapsed state */
+}
+
 .hover\:scale-110:hover {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:scale-125:hover {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1381,8 +1396,29 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:mx-12 {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .md\:-mt-44 {
+    margin-top: -11rem;
+  }
+
   .md\:mb-0 {
     margin-bottom: 0px;
+  }
+
+  .md\:ml-44 {
+    margin-left: 11rem;
+  }
+
+  .md\:ml-96 {
+    margin-left: 24rem;
+  }
+
+  .md\:ml-80 {
+    margin-left: 20rem;
   }
 
   .md\:flex {
@@ -1427,5 +1463,3 @@ video {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
-
-      

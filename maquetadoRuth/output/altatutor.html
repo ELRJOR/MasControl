@@ -69,56 +69,29 @@
     </nav>
 
     <!-- Contenedor principal -->
-    <div class="flex flex-1 ml-44 -mt-6 pt-0">
-        <!-- Contenido principal -->
-        <main class="flex flex-col justify-center items-center w-full p-4">
-            <div class="text-container mx-auto max-w-xl p-4 text-4xl text-center playfair-display-playfair">ALTA TUTORES</div>
-            <div class="text-container mx-auto max-w-xl p-4 text-2xl text-center text-gray-500 nanum-gothic-coding-regular">
-                Ingrese los siguientes datos para poder dar de alta al tutor
-            </div>
-        
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 w-full">
+    <div class="flex flex-1 ml-44 mt-8 pt-0">
 
-                <form class="flex flex-col bg-white shadow-md rounded-md p-4">
-                  <div class="mb-4">
-                    <label for="tutorName" class="block text-gray-700 font-bold mb-2">Tutor Name:</label>
-                    <input type="text" id="tutorName" name="tutorName" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-2">
-                  </div>
-            
-                  <div class="mb-4">
-                    <label for="tutorEmail" class="block text-gray-700 font-bold mb-2">Tutor Email:</label>
-                    <input type="email" id="tutorEmail" name="tutorEmail" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-2">
-                  </div>
-            
-                  <div class="mb-4">
-                    <label for="tutorPhone" class="block text-gray-700 font-bold mb-2">Tutor Phone:</label>
-                    <input type="tel" id="tutorPhone" name="tutorPhone" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-2">
-                  </div>
-            
-                  <div class="mb-4">
-                    <label for="tutorInstitution" class="block text-gray-700 font-bold mb-2">Institution:</label>
-                    <select id="tutorInstitution" name="tutorInstitution" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-2">
-                      <option value="">Select Institution</option>
-                      </select>
-                  </div>
-            
-                  <div class="mb-4">
-                    <label for="tutorSubjects" class="block text-gray-700 font-bold mb-2">Subjects:</label>
-                    <select multiple id="tutorSubjects" name="tutorSubjects" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-2">
-                      <option value="">Select Subjects</option>
-                      </select>
-                  </div>
-            
-                  <div class="mb-4">
-                    <label for="tutorBio" class="block text-gray-700 font-bold mb-2">Tutor Bio:</label>
-                    <textarea id="tutorBio" name="tutorBio" rows="5" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:ring-2"></textarea>
-                  </div>
-            
-                  <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600">Register Tutor</button>
-                </form>
-              </div>
+           <div class="bg-white p-8 rounded shadow-md max-w-md w-full ml-96">
+        <h2 class="text-2xl font-bold mb-6 text-center">Formulario de Registro</h2>
+        <form action="#" method="POST">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700">Nombre</label>
+                <input type="text" id="name" name="name" class="mt-1 p-2 border rounded w-full" placeholder="Tu nombre">
             </div>
-        </main>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700">Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="mt-1 p-2 border rounded w-full" placeholder="Tu correo electrónico">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700">Contraseña</label>
+                <input type="password" id="password" name="password" class="mt-1 p-2 border rounded w-full" placeholder="Tu contraseña">
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
+            </div>
+        </form>
+    </div>
+
     </div>
 
     <!-- Footer -->

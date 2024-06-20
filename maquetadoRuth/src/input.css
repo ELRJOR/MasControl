@@ -108,8 +108,8 @@
       }
       
       .nav-collapsed .profile-image {
-          height: 24px; /* Ajusta la altura de la imagen de perfil cuando el sidebar está colapsado */
-          width: 24px; /* Ajusta el ancho de la imagen de perfil cuando el sidebar está colapsado */
+          height: 30px; /* Ajusta la altura de la imagen de perfil cuando el sidebar está colapsado */
+          width: 30px; /* Ajusta el ancho de la imagen de perfil cuando el sidebar está colapsado */
       }
       
       .nav-collapsed .nav-link {
@@ -128,17 +128,21 @@
       /* Ajusta el contenido principal cuando el sidebar está expandido */
       #mainContent{
         transition: margin-left 0.3s;
-        margin-left: 10rem;
+        margin-left: 14rem;
       }
 
       #footerContent{
         transition: margin-left 0.3s;
         margin-left: 0;
+        -webkit-transition: margin-left 0.3s;
+        -moz-transition: margin-left 0.3s;
+        -ms-transition: margin-left 0.3s;
+        -o-transition: margin-left 0.3s;
 }
 
       /* Ajuste adicional para cuando el sidebar está colapsado */
       #sidebar.nav-collapsed + #mainContent {
-        margin-left: 6rem; /* Ajusta el margen izquierdo del contenido principal para compensar el ancho del sidebar colapsado */
+        margin-left: 10rem; /* Ajusta el margen izquierdo del contenido principal para compensar el ancho del sidebar colapsado */
       }
 
       #sidebar.nav-collapsed + #footerContent {

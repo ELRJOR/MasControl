@@ -75,7 +75,7 @@
 
     <!-- Contenedor principal -->
     <div id="mainContent" class="flex-1 ml-44 mt-1 pt-0 transition-all duration-300 flex flex-col items-center justify-center">
-        <h1 class="text-center text-5xl mb-8 sm:-ml-24 sm:-mt-14">Bienvenido al gestor de tutores</h1>
+        <h1 class="text-center text-5xl mb-8 sm:-ml-24 sm:m-4">Bienvenido al gestor de tutores</h1>
         <p class="text-center text-2xl mb-8 sm:-ml-24 sm:mt-4">Ingrese los siguientes datos para completar </p>
         <div class="bg-white p-15 rounded shadow-md max-w-xl w-6/12 -ml-24">
             <form action="#" method="POST">
@@ -84,12 +84,20 @@
                     <input type="text" id="name" name="name" class="mt-1 p-2 border rounded w-full" placeholder="Tu nombre">
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="block text-gray-700">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" class="mt-1 p-2 border rounded w-full" placeholder="Tu correo electrónico">
+                    <label for="email" class="block text-gray-700">Apellido</label>
+                    <input type="email" id="email" name="email" class="mt-1 p-2 border rounded w-full" placeholder="Tu apellido">
                 </div>
                 <div class="mb-4">
-                    <label for="password" class="block text-gray-700">Contraseña</label>
-                    <input type="password" id="password" name="password" class="mt-1 p-2 border rounded w-full" placeholder="Tu contraseña">
+                    <label for="name" class="block text-gray-700">Dirección</label>
+                    <input type="text" id="name" name="name" class="mt-1 p-2 border rounded w-full" placeholder="Tu dirección">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700">Telefono</label>
+                    <input type="password" id="password" name="password" class="mt-1 p-2 border rounded w-full" placeholder="Tu número">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700">Correo Electronico</label>
+                    <input type="password" id="password" name="password" class="mt-1 p-2 border rounded w-full" placeholder="Tu correo electrónico">
                 </div>
                 <div class="flex items-center justify-between">
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>

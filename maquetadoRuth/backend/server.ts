@@ -1,5 +1,5 @@
 import express from 'express';
-import { conectarBD } from './db'; // Ajusta la ruta según tu estructura
+import { conectarBD, obtenerEscuelas } from './db'; // Ajusta la ruta según tu estructura
 import { Escuela } from './models/Escuela'; // Ajusta la ruta según tu estructura
 
 const app = express();
@@ -11,7 +11,8 @@ app.use(express.json());
 // Endpoint para obtener todas las escuelas
 app.get('/api/escuelas', async (req, res) => {
     try {
-        const escuelas = await obtenerEscuelas();
+        conectarBD();
+        let escuelas = await obtenerEscuelas();
         res.json(escuelas);
     } catch (error) {
         res.status(500).send((error as Error).message);

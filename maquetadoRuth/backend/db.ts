@@ -1,4 +1,5 @@
 import * as mssql from 'mssql';
+import { Escuela } from './models/Escuela';
 
 // Configuración para la conexión a la base de datos
 const dbConfig: mssql.config = {
@@ -25,14 +26,30 @@ export async function conectarBD(): Promise<mssql.ConnectionPool> {
     }
 }
 
+// Función para cerrar la conexión a la base de datos
+export async function cerrarConexionBD(pool: mssql.ConnectionPool): Promise<void> {
+    try {
+        await pool.close();
+        console.log('Conexión cerrada correctamente');
+    } catch (error) {
+        console.error('Error al intentar cerrar la conexión:', (error as Error).message);
+        throw error;
+    }
+}
+
 // Ejemplo de consulta para obtener todas las escuelas
 export async function obtenerEscuelas(): Promise<any[]> {
+    let pool: mssql.ConnectionPool | null = null;
     try {
-        const pool = await conectarBD();
+        pool = await conectarBD();
         const result = await pool.request().query('SELECT * FROM Escuelas');
         return result.recordset;
     } catch (error) {
         console.error('Error al obtener las escuelas:', (error as Error).message);
         throw error;
+    } finally {
+        if (pool) {
+            await cerrarConexionBD(pool);
+        }
     }
 }

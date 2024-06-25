@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dar de alta tutor</title>
+    <title>Chat</title>
     <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="images/casa.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//code.tidio.co/3f70kktxkdtw6sjd5prgruuzi81zsuuy.js" async></script>
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -43,13 +44,13 @@
                 </svg>
                 <span class="ml-1">Alta Anuncio</span>
             </a>
-            <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+            <a href="altatutor.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                 </svg>
                 <span class="ml-1 text-center">Alta Tutor</span>
             </a>
-            <a href="chat.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+            <a href="#contact" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
                 </svg>
@@ -74,39 +75,7 @@
     </nav>
 
     <!-- Contenedor principal -->
-    <div id="mainContent" class="flex-1 ml-44 pt-0 transition-all duration-300 flex flex-col items-center justify-center h-screen overflow-auto">
-        <h1 class="text-center text-5xl mb-8 sm:-ml-20 sm:m-4 eb-garamond-Garamond">BIENVENIDO AL GESTOR DE TUTORES</h1>
-        <p class="text-center text-2xl mb-8 sm:-ml-24 sm:mt-4 playfair-display-playfair">Ingrese los siguientes datos para poder dar de alta al tutor</p>
-        <div class="bg-blue-200 p-8 rounded shadow-md max-w-4xl w-6/12 max-h-screen overflow-y-auto text-center sm:-ml-24 border mb-24">
-            <form action="#" method="POST" class="w-full">
-                <div class="mb-4">
-                    <label for="name" class="block text-black">Nombre</label>
-                    <input type="text" id="name" name="name" class="mt-1 p-1 border-4 rounded w-full text-center" placeholder="Tu nombre">
-                </div>
-                <div class="mb-4">
-                    <label for="lastname" class="block text-black text-center">Apellido</label>
-                    <input type="text" id="lastname" name="lastname" class="mt-1 p-1 border-4 rounded w-full text-center " placeholder="Tu apellido">
-                </div>
-                <div class="mb-4">
-                    <label for="address" class="block text-black text-center">Dirección</label>
-                    <input type="text" id="address" name="address" class="mt-1 p-1 border-4 rounded w-full text-center" placeholder="Tu dirección">
-                </div>
-                <div class="mb-4">
-                    <label for="phone" class="block text-black text-center">Teléfono</label>
-                    <input type="text" id="phone" name="phone" class="mt-1 p-1 border-4 rounded w-full text-center" placeholder="Tu número">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-black text-center">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" class="mt-1 p-1 border-4 rounded w-full text-center" placeholder="Tu correo electrónico">
-                </div>
-                <div class="flex items-center justify-between">
-                    <button type="submit" class="bg-blue-500 text-black px-4 py-2 border-4 shadow-lg hover:bg-blue-600 md:ml-56 sm:mt-4">Registrar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    
+
     <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
 </html>

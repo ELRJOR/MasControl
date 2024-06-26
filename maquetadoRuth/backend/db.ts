@@ -47,8 +47,8 @@ export async function agregarTutor(tutor: Tutor): Promise<void> {
         await transaction.begin();
         // Query para insertar el tutor
         const query = `
-            INSERT INTO Tutores (nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, correo_Tutor)
-            VALUES (@nombre_Tutor, @apellido_Tutor, @direccion_Tutor, @telefono_Tutor, @correo_Tutor)
+            INSERT INTO Tutores (nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email_Tutor)
+            VALUES (@nombre_Tutor, @apellido_Tutor, @direccion_Tutor, @telefono_Tutor, @email_Tutor)
         `;
         // Ejecutar la consulta con parámetros
         await transaction.request()
@@ -56,7 +56,7 @@ export async function agregarTutor(tutor: Tutor): Promise<void> {
             .input('apellido_Tutor', mssql.NVarChar, apellido_Tutor)
             .input('direccion_Tutor', mssql.NVarChar, direccion_Tutor)
             .input('telefono_Tutor', mssql.NVarChar, telefono_Tutor)
-            .input('correo_Tutor', mssql.NVarChar, email_Tutor)
+            .input('email_Tutor', mssql.NVarChar, email_Tutor)
             .query(query);
         // Commit de la transacción
         await transaction.commit();

@@ -86,7 +86,7 @@
         <h1 class="text-center text-3xl md:text-5xl mb-4 md:mb-8 font-serif text-gray-900">BIENVENIDO AL GESTOR DE TUTORES</h1>
         <p class="text-center text-xl md:text-2xl mb-4 md:mb-8 font-serif text-gray-800">Ingrese los siguientes datos para dar de alta al tutor:</p>
         <div class="p-4 md:p-8 rounded-lg shadow-lg max-w-md md:max-w-2xl w-full bg-black mb-6">
-            <form action="#" method="POST" class="w-full">
+            <form action="altatutor.html" id="tutorForm" method="POST" class="w-full">
                 <div class="mb-4 md:mb-6">
                     <label for="name" class="block text-white font-bold mb-2">Nombre</label>
                     <input type="text" id="name" name="name" class="mt-1 p-2 md:p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500" placeholder="Tu nombre" required>
@@ -108,7 +108,7 @@
                     <input type="email" id="email" name="email" class="mt-1 p-2 md:p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500" placeholder="Tu correo electrónico" required>
                 </div>
                 <div class="flex items-center justify-center">
-                    <button type="submit" class="bg-white text-black font-bold px-4 py-2 md:px-6 md:py-3 rounded-lg hover:bg-gray-600 focus:outline-none">Registrar</button>
+                    <input type="submit" class="bg-white text-black font-bold px-4 py-2 md:px-6 md:py-3 rounded-lg hover:bg-gray-600 focus:outline-none" placeholder="Registrar">
                 </div>
             </form>
         </div>

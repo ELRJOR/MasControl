@@ -31,104 +31,45 @@ export async function conectarBD(): Promise<mssql.ConnectionPool> {
     }
 }
 
-// Función para obtener todas las escuelas
-export async function obtenerEscuelas(): Promise<Escuela[]> {
+// Función para agregar un tutor utilizando la interfaz Tutor
+export async function agregarTutor(tutor: Tutor): Promise<void> {
     let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
+
+    const { nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email_Tutor } = tutor;
+
     try {
+        // Conectar a la base de datos
         pool = await conectarBD();
-        const result = await pool.request().query('SELECT * FROM Escuelas');
-        return result.recordset as Escuela[];
+        // Iniciar una nueva transacción
+        transaction = new mssql.Transaction(pool);
+        // Iniciar la transacción
+        await transaction.begin();
+        // Query para insertar el tutor
+        const query = `
+            INSERT INTO Tutores (nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, correo_Tutor)
+            VALUES (@nombre_Tutor, @apellido_Tutor, @direccion_Tutor, @telefono_Tutor, @correo_Tutor)
+        `;
+        // Ejecutar la consulta con parámetros
+        await transaction.request()
+            .input('nombre_Tutor', mssql.NVarChar, nombre_Tutor)
+            .input('apellido_Tutor', mssql.NVarChar, apellido_Tutor)
+            .input('direccion_Tutor', mssql.NVarChar, direccion_Tutor)
+            .input('telefono_Tutor', mssql.NVarChar, telefono_Tutor)
+            .input('correo_Tutor', mssql.NVarChar, email_Tutor)
+            .query(query);
+        // Commit de la transacción
+        await transaction.commit();
+        console.log('Tutor agregado correctamente');
     } catch (error) {
-        console.error('Error al obtener las escuelas:', (error as Error).message);
-        throw error;
-    } finally {
-        if (pool) {
-            await pool.close();
-            console.log('Conexión cerrada correctamente');
+        // Si hay algún error, hacer rollback de la transacción
+        if (transaction) {
+            await transaction.rollback();
         }
-    }
-}
-
-// Funciones adicionales para obtener los demás modelos
-
-export async function obtenerAlumnos(): Promise<Alumno[]> {
-    let pool: mssql.ConnectionPool | null = null;
-    try {
-        pool = await conectarBD();
-        const result = await pool.request().query('SELECT * FROM Alumnos');
-        return result.recordset as Alumno[];
-    } catch (error) {
-        console.error('Error al obtener los alumnos:', (error as Error).message);
+        console.error('Error al agregar el tutor:', (error as Error).message);
         throw error;
     } finally {
-        if (pool) {
-            await pool.close();
-            console.log('Conexión cerrada correctamente');
-        }
-    }
-}
-
-export async function obtenerTutores(): Promise<Tutor[]> {
-    let pool: mssql.ConnectionPool | null = null;
-    try {
-        pool = await conectarBD();
-        const result = await pool.request().query('SELECT * FROM Tutores');
-        return result.recordset as Tutor[];
-    } catch (error) {
-        console.error('Error al obtener los tutores:', (error as Error).message);
-        throw error;
-    } finally {
-        if (pool) {
-            await pool.close();
-            console.log('Conexión cerrada correctamente');
-        }
-    }
-}
-
-export async function obtenerAdministradores(): Promise<Administrador[]> {
-    let pool: mssql.ConnectionPool | null = null;
-    try {
-        pool = await conectarBD();
-        const result = await pool.request().query('SELECT * FROM Administradores');
-        return result.recordset as Administrador[];
-    } catch (error) {
-        console.error('Error al obtener los administradores:', (error as Error).message);
-        throw error;
-    } finally {
-        if (pool) {
-            await pool.close();
-            console.log('Conexión cerrada correctamente');
-        }
-    }
-}
-
-export async function obtenerAvisos(): Promise<Aviso[]> {
-    let pool: mssql.ConnectionPool | null = null;
-    try {
-        pool = await conectarBD();
-        const result = await pool.request().query('SELECT * FROM Avisos');
-        return result.recordset as Aviso[];
-    } catch (error) {
-        console.error('Error al obtener los avisos:', (error as Error).message);
-        throw error;
-    } finally {
-        if (pool) {
-            await pool.close();
-            console.log('Conexión cerrada correctamente');
-        }
-    }
-}
-
-export async function obtenerTramites(): Promise<Tramite[]> {
-    let pool: mssql.ConnectionPool | null = null;
-    try {
-        pool = await conectarBD();
-        const result = await pool.request().query('SELECT * FROM Tramites');
-        return result.recordset as Tramite[];
-    } catch (error) {
-        console.error('Error al obtener los trámites:', (error as Error).message);
-        throw error;
-    } finally {
+        // Cerrar la conexión
         if (pool) {
             await pool.close();
             console.log('Conexión cerrada correctamente');

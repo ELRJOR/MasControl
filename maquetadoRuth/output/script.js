@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email").value;
 
     try {
-        const response = await fetch("http://localhost:3000/api/tutor", {
+        const response = await fetch("/api/tutor", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Tutor</title>
+    <title>Avisos - MasControl</title>
     <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="images/casa.png">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="flex flex-col min-h-screen">
     <!-- Header -->
     <header class="w-full bg-gray-100">
@@ -33,12 +32,10 @@
             <img src="images/ingresar.png" alt="Cerrar sesión" class="w-6 h-6">
             <span class="ml-1">Cerrar sesión</span>
         </button>
-        
-        
 
         <!-- Enlaces de navegación -->
         <div class="flex flex-col space-y-9">
-            <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+            <a href="tutor.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                 </svg>
@@ -51,7 +48,7 @@
                     <rect x="95.165" y="304.212" width="214.563" height="30.417"/>
                     <rect x="95.165" y="365.047" width="214.563" height="30.417"/>
                 </svg>
-                <span class="ml-1">Anuncios</span>
+                <span class="ml-1">Avisos</span>
             </a>
             <a href="altatutor.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 128 128" class="w-6 h-6">
@@ -78,7 +75,6 @@
             </a>
         </div>
 
-
         <!-- Botón de colapso -->
         <div class="flex flex-col items-center">
             <button id="toggleButton" class="text-black hover:text-white transition-transform duration-300 transform focus:outline-none">
@@ -89,37 +85,36 @@
         </div>
     </nav>
 
-    <!-- Contenedor principal -->
-    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-12 md:-mt-44 pt-0">
-        <div class="flex flex-col justify-center items-center w-full p-4">
-            <div class="text-container mx-auto max-w-xl p-4 text-4xl text-center">BIENVENIDO, TUTOR</div>
-            <div class="text-container mx-auto max-w-xl p-4 text-2xl text-center text-gray-500">
-                Bienvenido al panel de control donde podrá manejar el contacto con los administrativos de su institución junto a distintos trámites y avisos.
+    <!-- Contenido principal -->
+    <main id="mainContent" class="flex flex-1 flex-col items-center justify-center md:ml-44 pt-12 md:pb-10">
+        <div class="text-container mx-auto max-w-xl text-center px-4 md:px-0">
+            <h1 class="text-4xl font-bold mb-4">Novedades y Actualizaciones</h1>
+            <p class="text-2xl text-gray-500">Mantente al día con las últimas noticias y actualizaciones de MasControl.</p>
+        </div>
+    
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-12 w-full px-4">
+            <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2">Aviso </h3>
+                <p class="text-gray-600">Descripción del aviso.</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 w-full">
-                <!-- Contenido principal del dashboard del tutor -->
-                <a href="#" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Pagos pendientes</h3>
-                    <p class="text-gray-600">Consulte los pagos pendientes por realizar relacionados a su tutorado.</p>
-                </a>
-                <a href="#" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Avisos entrantes</h3>
-                    <p class="text-gray-600">Revise nuevos avisos mandados por la administración.</p>
-                </a>
-                <a href="#" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Comunicaciones</h3>
-                    <p class="text-gray-600">Mantente actualizado con las comunicaciones de la escuela.</p>
-                </a>
-                <a href="#" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Recursos</h3>
-                    <p class="text-gray-600">Accede a recursos educativos para apoyar el aprendizaje de tu hijo.</p>
-                </a>
+            <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2">Aviso </h3>
+                <p class="text-gray-600">Descripción del aviso.</p>
+            </div>
+            <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2">Aviso </h3>
+                <p class="text-gray-600">Descripción del aviso.</p>
+            </div>
+            <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2">Aviso </h3>
+                <p class="text-gray-600">Descripción del aviso.</p>
             </div>
         </div>
     </main>
+    
     
 
     <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
 </html>
+

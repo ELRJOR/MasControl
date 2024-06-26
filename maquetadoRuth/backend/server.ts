@@ -3,7 +3,7 @@ import { conectarBD } from './db';
 import { agregarTutorController } from './controllers/tutorController'; // Asegúrate de que la ruta sea correcta
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5501;
 
 // Middleware para parsear el body de las solicitudes JSON
 app.use(express.json());

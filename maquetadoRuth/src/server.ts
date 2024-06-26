@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import { conectarBD } from './db';
 import { agregarTutorController } from './controllers/tutorController'; // Asegúrate de que la ruta sea correcta
 
@@ -7,6 +8,10 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear el body de las solicitudes JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Servir archivos estáticos desde el directorio "output"
+app.use(express.static(path.join(__dirname, '../output')));
 
 // Ruta para agregar un tutor
 app.post('/alta-tutor', agregarTutorController);

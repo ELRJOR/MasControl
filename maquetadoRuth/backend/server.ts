@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { conectarBD } from './db';
 import { agregarTutorController } from './controllers/tutorController'; // Asegúrate de que la ruta sea correcta
 
@@ -8,6 +9,13 @@ const PORT = process.env.PORT || 3000;
 // Middleware para parsear el body de las solicitudes JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Configuración de CORS
+app.use(cors({
+    origin: 'http://127.0.0.1:5501', // Aquí defines el origen permitido
+    methods: ['GET', 'POST'], // Aquí defines los métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'] // Aquí defines los encabezados permitidos
+}));
 
 // Ruta para agregar un tutor
 app.post('/alta-tutor', agregarTutorController);

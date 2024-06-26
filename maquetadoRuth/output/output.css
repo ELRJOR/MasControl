@@ -1429,10 +1429,6 @@ video {
 }
 
 @media (min-width: 640px) {
-  .sm\:-ml-24 {
-    margin-left: -6rem;
-  }
-
   .sm\:-ml-40 {
     margin-left: -10rem;
   }

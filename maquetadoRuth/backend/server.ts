@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear el body de las solicitudes JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Ruta para agregar un tutor
 app.post('/alta-tutor', agregarTutorController);

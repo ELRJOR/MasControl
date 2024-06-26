@@ -1,5 +1,5 @@
 const express = require('express');
-const { conectarBD } = require('./server.js');
+const { conectarBD } = require('./server.ts');
 
 const app = express();
 

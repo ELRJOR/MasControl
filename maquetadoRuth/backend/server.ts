@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { conectarBD } from './db';
 import { agregarTutorController } from './controllers/tutorController'; // Asegúrate de que la ruta sea correcta
 
@@ -8,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware para parsear el body de las solicitudes JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // Ruta para agregar un tutor
 app.post('/alta-tutor', agregarTutorController);

@@ -3,14 +3,13 @@ import { conectarBD } from './db';
 import { agregarTutorController } from './controllers/tutorController'; // Asegúrate de que la ruta sea correcta
 
 const app = express();
-const PORT = process.env.PORT || 5501;
+const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear el body de las solicitudes JSON
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // Ruta para agregar un tutor
-app.post('/api/tutor', agregarTutorController);
+app.post('/alta-tutor', agregarTutorController);
 
 // Middleware para manejar errores
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

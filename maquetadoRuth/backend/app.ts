@@ -7,8 +7,8 @@ const app = express();
 conectarBD()
     .then(() => {
         // Lógica adicional de la aplicación Express aquí
-        app.listen(5501, () => {
-        console.log('Servidor iniciado en http://localhost:5501');
+        app.listen(3000, () => {
+        console.log('Servidor iniciado en http://localhost:3000');
         });
     })
     .catch(err => {

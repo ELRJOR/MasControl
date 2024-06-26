@@ -26,37 +26,38 @@ if (toggleButton) {
 });
 
 //parte del formulario de tutores
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("tutorForm");
-    form.addEventListener("submit", async (event) => {
+document.getElementById("tutorForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const lastname = document.getElementById("lastname").value;
-    const address = document.getElementById("address").value;
-    const phone = document.getElementById("phone").value;
-    const email = document.getElementById("email").value;
+    const formData = {
+        name: document.getElementById("name").value,
+        lastname: document.getElementById("lastname").value,
+        address: document.getElementById("address").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value
+    };
 
     try {
-        const response = await fetch("/api/tutor", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, lastname, address, phone, email }),
+        const response = await fetch('/alta-tutor', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         });
 
         if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
+            throw new Error('Network response was not ok');
         }
 
-        const result = await response.json();
-        alert(result.message);
+        const data = await response.json();
+        console.log(data); // Puedes manejar la respuesta del servidor aquí
+
     } catch (error) {
-        alert(`Error: ${error.message}`);
+        console.error('Error:', error);
     }
-    });
 });
+
 
 document.getElementById('logoutButton').addEventListener('click', function() {
 if (confirm('¿Estás seguro de que quieres cerrar la sesión?')) {

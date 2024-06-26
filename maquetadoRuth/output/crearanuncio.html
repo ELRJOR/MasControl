@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración</title>
+    <title>Dar de alta tutor</title>
     <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="images/casa.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,19 +30,19 @@
                 
                 <!-- Enlaces de navegación -->
                 <div class="flex flex-col space-y-6 py-11">
-                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="administrador.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                         </svg>
                         <span class="ml-1">Home</span>
                     </a>
-                    <a href="crearanuncio.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
                         </svg>
                         <span class="ml-1">Alta Anuncio</span>
                     </a>
-                    <a href="altatutor.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                         </svg>
@@ -54,7 +54,7 @@
                         </svg>
                         <span class="ml-1">Mensajes</span>
                     </a>
-                    <a href="#contact" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 6h9.75m-9.75 0a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0m-3.75 0H7.5m3 6h9.75m-9.75 0a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0m-3.75 0H7.5" />
                         </svg>
@@ -80,34 +80,57 @@
         </nav>
 
     <!-- Contenedor principal -->
-    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-12 md:-mt-44 pt-0">
-        <div class="flex flex-col justify-center items-center w-full p-4">
-            <div class="text-container mx-auto max-w-xl p-4 text-4xl text-center">BIENVENIDO, ADMINISTRADOR</div>
-            <div class="text-container mx-auto max-w-xl p-4 text-2xl text-center text-gray-500">
-                Desde aquí puede gestionar toda la información y los usuarios de la plataforma MasControl.
-            </div>
-        
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 w-full">
-                <a href="dashboard.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Dashboard</h3>
-                    <p class="text-gray-600">Resumen de la actividad y datos clave.</p>
-                </a>
-                <a href="gestion-usuarios.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Gestión de Usuarios</h3>
-                    <p class="text-gray-600">Administrar cuentas de usuarios y permisos.</p>
-                </a>
-                <a href="reportes.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Reportes</h3>
-                    <p class="text-gray-600">Generar y revisar reportes detallados.</p>
-                </a>
-                <a href="estadisticas.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Estadísticas</h3>
-                    <p class="text-gray-600">Ver estadísticas y tendencias.</p>
-                </a>
-            </div>
+    <main class="container mx-auto mt-16 flex justify-center items-center mb-28">
+        <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-4 text-center">Alta de Nuevo Anuncio Escolar</h2>
+            <form action="procesar_anuncio.php" method="POST" enctype="multipart/form-data">
+        <!-- Título del anuncio -->
+        <div class="mb-4">
+            <label for="titulo" class="block text-sm font-medium text-gray-700">Título del Anuncio</label>
+            <input type="text" id="titulo" name="titulo" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
         </div>
-    </main>
 
+        <!-- Fecha de publicación -->
+        <div class="mb-4">
+            <label for="fecha_publicacion" class="block text-sm font-medium text-gray-700">Fecha de Publicación</label>
+            <input type="date" id="fecha_publicacion" name="fecha_publicacion" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+        </div>
+
+        <!-- Imagen representativa -->
+        <div class="mb-4">
+            <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen Representativa</label>
+            <input type="file" id="imagen" name="imagen" accept="image/*" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+        </div>
+
+        <!-- Contenido del anuncio -->
+        <div class="mb-4">
+            <label for="contenido" class="block text-sm font-medium text-gray-700">Contenido del Anuncio</label>
+            <textarea id="contenido" name="contenido" rows="4" required class="mt-1 p-2 w-full border border-gray-300 rounded-md"></textarea>
+        </div>
+
+        <!-- Fecha de cierre -->
+        <div class="mb-4">
+            <label for="fecha_cierre" class="block text-sm font-medium text-gray-700">Fecha de Cierre</label>
+            <input type="date" id="fecha_cierre" name="fecha_cierre" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+        </div>
+
+        <!-- Nombre del administrador -->
+        <div class="mb-4">
+            <label for="nombre_administrador" class="block text-sm font-medium text-gray-700">Nombre del Administrador</label>
+            <input type="text" id="nombre_administrador" name="nombre_administrador" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+        </div>
+
+        <!-- Botón de publicar -->
+        <div class="mb-4">
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Publicar Anuncio</button>
+        </div>
+        </form>
+        </main>
+                    </form>
+                </div>
+            </main>
+                
+    
     <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
-</html>
+</html> 

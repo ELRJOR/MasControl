@@ -73,3 +73,4 @@ if (!confirm(confirmationMessage)) {
     event.preventDefault(); // Cancel the navigation if the user cancels
 }
 });
+

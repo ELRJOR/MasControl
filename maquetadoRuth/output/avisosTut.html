@@ -23,7 +23,7 @@
     <!-- Barra de navegación lateral -->
     <nav id="sidebar" class="bg-gray-100 fixed h-full left-0 flex flex-col items-center justify-between py-8 px-4 text-black transition-all duration-300 nav-collapsed">
         <div class="flex flex-col items-center">
-            <!-- Perfil con foto -->
+            <!-- Perfil con fotos -->
             <button class="text-black hover:text-white rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                 <img class="profile-image h-12 w-12 transition-transform rounded-full duration-300 hover:scale-110" src="images/persona.jpg" alt="Foto de perfil">
             </button>
@@ -87,33 +87,31 @@
     </nav>
 
     <!-- Contenido principal -->
-    <main id="mainContent" class="flex flex-1 flex-col items-center justify-center md:ml-44 pt-12 md:pb-10">
-        <div class="text-container mx-auto max-w-xl text-center px-4 md:px-0">
-            <h1 class="text-4xl font-bold mb-4">Novedades y Actualizaciones</h1>
-            <p class="text-2xl text-gray-500">Mantente al día con las últimas noticias y actualizaciones de su institución.</p>
+<main id="mainContent" class="flex flex-1 flex-col items-center justify-center md:ml-44 pt-12 md:pb-10">
+    <div class="text-container mx-auto max-w-xl text-center px-4 md:px-0">
+        <h1 class="text-4xl font-bold mb-4">Novedades y Actualizaciones</h1>
+        <p class="text-2xl text-gray-500">Mantente al día con las últimas noticias y actualizaciones de su institución.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mt-12 w-full px-4">
+        <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
+            <h3 class="text-xl font-semibold mb-2">Aviso 1</h3>
+            <p class="text-gray-600">Descripción del aviso 1.</p>
         </div>
-    
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-12 w-full px-4">
-            <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
-                <h3 class="text-xl font-semibold mb-2">Aviso </h3>
-                <p class="text-gray-600">Descripción del aviso.</p>
-            </div>
-            <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
-                <h3 class="text-xl font-semibold mb-2">Aviso </h3>
-                <p class="text-gray-600">Descripción del aviso.</p>
-            </div>
-            <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
-                <h3 class="text-xl font-semibold mb-2">Aviso </h3>
-                <p class="text-gray-600">Descripción del aviso.</p>
-            </div>
-            <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
-                <h3 class="text-xl font-semibold mb-2">Aviso </h3>
-                <p class="text-gray-600">Descripción del aviso.</p>
-            </div>
+        <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
+            <h3 class="text-xl font-semibold mb-2">Aviso 2</h3>
+            <p class="text-gray-600">Descripción del aviso 2.</p>
         </div>
-    </main>
-    
-    
+        <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
+            <h3 class="text-xl font-semibold mb-2">Aviso 3</h3>
+            <p class="text-gray-600">Descripción del aviso 3.</p>
+        </div>
+        <div class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
+            <h3 class="text-xl font-semibold mb-2">Aviso 4</h3>
+            <p class="text-gray-600">Descripción del aviso 4.</p>
+        </div>
+    </div>
+</main>
 
     <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>

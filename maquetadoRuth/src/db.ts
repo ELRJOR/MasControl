@@ -31,48 +31,57 @@ export async function conectarBD(): Promise<mssql.ConnectionPool> {
     }
 }
 
-// Función para agregar un tutor utilizando la interfaz Tutor
-export async function agregarTutor(tutor: Tutor): Promise<void> {
-    let pool: mssql.ConnectionPool | null = null;
-    let transaction: mssql.Transaction | null = null;
+//Verificacion de usuario para LOGIN
+    // Función para verificar si el usuario es un Tutor
+    export async function verificarTutor(email: string, password: string): Promise<Tutor | null> {
+        let pool: mssql.ConnectionPool | null = null;
 
-    const { nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email_Tutor } = tutor;
+        try {
+            pool = await conectarBD();
+            const result = await pool.request()
+                .input('email', mssql.NVarChar, email)
+                .input('password', mssql.NVarChar, password)
+                .query('SELECT id_Tutor, nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email_Tutor FROM Tutores WHERE email_Tutor = @email AND password = @password');
 
-    try {
-        // Conectar a la base de datos
-        pool = await conectarBD();
-        // Iniciar una nueva transacción
-        transaction = new mssql.Transaction(pool);
-        // Iniciar la transacción
-        await transaction.begin();
-        // Query para insertar el tutor
-        const query = `
-            INSERT INTO Tutores (nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email_Tutor)
-            VALUES (@nombre_Tutor, @apellido_Tutor, @direccion_Tutor, @telefono_Tutor, @email_Tutor)
-        `;
-        // Ejecutar la consulta con parámetros
-        await transaction.request()
-            .input('nombre_Tutor', mssql.NVarChar, nombre_Tutor)
-            .input('apellido_Tutor', mssql.NVarChar, apellido_Tutor)
-            .input('direccion_Tutor', mssql.NVarChar, direccion_Tutor)
-            .input('telefono_Tutor', mssql.NVarChar, telefono_Tutor)
-            .input('email_Tutor', mssql.NVarChar, email_Tutor)
-            .query(query);
-        // Commit de la transacción
-        await transaction.commit();
-        console.log('Tutor agregado correctamente');
-    } catch (error) {
-        // Si hay algún error, hacer rollback de la transacción
-        if (transaction) {
-            await transaction.rollback();
-        }
-        console.error('Error al agregar el tutor:', (error as Error).message);
-        throw error;
-    } finally {
-        // Cerrar la conexión
-        if (pool) {
-            await pool.close();
-            console.log('Conexión cerrada correctamente');
+            if (result.recordset.length > 0) {
+                return result.recordset[0] as Tutor;
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error('Error al verificar el tutor:', (error as Error).message);
+            throw error;
+        } finally {
+            if (pool) {
+                await pool.close();
+                console.log('Conexión cerrada correctamente');
+            }
         }
     }
-}
+
+    // Función para verificar si el usuario es un Administrador
+    export async function verificarAdministrador(email: string, password: string): Promise<Administrador | null> {
+        let pool: mssql.ConnectionPool | null = null;
+
+        try {
+            pool = await conectarBD();
+            const result = await pool.request()
+                .input('email', mssql.NVarChar, email)
+                .input('password', mssql.NVarChar, password)
+                .query('SELECT id_Admin, matricula_Admin, nombre_Admin, apellido_Admin, telefono_Admin, email_Admin, id_Escuela FROM Administradores WHERE email_Admin = @email AND password = @password');
+
+            if (result.recordset.length > 0) {
+                return result.recordset[0] as Administrador;
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error('Error al verificar el administrador:', (error as Error).message);
+            throw error;
+        } finally {
+            if (pool) {
+                await pool.close();
+                console.log('Conexión cerrada correctamente');
+            }
+        }
+    }

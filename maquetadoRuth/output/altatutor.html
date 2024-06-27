@@ -36,7 +36,7 @@
                         </svg>
                         <span class="ml-1">Home</span>
                     </a>
-                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="crearanuncio.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-black px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18" />
                         </svg>
@@ -81,9 +81,9 @@
 
     <!-- Contenedor principal -->
     <div id="mainContent" class="flex-1 pt-0 transition-all duration-300 flex flex-col items-center justify-center h-screen overflow-auto px-4 sm:mt-6 sm:ml-44">
-        <h1 class="text-center text-3xl md:text-5xl mb-4 md:mb-8 font-serif text-gray-900">BIENVENIDO AL GESTOR DE TUTORES</h1>
-        <p class="text-center text-xl md:text-2xl mb-4 md:mb-8 font-serif text-gray-800">Ingrese los siguientes datos para dar de alta al tutor:</p>
-        <div class="p-4 md:p-8 rounded-lg shadow-lg max-w-md md:max-w-2xl w-full bg-black mb-6">
+        <h1 class="text-center text-3xl md:text-5xl mb-4 md:mb-8 font-serif text-gray-900 md:-ml-24">BIENVENIDO AL GESTOR DE TUTORES</h1>
+        <p class="text-center text-xl md:text-2xl mb-4 md:mb-8 font-serif text-gray-800 md:-ml-24">Ingrese los siguientes datos para dar de alta al tutor:</p>
+        <div class="p-4 md:p-8 rounded-lg shadow-lg max-w-md md:max-w-2xl w-full bg-black mb-6 md:-ml-24">
             <form action="/alta-tutor" id="tutorForm" method="POST" class="w-full">
                 <div class="mb-4 md:mb-6">
                     <label for="name" class="block text-white font-bold mb-2">Nombre</label>
@@ -111,6 +111,6 @@
             </form>
         </div>
     </div>
-    <script src="scriptaltatutores.js"></script> <!-- Enlace al archivo JavaScript externo -->
+    <script src="scriptcrud.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
 </html> 

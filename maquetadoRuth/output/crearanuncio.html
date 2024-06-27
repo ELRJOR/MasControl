@@ -87,7 +87,7 @@
 
             <div class="p-4 md:p-8 rounded-lg shadow-lg max-w-md md:max-w-2xl w-full bg-black mb-6 md:ml-80 md:mt-12">
                 <h2 class="text-5xl font-bold mb-4 text-center text-white">Alta de Nuevo Anuncio Escolar</h2>
-                <form action="procesar_anuncio.php" method="POST" enctype="multipart/form-data">
+                <form action="/alta-anuncio" method="POST" id="anuncioForm">
                     <!-- Título del anuncio -->
                     <div class="mb-4">
                         <label for="titulo" class="block text-sm font-medium text-white">Título del Anuncio</label>
@@ -120,7 +120,7 @@
                 </form>
             </div>
         </main>
-    
-    <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
+        <script src="conexionBackend.js"></script>
+        <script src="script.js"></script>
 </body>
 </html> 

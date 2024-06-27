@@ -79,54 +79,58 @@
             </div>
         </nav>
 
-        <main class="container mx-auto mt-16 flex justify-center items-center mb-28">
-            <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-5xl font-bold mb-4 text-center">Alta de Nuevo Anuncio Escolar</h2>
+        <main class="container mx-auto mt-16 mb-28">
+            <div class="text-center mb-8 md:mb-12">
+                <h1 class="text-3xl md:text-5xl mb-4 font-serif text-gray-900 md:ml-24">Publicar un aviso o trámite</h1>
+                <p class="text-xl md:text-2xl mb-4 font-serif text-gray-800 md:ml-24">Ingrese los datos para poder publicar el aviso</p>
+            </div>
+
+            <div class="p-4 md:p-8 rounded-lg shadow-lg max-w-md md:max-w-2xl w-full bg-black mb-6 md:ml-80 md:mt-12">
+                <h2 class="text-5xl font-bold mb-4 text-center text-white">Alta de Nuevo Anuncio Escolar</h2>
                 <form action="procesar_anuncio.php" method="POST" enctype="multipart/form-data">
                     <!-- Título del anuncio -->
                     <div class="mb-4">
-                        <label for="titulo" class="block text-sm font-medium text-gray-700">Título del Anuncio</label>
+                        <label for="titulo" class="block text-sm font-medium text-white">Título del Anuncio</label>
                         <input type="text" id="titulo" name="titulo" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
                     </div>
         
                     <!-- Fecha de publicación -->
                     <div class="mb-4">
-                        <label for="fecha_publicacion" class="block text-sm font-medium text-gray-700">Fecha de Publicación</label>
+                        <label for="fecha_publicacion" class="block text-sm font-medium text-white">Fecha de Publicación</label>
                         <input type="date" id="fecha_publicacion" name="fecha_publicacion" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
                     </div>
         
                     <!-- Imagen representativa -->
                     <div class="mb-4">
-                        <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen Representativa</label>
+                        <label for="imagen" class="block text-sm font-medium text-white">Imagen Representativa</label>
                         <input type="file" id="imagen" name="imagen" accept="image/*" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
                     </div>
         
                     <!-- Contenido del anuncio -->
                     <div class="mb-4">
-                        <label for="contenido" class="block text-sm font-medium text-gray-700">Contenido del Anuncio</label>
+                        <label for="contenido" class="block text-sm font-medium text-white">Contenido del Anuncio</label>
                         <textarea id="contenido" name="contenido" rows="4" required class="mt-1 p-2 w-full border border-gray-300 rounded-md"></textarea>
                     </div>
         
                     <!-- Fecha de cierre -->
                     <div class="mb-4">
-                        <label for="fecha_cierre" class="block text-sm font-medium text-gray-700">Fecha de Cierre</label>
+                        <label for="fecha_cierre" class="block text-sm font-medium text-white">Fecha de Cierre</label>
                         <input type="date" id="fecha_cierre" name="fecha_cierre" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
                     </div>
         
                     <!-- Nombre del administrador -->
                     <div class="mb-4">
-                        <label for="nombre_administrador" class="block text-sm font-medium text-gray-700">Nombre del Administrador</label>
+                        <label for="nombre_administrador" class="block text-sm font-medium text-white">Nombre del Administrador</label>
                         <input type="text" id="nombre_administrador" name="nombre_administrador" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
                     </div>
         
                     <!-- Botón de publicar -->
-                    <div class="mb-4 text-center"> <!-- Añadido text-center para centrar el botón -->
-                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Publicar Anuncio</button>
+                    <div class="flex items-center justify-center">
+                        <input type="submit" class="bg-white text-black font-bold px-4 py-2 md:px-6 md:py-3 rounded-lg hover:bg-gray-600 focus:outline-none" value="Publicar">
                     </div>
                 </form>
             </div>
         </main>
-        
     
     <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>

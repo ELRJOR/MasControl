@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const db_1 = require("./db");
-const tutorController_1 = require("./controllers/tutorController"); // Asegúrate de que la ruta sea correcta
+const tutorController_1 = require("./controllers/tutorController");
+const loginController_1 = require("./controllers/loginController");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 // Middleware para parsear el body de las solicitudes JSON
@@ -16,6 +17,8 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.static(path_1.default.join(__dirname, '../output')));
 // Ruta para agregar un tutor
 app.post('/alta-tutor', tutorController_1.agregarTutorController);
+// Ruta para hacer login
+app.post('/login-global', loginController_1.login);
 // Middleware para manejar errores
 app.use((err, req, res, next) => {
     console.error(err.stack);

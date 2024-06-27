@@ -54,18 +54,9 @@
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-        
+                
                 const data = await response.json();
                 console.log(data); // Puedes manejar la respuesta del servidor aquí
-        
-                // Redireccionar según el rol
-                if (data.role === 'Administrador') {
-                    window.location.href = '/administrador.html'; // Ajusta la ruta según tu estructura de archivos
-                } else if (data.role === 'Tutor') {
-                    window.location.href = '/tutor.html'; // Ajusta la ruta según tu estructura de archivos
-                } else {
-                    alert('Usuario no encontrado');
-                }
         
             } catch (error) {
                 console.error('Error:', error);

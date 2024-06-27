@@ -34,6 +34,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.conectarBD = conectarBD;
 exports.agregarTutor = agregarTutor;
+exports.verificarUsuario = verificarUsuario;
 const mssql = __importStar(require("mssql"));
 // Configuración para la conexión a la base de datos
 const dbConfig = {
@@ -104,6 +105,34 @@ function agregarTutor(tutor) {
             if (pool) {
                 yield pool.close();
                 console.log('Conexión cerrada correctamente');
+            }
+        }
+    });
+}
+//Verificacion de usuario para LOGIN
+function verificarUsuario(email, password) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        try {
+            pool = yield conectarBD();
+            const result = yield pool.request()
+                .input('email', mssql.NVarChar, email)
+                .input('password', mssql.NVarChar, password)
+                .query('SELECT id_Usuario, email, role FROM Usuarios WHERE email = @email AND password = @password');
+            if (result.recordset.length > 0) {
+                return result.recordset[0];
+            }
+            else {
+                return null;
+            }
+        }
+        catch (error) {
+            console.error('Error al verificar el usuario:', error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
             }
         }
     });

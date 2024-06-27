@@ -98,3 +98,87 @@ export async function verificarUsuario(email: string, password: string): Promise
         }
     }
 }
+
+
+// Función para registrar un nuevo usuario
+export async function registrarUsuario(username: string, email: string, password: string): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        // Verificar si el correo existe en Tutores o Administradores
+        const correoEnTutores = await correoExisteEnTutores(email);
+        const correoEnAdministradores = await correoExisteEnAdministradores(email);
+
+        if (correoEnTutores || correoEnAdministradores) {
+            throw new Error('El correo electrónico ya está registrado como Tutor o Administrador');
+        }
+
+        // Si no existe en ninguna tabla, proceder con el registro en la tabla Usuarios
+        pool = await conectarBD();
+        
+        // Ejemplo de inserción, ajusta según tu esquema
+        const query = `
+        INSERT INTO Usuarios (username, email, password)
+        VALUES (@username, @email, @password)
+        `;
+
+        await pool.request()
+        .input('username', mssql.NVarChar, username)
+        .input('email', mssql.NVarChar, email)
+        .input('password', mssql.NVarChar, password)
+        .query(query);
+        
+        console.log('Usuario registrado correctamente');
+    } catch (error) {
+        console.error('Error al registrar usuario:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+            console.log('Conexión cerrada correctamente');
+        }
+    }
+}
+
+// Función para verificar si el correo existe en la tabla Tutores
+async function correoExisteEnTutores(email: string): Promise<boolean> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        pool = await conectarBD();
+        const result = await pool.request()
+            .input('email', mssql.NVarChar, email)
+            .query('SELECT COUNT(*) AS count FROM Tutores WHERE email_Tutor = @email');
+
+        return result.recordset[0].count > 0;
+    } catch (error) {
+        console.error('Error al verificar existencia de Tutor:', error);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}
+
+
+// Función para verificar si el correo existe en la tabla Administradores
+async function correoExisteEnAdministradores(email: string): Promise<boolean> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        pool = await conectarBD();
+        const result = await pool.request()
+            .input('email', mssql.NVarChar, email)
+            .query('SELECT COUNT(*) AS count FROM Administradores WHERE email_Admin = @email');
+
+        return result.recordset[0].count > 0;
+    } catch (error) {
+        console.error('Error al verificar existencia de Administrador:', error);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}

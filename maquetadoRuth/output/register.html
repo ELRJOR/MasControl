@@ -15,37 +15,35 @@
         <div class="welcome-section">
             <h1 class="text-4xl font-bold">Regístrese con nosotros</h1>
             <p class="text-lg mt-4">
-                Cree una cuenta de forma gratuita para pode disfrutar de todos nuestros servicios e interactuar correctamente con su institución
+                Cree una cuenta de forma gratuita para poder disfrutar de todos nuestros servicios e interactuar correctamente con su institución
             </p>
         </div>
         <div class="login-section w-full mx-auto p-4 sm:p-8 ">
-            <form class="bg-white p-4 sm:p-4 rounded-lg shadow-lg w-full max-w-md mx-auto my-auto m-24">
-                <div class="mb-2">
-                    <label class="block mb-2 text-gray-700" for="username">Nombre de Usuario</label>
-                    <input class="border border-gray-300 p-2 w-full rounded" type="text" id="username" name="username">
-                </div>
+            <form action="/register-global" method="post" id="registerForm" class="bg-white p-4 sm:p-4 rounded-lg shadow-lg w-full max-w-md mx-auto my-auto m-24">
                 <div class="mb-2">
                     <label class="block mb-2 text-gray-700" for="email">Email</label>
-                    <input class="border border-gray-300 p-2 w-full rounded" type="email" id="email" name="email">
+                    <input class="border border-gray-300 p-2 w-full rounded" type="email" id="email" name="email" required>
                 </div>
                 <div class="mb-2">
                     <label class="block mb-2 text-gray-700" for="password">Contraseña</label>
-                    <input class="border border-gray-300 p-2 w-full rounded" type="password" id="password" name="password">
+                    <input class="border border-gray-300 p-2 w-full rounded" type="password" id="password" name="password" required>
                 </div>
                 <div class="mb-2">
                     <label class="block mb-2 text-gray-700" for="confirm-password">Confirmar contraseña</label>
-                    <input class="border border-gray-300 p-2 w-full rounded" type="password" id="confirm-password" name="confirm-password">
+                    <input class="border border-gray-300 p-2 w-full rounded" type="password" id="confirm-password" name="confirm-password" required>
                 </div>
 
                 <div class="flex items-center justify-between mb-4">
-                    <h1>¿Ya tiene una cuenta?</h1><a href="login.html" class="flex items-center text-sm text-red-600 underline hover:text-black sm:-ml-40" class="md:hidden"><b>Ingrese aquí.</a>
+                    <h1>¿Ya tiene una cuenta?</h1><a href="login.html" class="flex items-center text-sm text-red-600 underline hover:text-black sm:-ml-40"><b>Ingrese aquí.</b></a>
                 </div>
-                <button class="bg-gradient-to-r from-stone-600 to-stone-800 text-white font-semibold py-2 w-full rounded"><a href="login.html">Registrar</a></button>
+                <button class="bg-gradient-to-r from-stone-600 to-stone-800 text-white font-semibold py-2 w-full rounded" type="submit">Registrar</button>
             </form>
         </div>
-        
     </div>
 </div>
+
+<script src="conexionBackend.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

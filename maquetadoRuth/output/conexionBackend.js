@@ -32,7 +32,7 @@
             }
         });
 
-    //parte del formulario de login
+    //parte del formulario de usuario
         //conexion de ingreso
         document.getElementById("loginForm").addEventListener("submit", async function(event) {
             event.preventDefault();
@@ -62,3 +62,77 @@
                 console.error('Error:', error);
             }
         });
+
+        // Registro de usuario
+        document.getElementById("registerForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const formData = {
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                confirmPassword: document.getElementById("confirm-password").value
+            };
+
+            try {
+                // Verificar si el usuario ya existe como Tutor
+                const responseTutor = await fetch('http://localhost:3000/verificar-tutor', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: formData.email })
+                });
+
+                if (responseTutor.ok) {
+                    // Si existe como Tutor, registrar como Usuario
+                    const response = await fetch('http://localhost:3000/registrar-usuario', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (response.ok) {
+                        alert('Usuario registrado correctamente');
+                        window.location.href = '/login.html'; // Redirigir al login después de registrar
+                    } else {
+                        throw new Error('Registro fallido');
+                    }
+                } else {
+                    // Verificar si el usuario existe como Administrador
+                    const responseAdmin = await fetch('http://localhost:3000/verificar-administrador', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email: formData.email })
+                    });
+
+                    if (responseAdmin.ok) {
+                        // Si existe como Administrador, registrar como Usuario
+                        const response = await fetch('http://localhost:3000/registrar-usuario', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                        });
+
+                        if (response.ok) {
+                            alert('Usuario registrado correctamente');
+                            window.location.href = '/login.html'; // Redirigir al login después de registrar
+                        } else {
+                            throw new Error('Registro fallido');
+                        }
+                    } else {
+                        alert('Usuario no encontrado como Tutor ni Administrador');
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+
+
+

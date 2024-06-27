@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const db_1 = require("./db");
 const tutorController_1 = require("./controllers/tutorController");
+const registerController_1 = require("./controllers/registerController");
 const loginController_1 = require("./controllers/loginController");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,8 @@ app.use(express_1.default.static(path_1.default.join(__dirname, '../output')));
 app.post('/alta-tutor', tutorController_1.agregarTutorController);
 // Ruta para hacer login
 app.post('/login-global', loginController_1.login);
+// Ruta para registrar un nuevo usuario
+app.post('/register-global', registerController_1.registrarUsuario);
 // Middleware para manejar errores
 app.use((err, req, res, next) => {
     console.error(err.stack);

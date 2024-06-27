@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { conectarBD } from './db';
 import { agregarTutorController } from './controllers/tutorController';
+import { registrarUsuario } from './controllers/registerController';
 import { login } from './controllers/loginController';
 
 const app = express();
@@ -18,6 +19,8 @@ app.use(express.static(path.join(__dirname, '../output')));
 app.post('/alta-tutor', agregarTutorController);
 // Ruta para hacer login
 app.post('/login-global', login);
+// Ruta para registrar un nuevo usuario
+app.post('/register-global', registrarUsuario);
 
 // Middleware para manejar errores
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

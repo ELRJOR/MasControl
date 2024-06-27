@@ -22,6 +22,8 @@ app.post('/alta-tutor', tutorController_1.agregarTutorController);
 app.post('/login-global', loginController_1.login);
 // Ruta para registrar un nuevo usuario
 app.post('/register-global', registerController_1.registrarUsuario);
+// // ruta para registrar un nuevo aviso
+// app.post('/alta-anuncio', agregarAviso);
 // Middleware para manejar errores
 app.use((err, req, res, next) => {
     console.error(err.stack);

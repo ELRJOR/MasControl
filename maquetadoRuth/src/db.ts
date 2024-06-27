@@ -32,7 +32,7 @@ export async function agregarTutor(tutor: Tutor): Promise<void> {
     let pool: mssql.ConnectionPool | null = null;
     let transaction: mssql.Transaction | null = null;
 
-    const { nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email_Tutor } = tutor;
+    const { nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email } = tutor;
 
     try {
         // Conectar a la base de datos
@@ -43,8 +43,8 @@ export async function agregarTutor(tutor: Tutor): Promise<void> {
         await transaction.begin();
         // Query para insertar el tutor
         const query = `
-            INSERT INTO Tutores (nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email_Tutor)
-            VALUES (@nombre_Tutor, @apellido_Tutor, @direccion_Tutor, @telefono_Tutor, @email_Tutor)
+            INSERT INTO Tutores (nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email)
+            VALUES (@nombre_Tutor, @apellido_Tutor, @direccion_Tutor, @telefono_Tutor, @email)
         `;
         // Ejecutar la consulta con parámetros
         await transaction.request()
@@ -52,7 +52,7 @@ export async function agregarTutor(tutor: Tutor): Promise<void> {
             .input('apellido_Tutor', mssql.NVarChar, apellido_Tutor)
             .input('direccion_Tutor', mssql.NVarChar, direccion_Tutor)
             .input('telefono_Tutor', mssql.NVarChar, telefono_Tutor)
-            .input('email_Tutor', mssql.NVarChar, email_Tutor)
+            .input('email', mssql.NVarChar, email)
             .query(query);
         // Commit de la transacción
         await transaction.commit();
@@ -101,7 +101,7 @@ export async function verificarUsuario(email: string, password: string): Promise
 
 
 // Función para registrar un nuevo usuario
-export async function registrarUsuario(username: string, email: string, password: string): Promise<void> {
+export async function registrarUsuario(email: string, password: string, confirmPassword: string): Promise<void> {
     let pool: mssql.ConnectionPool | null = null;
 
     try {
@@ -109,21 +109,22 @@ export async function registrarUsuario(username: string, email: string, password
         const correoEnTutores = await correoExisteEnTutores(email);
         const correoEnAdministradores = await correoExisteEnAdministradores(email);
 
-        if (correoEnTutores || correoEnAdministradores) {
-            throw new Error('El correo electrónico ya está registrado como Tutor o Administrador');
+        console.log('Contraseña:', password);
+        console.log('Confirmar Contraseña:', confirmPassword);
+        
+        if (!correoEnTutores || !correoEnAdministradores) {
+            throw new Error('El correo electrónico aún no está registrado como Tutor o Administrador, solicite a su institución su registro.');
         }
 
         // Si no existe en ninguna tabla, proceder con el registro en la tabla Usuarios
         pool = await conectarBD();
         
-        // Ejemplo de inserción, ajusta según tu esquema
         const query = `
-        INSERT INTO Usuarios (username, email, password)
-        VALUES (@username, @email, @password)
+        INSERT INTO Usuarios (email, password)
+        VALUES (@email, @password)
         `;
 
         await pool.request()
-        .input('username', mssql.NVarChar, username)
         .input('email', mssql.NVarChar, email)
         .input('password', mssql.NVarChar, password)
         .query(query);

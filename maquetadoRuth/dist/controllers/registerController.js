@@ -33,8 +33,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.registrarUsuario = registrarUsuario;
-const db_1 = require("../db");
 const mssql = __importStar(require("mssql"));
+const db_1 = require("../db");
 function registrarUsuario(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const { email, password, confirmPassword } = req.body;
@@ -72,7 +72,7 @@ function registrarUsuario(req, res) {
         }
         catch (error) {
             console.error('Error en registrarUsuario:', error);
-            res.status(500).json({ message: error.message }); // Enviar el mensaje de error al cliente
+            res.status(500).json({ message: error.message });
         }
     });
 }

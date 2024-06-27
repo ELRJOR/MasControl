@@ -21,7 +21,7 @@ function agregarTutorController(req, res) {
             apellido_Tutor: lastname,
             direccion_Tutor: address,
             telefono_Tutor: phone,
-            email_Tutor: email,
+            email: email,
         };
         try {
             // Llama a la función agregarTutor con el objeto tutor

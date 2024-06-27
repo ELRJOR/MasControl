@@ -4,6 +4,6 @@ export interface Administrador {
     nombre_Admin: string;
     apellido_Admin: string;
     telefono_Admin: string;
-    email_Admin: string;
+    email: string;
     id_Escuela: number;
 }

@@ -9,7 +9,18 @@ export async function login(req: Request, res: Response): Promise<void> {
         const usuario: Usuario | null = await verificarUsuario(email, password);
 
         if (usuario) {
-            res.status(200).json({ message: 'Login exitoso', usuario });
+            // Determinar la URL a la que se debe redirigir según el rol del usuario
+            let redirectUrl: string;
+            if (usuario.role === 'Administrador') {
+                redirectUrl = '/administrador.html';
+            } else if (usuario.role === 'Tutor') {
+                redirectUrl = '/tutor.html';
+            } else {
+                redirectUrl = '/'; // Manejar caso por defecto o error
+            }
+
+            // Redirigir al cliente al URL correspondiente
+            res.redirect(redirectUrl);
         } else {
             res.status(401).json({ message: 'Credenciales inválidas' });
         }

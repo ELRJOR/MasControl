@@ -1494,6 +1494,10 @@ video {
     margin-top: 3rem;
   }
 
+  .md\:ml-2 {
+    margin-left: 0.5rem;
+  }
+
   .md\:flex {
     display: flex;
   }

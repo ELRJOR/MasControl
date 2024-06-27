@@ -1478,8 +1478,8 @@ video {
     margin-bottom: 2rem;
   }
 
-  .md\:ml-24 {
-    margin-left: 6rem;
+  .md\:ml-2 {
+    margin-left: 0.5rem;
   }
 
   .md\:ml-44 {
@@ -1492,10 +1492,6 @@ video {
 
   .md\:mt-12 {
     margin-top: 3rem;
-  }
-
-  .md\:ml-2 {
-    margin-left: 0.5rem;
   }
 
   .md\:flex {

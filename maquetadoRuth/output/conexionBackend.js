@@ -63,44 +63,49 @@
             }
         });
 
-        // Registro de usuario
-        document.getElementById("registerForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
+    // Seccion de registro de usuario
+        // Registrar nuevo usuario
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("registerForm").addEventListener("submit", async function(event) {
+                event.preventDefault();
+        
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                const confirmPassword = document.getElementById("confirmPassword").value;
+                
+                // Verificar que todos los datos se están obteniendo correctamente
+                console.log("Email:", email);
+                console.log("Password:", password);
+                console.log("Confirm Password:", confirmPassword);
 
-            const formData = {
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value,
-                confirmPassword: document.getElementById("confirm-password").value
-            };
-
-            try {
-                if (formData.password === formData.confirmPassword) {
+                // Enviar datos al servidor para validar las contraseñas
+                try {
                     const response = await fetch('http://localhost:3000/register-global', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(formData)
+                        body: JSON.stringify({ email, password, confirmPassword })  // Enviar confirm-password al servidor
                     });
-    
+        
                     if (response.ok) {
-                        alert('Usuario registrado correctamente');
+                        const data = await response.json();
+                        alert(data.message);
                         window.location.href = '/login.html'; // Redirigir al login después de registrar
                     } else {
                         const data = await response.json();
                         alert(`Error en el registro: ${data.message}`);
                     }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Hubo un problema al registrar el usuario.');
                 }
-                else {
-                    res.status(400).json({ message: 'Las contraseñas no coinciden' });
-                    return;
-                }
-
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Hubo un problema al registrar el usuario.');
-            }
+            });
         });
+        
+
+        
+
 
 
     // //Funciones de ANUNCIOS

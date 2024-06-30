@@ -35,7 +35,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.conectarBD = conectarBD;
 exports.agregarTutor = agregarTutor;
 exports.verificarUsuario = verificarUsuario;
-exports.registrarUsuario = registrarUsuario;
+exports.verificarExistencia = verificarExistencia;
+exports.registrarUsuarioEnTablaUsuarios = registrarUsuarioEnTablaUsuarios;
 const mssql = __importStar(require("mssql"));
 // Configuración para la conexión a la base de datos
 const dbConfig = {
@@ -138,78 +139,42 @@ function verificarUsuario(email, password) {
         }
     });
 }
-// Función para registrar un nuevo usuario
-function registrarUsuario(email, password, confirmPassword) {
+// Funciones para registrar un nuevo usuario
+function verificarExistencia(table, email) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
         try {
-            // Verificar si el correo existe en Tutores o Administradores
-            const correoEnTutores = yield correoExisteEnTutores(email);
-            const correoEnAdministradores = yield correoExisteEnAdministradores(email);
-            console.log('Contraseña:', password);
-            console.log('Confirmar Contraseña:', confirmPassword);
-            if (!correoEnTutores || !correoEnAdministradores) {
-                throw new Error('El correo electrónico aún no está registrado como Tutor o Administrador, solicite a su institución su registro.');
-            }
-            // Si no existe en ninguna tabla, proceder con el registro en la tabla Usuarios
             pool = yield conectarBD();
-            const query = `
-        INSERT INTO Usuarios (email, password)
-        VALUES (@email, @password)
-        `;
-            yield pool.request()
+            const result = yield pool.request()
+                .input('email', mssql.NVarChar, email)
+                .query(`SELECT COUNT(*) AS count FROM ${table} WHERE email = @email`);
+            return result.recordset[0].count > 0;
+        }
+        catch (error) {
+            console.error(`Error al verificar existencia en ${table}:`, error);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+            }
+        }
+    });
+}
+function registrarUsuarioEnTablaUsuarios(email, password, role) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        try {
+            pool = yield conectarBD();
+            const result = yield pool.request()
                 .input('email', mssql.NVarChar, email)
                 .input('password', mssql.NVarChar, password)
-                .query(query);
-            console.log('Usuario registrado correctamente');
+                .input('role', mssql.NVarChar, role)
+                .query('INSERT INTO Usuarios (email, password, role) VALUES (@email, @password, @role)');
+            return result.rowsAffected.length > 0;
         }
         catch (error) {
-            console.error('Error al registrar usuario:', error.message);
-            throw error;
-        }
-        finally {
-            if (pool) {
-                yield pool.close();
-                console.log('Conexión cerrada correctamente');
-            }
-        }
-    });
-}
-// Función para verificar si el correo existe en la tabla Tutores
-function correoExisteEnTutores(email) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let pool = null;
-        try {
-            pool = yield conectarBD();
-            const result = yield pool.request()
-                .input('email', mssql.NVarChar, email)
-                .query('SELECT COUNT(*) AS count FROM Tutores WHERE email_Tutor = @email');
-            return result.recordset[0].count > 0;
-        }
-        catch (error) {
-            console.error('Error al verificar existencia de Tutor:', error);
-            throw error;
-        }
-        finally {
-            if (pool) {
-                yield pool.close();
-            }
-        }
-    });
-}
-// Función para verificar si el correo existe en la tabla Administradores
-function correoExisteEnAdministradores(email) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let pool = null;
-        try {
-            pool = yield conectarBD();
-            const result = yield pool.request()
-                .input('email', mssql.NVarChar, email)
-                .query('SELECT COUNT(*) AS count FROM Administradores WHERE email_Admin = @email');
-            return result.recordset[0].count > 0;
-        }
-        catch (error) {
-            console.error('Error al verificar existencia de Administrador:', error);
+            console.error('Error al registrar usuario en tabla Usuarios:', error);
             throw error;
         }
         finally {

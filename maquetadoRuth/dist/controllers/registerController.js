@@ -37,12 +37,7 @@ const mssql = __importStar(require("mssql"));
 const db_1 = require("../db");
 function registrarUsuario(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { email, password, confirmPassword } = req.body;
-        // Verificar que las contraseñas coincidan
-        if (password !== confirmPassword) {
-            res.status(400).json({ message: 'Las contraseñas no coinciden' });
-            return;
-        }
+        const { email, password } = req.body;
         try {
             let role = '';
             // Verificar si el usuario existe como Tutor

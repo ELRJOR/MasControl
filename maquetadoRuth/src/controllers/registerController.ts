@@ -3,14 +3,7 @@ import * as mssql from 'mssql';
 import { conectarBD } from '../db';
 
 export async function registrarUsuario(req: Request, res: Response): Promise<void> {
-    const { email, password, confirmPassword } = req.body;
-
-    // Verificar que las contraseñas coincidan
-    if (password !== confirmPassword) {
-        res.status(400).json({ message: 'Las contraseñas no coinciden' });
-        return;
-    }
-
+    const { email, password } = req.body;
     try {
         let role = '';
 

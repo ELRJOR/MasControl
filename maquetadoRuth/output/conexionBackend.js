@@ -74,21 +74,28 @@
             };
 
             try {
-                const response = await fetch('http://localhost:3000/register-global', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    alert('Usuario registrado correctamente');
-                    window.location.href = '/login.html'; // Redirigir al login después de registrar
-                } else {
-                    const data = await response.json();
-                    alert(`Error en el registro: ${data.message}`);
+                if (formData.password === formData.confirmPassword) {
+                    const response = await fetch('http://localhost:3000/register-global', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+    
+                    if (response.ok) {
+                        alert('Usuario registrado correctamente');
+                        window.location.href = '/login.html'; // Redirigir al login después de registrar
+                    } else {
+                        const data = await response.json();
+                        alert(`Error en el registro: ${data.message}`);
+                    }
                 }
+                else {
+                    res.status(400).json({ message: 'Las contraseñas no coinciden' });
+                    return;
+                }
+
             } catch (error) {
                 console.error('Error:', error);
                 alert('Hubo un problema al registrar el usuario.');

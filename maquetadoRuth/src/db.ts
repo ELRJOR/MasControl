@@ -27,7 +27,7 @@ export async function conectarBD(): Promise<mssql.ConnectionPool> {
     }
 }
 
-// Función para agregar un tutor utilizando la interfaz Tutor
+// Función para agregar un tutor
 export async function agregarTutor(tutor: Tutor): Promise<void> {
     let pool: mssql.ConnectionPool | null = null;
     let transaction: mssql.Transaction | null = null;
@@ -63,6 +63,144 @@ export async function agregarTutor(tutor: Tutor): Promise<void> {
             await transaction.rollback();
         }
         console.error('Error al agregar el tutor:', (error as Error).message);
+        throw error;
+    } finally {
+        // Cerrar la conexión
+        if (pool) {
+            await pool.close();
+            console.log('Conexión cerrada correctamente');
+        }
+    }
+}
+// Función para obtener todos los tutores
+export async function obtenerTodosLosTutores(): Promise<Tutor[]> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        pool = await conectarBD();
+        const result = await pool.request().query('SELECT * FROM Tutores');
+
+        return result.recordset as Tutor[];
+    } catch (error) {
+        console.error('Error al obtener todos los tutores:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}
+
+// Función para buscar un tutor por su ID o nombre
+export async function buscarTutorPorIdONombre(idOrNombre: string): Promise<Tutor | null> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        pool = await conectarBD();
+        const result = await pool.request()
+            .input('idOrNombre', mssql.NVarChar, idOrNombre)
+            .query(`
+                SELECT * FROM Tutores
+                WHERE id_Tutor = @idOrNombre OR nombre_Tutor LIKE @idOrNombre
+            `);
+
+        if (result.recordset.length > 0) {
+            return result.recordset[0] as Tutor;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error('Error al buscar el tutor por ID o nombre:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}
+
+// Función para actualizar un tutor por su ID
+export async function actualizarTutor(id: number, tutor: Tutor): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
+
+    const { nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email } = tutor;
+
+    try {
+        // Conectar a la base de datos
+        pool = await conectarBD();
+        // Iniciar una nueva transacción
+        transaction = new mssql.Transaction(pool);
+        // Iniciar la transacción
+        await transaction.begin();
+        // Query para actualizar el tutor
+        const query = `
+            UPDATE Tutores
+            SET nombre_Tutor = @nombre_Tutor,
+                apellido_Tutor = @apellido_Tutor,
+                direccion_Tutor = @direccion_Tutor,
+                telefono_Tutor = @telefono_Tutor,
+                email = @email
+            WHERE id_Tutor = @id
+        `;
+        // Ejecutar la consulta con parámetros
+        await transaction.request()
+            .input('nombre_Tutor', mssql.NVarChar, nombre_Tutor)
+            .input('apellido_Tutor', mssql.NVarChar, apellido_Tutor)
+            .input('direccion_Tutor', mssql.NVarChar, direccion_Tutor)
+            .input('telefono_Tutor', mssql.NVarChar, telefono_Tutor)
+            .input('email', mssql.NVarChar, email)
+            .input('id', mssql.Int, id)
+            .query(query);
+        // Commit de la transacción
+        await transaction.commit();
+        console.log(`Tutor con ID ${id} actualizado correctamente`);
+    } catch (error) {
+        // Si hay algún error, hacer rollback de la transacción
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.error(`Error al actualizar el tutor con ID ${id}:`, (error as Error).message);
+        throw error;
+    } finally {
+        // Cerrar la conexión
+        if (pool) {
+            await pool.close();
+            console.log('Conexión cerrada correctamente');
+        }
+    }
+}
+
+// Función para eliminar un tutor por su ID
+export async function eliminarTutor(id: number): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
+
+    try {
+        // Conectar a la base de datos
+        pool = await conectarBD();
+        // Iniciar una nueva transacción
+        transaction = new mssql.Transaction(pool);
+        // Iniciar la transacción
+        await transaction.begin();
+        // Query para eliminar el tutor
+        const query = `
+            DELETE FROM Tutores
+            WHERE id_Tutor = @id
+        `;
+        // Ejecutar la consulta con parámetros
+        await transaction.request()
+            .input('id', mssql.Int, id)
+            .query(query);
+        // Commit de la transacción
+        await transaction.commit();
+        console.log(`Tutor con ID ${id} eliminado correctamente`);
+    } catch (error) {
+        // Si hay algún error, hacer rollback de la transacción
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.error(`Error al eliminar el tutor con ID ${id}:`, (error as Error).message);
         throw error;
     } finally {
         // Cerrar la conexión

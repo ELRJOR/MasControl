@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { conectarBD } from './db';
-import { agregarTutorController } from './controllers/tutorController';
+import { agregarTutorController, obtenerTutoresController, buscarTutorController, actualizarTutorController, eliminarTutorController } from './controllers/tutorController';
 import { registrarUsuario } from './controllers/registerController';
 import { login } from './controllers/loginController';
 
@@ -15,8 +15,19 @@ app.use(express.urlencoded({ extended: true }));
 // Servir archivos estáticos desde el directorio "output"
 app.use(express.static(path.join(__dirname, '../output')));
 
-// Ruta para agregar un tutor
-app.post('/alta-tutor', agregarTutorController);
+//Middlend para la seccion de tutores
+    // Ruta para agregar un tutor
+    app.post('/alta-tutor', agregarTutorController);
+    // Ruta para obtener todos los tutores
+    app.get('/tutores', obtenerTutoresController);
+    // Ruta para buscar un tutor por su ID o nombre
+    app.get('/tutor/:idOrNombre', buscarTutorController);
+    // Ruta para actualizar la información de un tutor por su ID
+    app.put('/tutor/:id', actualizarTutorController);
+    // Ruta para eliminar un tutor por su ID
+    app.delete('/tutor/:id', eliminarTutorController);
+
+
 // Ruta para hacer login
 app.post('/login-global', login);
 // Ruta para registrar un nuevo usuario

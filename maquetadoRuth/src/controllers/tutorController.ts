@@ -12,7 +12,7 @@ export async function agregarTutorController(req: Request, res: Response): Promi
         apellido_Tutor: lastname,
         direccion_Tutor: address,
         telefono_Tutor: phone,
-        email_Tutor: email,
+        email: email,
     };
 
     try {

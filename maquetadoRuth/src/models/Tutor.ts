@@ -4,5 +4,5 @@ export interface Tutor {
     apellido_Tutor: string;
     direccion_Tutor: string;
     telefono_Tutor: string;
-    email_Tutor: string;
+    email: string;
 }

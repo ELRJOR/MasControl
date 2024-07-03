@@ -80,37 +80,64 @@
         </nav>
 
     <!-- Contenedor principal -->
-    <div id="mainContent" class="flex-1 pt-0 transition-all duration-300 flex flex-col items-center justify-center h-screen overflow-auto px-4 sm:mt-6 sm:ml-44">
-        <h1 class="text-center text-3xl md:text-5xl mb-4 md:mb-8 font-serif text-gray-900 md:-ml-24">BIENVENIDO AL GESTOR DE TUTORES</h1>
-        <p class="text-center text-xl md:text-2xl mb-4 md:mb-8 font-serif text-gray-800 md:-ml-24">Ingrese los siguientes datos para dar de alta al tutor</p>
-        <div class="p-4 md:p-8 rounded-lg shadow-lg max-w-md md:max-w-2xl w-full bg-black mb-6 md:-ml-24">
-            <form action="/alta-tutor" id="tutorForm" method="post" class="w-full">
-                <div class="mb-4 md:mb-6">
-                    <label for="name" class="block text-white font-bold mb-2">Nombre</label>
-                    <input type="text" id="name" name="name" class="mt-1 p-2 md:p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500" placeholder="Tu nombre" required>
+    <div class="flex-1 pt-0 transition-all duration-300 flex flex-col items-center justify-center h-screen overflow-auto px-4 md:-mt-28 sm:ml-24">
+        <h1 class="text-2xl font-semibold leading-4 text-black">Ingrese los siguientes datos para dar de alta al tutor</h1>
+        <form action="/alta-tutor" id="tutorForm" method="POST" enctype="multipart/form-data">
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-12">
+                <div class="col-span-4 sm:col-span-3">
+                    <label for="name" class="block text-sm font-medium leading-2 text-black">Nombre del tutor</label>
+                    <div class="mt-2">
+                        <input type="text" name="nombre" id="nombre" required
+                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
                 </div>
-                <div class="mb-4 md:mb-6">
-                    <label for="lastname" class="block text-white font-bold mb-2">Apellido</label>
-                    <input type="text" id="lastname" name="lastname" class="mt-1 p-2 md:p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500" placeholder="Tu apellido" required>
+                <div class="col-span-4 sm:col-span-3">
+                    <label for="lastname" class="block text-sm font-medium leading-2 text-black">Apellido del tutor</label>
+                    <div class="mt-2">
+                        <input type="text" name="lastname" id="lastname" required
+                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
                 </div>
-                <div class="mb-4 md:mb-6">
-                    <label for="address" class="block text-white font-bold mb-2">Dirección</label>
-                    <input type="text" id="address" name="address" class="mt-1 p-2 md:p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500" placeholder="Tu dirección" required>
+                <div class="col-span-4 sm:col-span-3">
+                    <label for="address" class="block text-sm font-medium leading-2 text-black">Dirección</label>
+                    <div class="mt-2">
+                        <input type="text" name="address" id="address" required
+                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
                 </div>
-                <div class="mb-4 md:mb-6">
-                    <label for="phone" class="block text-white font-bold mb-2">Teléfono</label>
-                    <input type="text" id="phone" name="phone" class="mt-1 p-2 md:p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500" placeholder="Tu número" required>
+                <div class="col-span-4 sm:col-span-3">
+                    <label for="phone" class="block text-sm font-medium leading-2 text-black">Teléfono:</label>
+                    <div class="mt-2">
+                        <input id="phone" name="phone" required 
+                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
                 </div>
-                <div class="mb-4 md:mb-6">
-                    <label for="email" class="block text-white font-bold mb-2">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" class="mt-1 p-2 md:p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500" placeholder="Tu correo electrónico" required>
+                <div class="col-span-4 sm:col-span-6">
+                    <label for="email" class="block text-sm font-medium leading-2 text-black">Correo Electrónico</label>
+                    <div class="mt-2">
+                        <input type="text" name="email" id="email" required
+                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
                 </div>
-                <div class="flex items-center justify-center">
-                    <input type="submit" class="bg-white text-black font-bold px-4 py-2 md:px-6 md:py-3 rounded-lg hover:bg-gray-600 focus:outline-none" value="Registrar">
+                <div class="col-span-4 sm:col-span-6">
+                    <label for="direccion" class="block text-sm font-medium leading-2 text-black">Dirección</label>
+                    <div class="mt-2">
+                        <input type="text" name="direccion" id="direccion" required
+                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
                 </div>
-            </form>
-        </div>
+
+                <div class="col-span-4 sm:col-span-3">
+                    <div class="mt-2">
+                    <button type="submit" class="text-black rounded-lg px-4 py-2 hover:bg-blue-800 hover:text-white bg-blue-600">
+                        Registrar Tutor
+                    </button>    
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
+
     <script src="conexionBackend.js"></script>
     <script src="script.js"></script>
 </body>

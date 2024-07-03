@@ -79,41 +79,45 @@
             </div>
         </nav>
 
-        <main class="container mx-auto mt-16 mb-28">
-            <div class="text-center mb-8 md:mb-12">
-                <h1 class="text-center text-3xl md:text-5xl mb-4 md:mb-8 font-serif text-gray-900 md:ml-2">PUBLICACIÓN DE AVISOS</h1>
-        <p class="text-center text-xl md:text-2xl mb-4 md:mb-8 font-serif text-gray-800 md:ml-2">Rellene el siguiente formulario para dar de alta el anuncio</p>
-            </div>
 
-            <div class="p-4 md:p-8 rounded-lg shadow-lg max-w-md md:max-w-2xl w-full bg-black mb-6 md:ml-80 md:mt-12">
-                <h2 class="text-5xl font-bold mb-4 text-center text-white">Alta de Nuevo Anuncio Escolar</h2>
-                <form action="/alta-anuncio" method="POST" id="anuncioForm">
-                    <!-- Título del anuncio -->
-                    <div class="mb-4">
-                        <label for="titulo" class="block text-sm font-medium text-white">Título del Anuncio</label>
-                        <input type="text" id="titulo" name="titulo" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+        <div class="flex-1 pt-0 transition-all duration-300 flex flex-col items-center justify-center h-screen overflow-auto px-4 md:-mt-28 sm:ml-24">
+            <h1 class="text-2xl font-semibold leading-4 text-black">Rellene los datos necesarios para públicar el anuncio</h1>
+            <form action="/alta-anuncio" id="anuncioForm" method="POST" enctype="multipart/form-data">
+                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-12">
+                    <div class="col-span-4 sm:col-span-3">
+                        <label for="titulo" class="block text-sm font-medium leading-2 text-black">Titulo del Anuncio</label>
+                        <div class="mt-2">
+                            <input type="text" name="titulo" id="titulo" required
+                            class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
                     </div>
-        
-                    <!-- Fecha de publicación -->
-                    <div class="mb-4">
-                        <label for="fecha_publicacion" class="block text-sm font-medium text-white">Fecha de Publicación</label>
-                        <input type="datetime-local" id="fecha_publicacion" name="fecha_publicacion" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+                    <div class="col-span-4 sm:col-span-3">
+                        <label for="fecha_publicacion" class="block text-sm font-medium leading-2 text-black">Fecha de Publicación</label>
+                        <div class="mt-2">
+                            <input type="datetime-local" name="fecha_publicacion" id="fecha_publicacion" required
+                            class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
                     </div>
-                
-        
-                    <!-- Contenido del anuncio -->
-                    <div class="mb-4">
-                        <label for="contenido" class="block text-sm font-medium text-white">Contenido del Anuncio</label>
-                        <textarea id="contenido" name="contenido" rows="4" required class="mt-1 p-2 w-full border border-gray-300 rounded-md"></textarea>
+                    <div class="col-span-4 sm:col-span-6"> <!-- Aumentamos el número de columnas para hacerlo más ancho en pantallas grandes -->
+                        <label for="contenido" class="block text-sm font-medium leading-2 text-black">Contenido del Anuncio</label>
+                        <div class="mt-2">
+                            <textarea name="contenido" id="contenido" rows="4" required
+                                class="w-full rounded-lg px-3 py-2 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="Escribe aquí el contenido del anuncio..."></textarea>
+                        </div>
                     </div>
-        
-                    <!-- Botón de publicar -->
-                    <div class="flex items-center justify-center">
-                        <input type="submit" class="bg-white text-black font-bold px-4 py-2 md:px-6 md:py-3 rounded-lg hover:bg-gray-600 focus:outline-none" value="Publicar">
+
+                    <div class="col-span-4 sm:col-span-3">
+                        <div class="-mt-20">
+                        <button type="submit" class="text-black rounded-lg px-4 py-2 hover:bg-blue-800 hover:text-white bg-blue-600">
+                            Públicar
+                        </button>    
+                        </div>
                     </div>
-                </form>
-            </div>
-        </main>
+                </div>
+            </form>
+        </div>
+
         <script src="conexionBackend.js"></script>
         <script src="script.js"></script>
 </body>

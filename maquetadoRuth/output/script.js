@@ -96,3 +96,4 @@ document.addEventListener('DOMContentLoaded', function() {
         // Establecer el atributo min en el campo de fecha y hora
         document.getElementById('fecha_publicacion').min = getCurrentDateTime();
 
+        

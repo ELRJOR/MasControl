@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dar de alta tutor</title>
+    <title>Anuncios</title>
     <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="images/casa.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -78,66 +78,59 @@
             </div>
         </nav>
 
-    <!-- Contenedor principal -->
-    <div class="flex-1 pt-0 transition-all duration-300 flex flex-col items-center justify-center h-screen overflow-auto px-4 md:-mt-28 sm:ml-24">
-        <h1 class="text-2xl font-semibold leading-4 text-black">Ingrese los siguientes datos para dar de alta al tutor</h1>
-        <form action="/alta-tutor" id="tutorForm" method="POST" enctype="multipart/form-data">
-            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-12">
-                <div class="col-span-4 sm:col-span-3">
-                    <label for="name" class="block text-sm font-medium leading-2 text-black">Nombre del tutor</label>
-                    <div class="mt-2">
-                        <input type="text" name="nombre" id="nombre" required
-                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-                <div class="col-span-4 sm:col-span-3">
-                    <label for="lastname" class="block text-sm font-medium leading-2 text-black">Apellido del tutor</label>
-                    <div class="mt-2">
-                        <input type="text" name="lastname" id="lastname" required
-                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-                <div class="col-span-4 sm:col-span-3">
-                    <label for="address" class="block text-sm font-medium leading-2 text-black">Dirección</label>
-                    <div class="mt-2">
-                        <input type="text" name="address" id="address" required
-                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-                <div class="col-span-4 sm:col-span-3">
-                    <label for="phone" class="block text-sm font-medium leading-2 text-black">Teléfono:</label>
-                    <div class="mt-2">
-                        <input id="phone" name="phone" required 
-                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-                <div class="col-span-4 sm:col-span-6">
-                    <label for="email" class="block text-sm font-medium leading-2 text-black">Correo Electrónico</label>
-                    <div class="mt-2">
-                        <input type="text" name="email" id="email" required
-                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-                <div class="col-span-4 sm:col-span-6">
-                    <label for="direccion" class="block text-sm font-medium leading-2 text-black">Dirección</label>
-                    <div class="mt-2">
-                        <input type="text" name="direccion" id="direccion" required
-                        class="w-full rounded-lg px-3 py-1.5 text-gray-900 ring-2 ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                </div>
-
-                <div class="col-span-4 sm:col-span-3">
-                    <div class="mt-2">
-                    <button type="submit" class="text-black rounded-lg px-4 py-2 hover:bg-blue-800 hover:text-white bg-blue-600">
-                        Registrar Tutor
-                    </button>    
-                    </div>
-                </div>
+    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-14 md:-mt-36 pt-0">
+        <div class="container mx-auto px-4 py-8">
+            <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Anuncios</h2>
+            <a href="crearanuncio.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-2">
+                    <path fill="currentColor" d="M288 112v96h96c16.9 0 24.5 20.5 12.9 32.5L245.7 403.6c-9.4 9.4-24.6 9.4-33.9 0L46.1 240.5C34.5 228.5 42.1 208 59 208h96V112c0-13.3 10.7-24 24-24h64c13.3 0 24 10.7 24 24z"/>
+                </svg>
+                Añadir Anuncio
+            </a>
+            <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md border-collapse rounded mb-4">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm font-light">
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-3 px-6 text-left whitespace-nowrap"></td>
+                            <td class="py-3 px-6 text-left"></td>
+                            <td class="py-3 px-6 text-left"></td>
+                            <td class="py-3 px-6 text-center"></td>
+                            <td class="py-3 px-6 text-center"></td>
+                            <td class="py-3 px-6 text-center">
+                                <a href="edit_tramite.html" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
+                                <a href="" class="text-red-600 hover:text-red-900 mx-2 delete-confirm">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </form>
-    </div>
+        </div>
+    </main>
 
-    <script src="conexionBackend.js"></script>
-    <script src="script.js"></script>
+
+    <script>
+    function confirmDelete(event) {
+        var confirmationMessage = 'Estás a punto de borrar un inmueble. ¿Deseas continuar?';
+        return confirm(confirmationMessage);
+    }
+
+    var deleteLinks = document.querySelectorAll('.delete-confirm');
+    deleteLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            if (!confirmDelete(event)) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+
+<script src="script.js"></script>
 </body>
 </html>
+
+

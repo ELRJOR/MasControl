@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración</title>
+    <title>Tutores</title>
     <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="images/casa.png">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 
 <body class="flex flex-col min-h-screen">
     <!-- Header -->
@@ -30,7 +30,7 @@
                 
                 <!-- Enlaces de navegación -->
                 <div class="flex flex-col space-y-6 py-11">
-                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="administrador.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg class="icon transition-all duration-300" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
                             <path d="M6 23h-3v-10l8.991-8.005 9.009 8.005v10h-3v-9h-12v9zm1-2h10v2h-10v-2zm0-3h10v2h-10v-2zm10-3v2h-10v-2h10zm-5-14.029l12 10.661-1.328 1.493-10.672-9.481-10.672 9.481-1.328-1.493 12-10.661z"/>
                         </svg>
@@ -44,7 +44,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M7 21h-4v-11h4v11zm7-11h-4v11h4v-11zm7 0h-4v11h4v-11zm2 12h-22v2h22v-2zm-23-13h24l-12-9-12 9z"/></svg>
                         <span class="ml-1">Trámites</span>
                     </a>
-                    <a href="admin_tutor.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                         </svg>
@@ -76,36 +76,59 @@
             </div>
         </nav>
 
-
-    <!-- Contenedor principal -->
-    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-12 md:-mt-44 pt-0">
-        <div class="flex flex-col justify-center items-center w-full p-4">
-            <div class="text-container mx-auto max-w-xl p-4 text-4xl text-center">BIENVENIDO, ADMINISTRADOR</div>
-            <div class="text-container mx-auto max-w-xl p-4 text-2xl text-center text-gray-500">
-                Desde aquí puede gestionar toda la información y los usuarios de la plataforma MasControl.
-            </div>
-        
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 w-full">
-                <a href="dashboard.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Dashboard</h3>
-                    <p class="text-gray-600">Resumen de la actividad y datos clave.</p>
-                </a>
-                <a href="gestion-usuarios.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Gestión de Usuarios</h3>
-                    <p class="text-gray-600">Administrar cuentas de usuarios y permisos.</p>
-                </a>
-                <a href="reportes.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Reportes</h3>
-                    <p class="text-gray-600">Generar y revisar reportes detallados.</p>
-                </a>
-                <a href="estadisticas.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Estadísticas</h3>
-                    <p class="text-gray-600">Ver estadísticas y tendencias.</p>
-                </a>
+    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-14 md:-mt-36 pt-0">
+        <div class="container mx-auto px-4 py-8">
+            <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Tutores</h2>
+            <a href="altatutor.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-2">
+                    <path fill="currentColor" d="M288 112v96h96c16.9 0 24.5 20.5 12.9 32.5L245.7 403.6c-9.4 9.4-24.6 9.4-33.9 0L46.1 240.5C34.5 228.5 42.1 208 59 208h96V112c0-13.3 10.7-24 24-24h64c13.3 0 24 10.7 24 24z"/>
+                </svg>
+                Añadir Tutor
+            </a>
+            <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md border-collapse rounded mb-4">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm font-light">
+                        <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td class="py-3 px-6 text-left whitespace-nowrap"></td>
+                            <td class="py-3 px-6 text-left"></td>
+                            <td class="py-3 px-6 text-left"></td>
+                            <td class="py-3 px-6 text-center"></td>
+                            <td class="py-3 px-6 text-center"></td>
+                            <td class="py-3 px-6 text-center">
+                                <a href="edit_tutor.html" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
+                                <a href="" class="text-red-600 hover:text-red-900 mx-2 delete-confirm">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
 
-    <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
+
+    <script>
+    function confirmDelete(event) {
+        var confirmationMessage = 'Estás a punto de borrar el tutor. ¿Deseas continuar?';
+        return confirm(confirmationMessage);
+    }
+
+    var deleteLinks = document.querySelectorAll('.delete-confirm');
+    deleteLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            if (!confirmDelete(event)) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+
+<script src="script.js"></script>
 </body>
 </html>
+
+

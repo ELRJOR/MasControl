@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Anuncio</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="shortcut icon" href="images/casa.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="w-full bg-gray-100">
+        <div class="container mx-auto flex justify-end items-center py-2">
+            <div class="flex items-center">
+                <img src="images/Icono.jpeg" alt="Company Logo" class="w-24 h-auto">
+                <h1 class="text-3xl eb-garamond-Garamond h-auto"><span class="text-blue-600">Mas</span>Control</h1>
+            </div>
+        </div>
+    </header>
+
+        <!-- Barra de navegación lateral -->
+        <nav id="sidebar" class="bg-gray-100 fixed h-full left-0 flex flex-col items-center justify-between py-8 px-4 text-black transition-all duration-300 nav-collapsed">
+            <div class="flex flex-col items-center space-y-8">
+                <!-- Perfil con foto -->
+                <button class="text-black hover:text-white rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <img class="profile-image h-12 w-12 transition-transform rounded-full duration-300 hover:scale-110" src="images/persona.jpg" alt="Foto de perfil">
+                </button>
+                
+                                <!-- Enlaces de navegación -->
+                                <div class="flex flex-col space-y-6 py-11">
+                                    <a href="administrador.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                                        <svg class="icon transition-all duration-300" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                                            <path d="M6 23h-3v-10l8.991-8.005 9.009 8.005v10h-3v-9h-12v9zm1-2h10v2h-10v-2zm0-3h10v2h-10v-2zm10-3v2h-10v-2h10zm-5-14.029l12 10.661-1.328 1.493-10.672-9.481-10.672 9.481-1.328-1.493 12-10.661z"/>
+                                        </svg>
+                                        <span class="ml-1">Home</span>
+                                    </a>
+                                    <a href="admin_avisos.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                                        <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M22 0h-20v24h14l6-6v-18zm-6 18h4.36l-4.36 4.385v-4.385zm-3 1h-8v1h8v-1zm0-3h-8v1h8v-1zm6-2v-1h-14v1h14zm-7.059-4.968c-1.147-.265-2.214-.497-1.697-1.473 1.573-2.97.417-4.559-1.244-4.559-1.694 0-2.821 1.65-1.244 4.559.532.982-.575 1.214-1.697 1.473-1.024.237-1.062.745-1.059 1.635l.001.333h7.997l.001-.323c.004-.896-.03-1.407-1.058-1.645zm7.059.968h-4v1h4v-1zm0-2v-1h-4v1h4zm0-4h-4v1h4v-1z"/></svg>
+                                        <span class="ml-1">Anuncio</span>
+                                    </a>
+                                    <a href="admin_trámites.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M7 21h-4v-11h4v11zm7-11h-4v11h4v-11zm7 0h-4v11h4v-11zm2 12h-22v2h22v-2zm-23-13h24l-12-9-12 9z"/></svg>
+                                        <span class="ml-1">Trámites</span>
+                                    </a>
+                                    <a href="altatutor.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                                        </svg>
+                                        <span class="ml-1 text-center">Tutor</span>
+                                    </a>
+                                    <a href="https://www.tidio.com/panel/getting-started" id="messagesLink" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" fill="currentColor" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                                        </svg>
+                                        <span class="ml-1">Mensajes</span>
+                                    </a>
+                                </div>
+                            </div>
+                        
+                        <!-- Botón de colapso -->
+                        <div class="flex flex-col items-center">
+                            <button id="toggleButton" class="text-black transition-transform duration-300 transform focus:outline-none">
+                                <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300 transform hover:scale-125" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
+                    
+                        
+                                <!-- Cerrar sesión -->
+                                <button id="logoutButton" class="nav-link group flex items-center text-black hover:bg-red-400 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300 mt-8">
+                                    <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M13 2v-2l10 3v18l-10 3v-2h-9v-7h1v6h8v-18h-8v7h-1v-8h9zm-2.947 10l-3.293-3.293.707-.707 4.5 4.5-4.5 4.5-.707-.707 3.293-3.293h-9.053v-1h9.053z"/></svg>
+                                    <span class="ml-1">Cerrar sesión</span>
+                                </button>
+                            </div>
+                        </nav>
+
+    <!-- Contenido Principal -->
+    <div class="bg-white flex-grow p-10 md:ml-14 mt-20 md:mt-0">
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-white shadow-lg border border-blue-800 rounded-lg p-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4 text-center">Editar Anuncio</h2>
+                <form id="crearAnuncioForm">
+                    <div class="mb-4">
+                        <label for="titulo" class="block text-gray-700 font-bold mb-2">Título:</label>
+                        <input type="text" id="titulo" name="titulo" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="fechaPublicacion" class="block text-gray-700 font-bold mb-2">Fecha de Publicación:</label>
+                        <input type="date" id="fechaPublicacion" name="fechaPublicacion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="contenido" class="block text-gray-700 font-bold mb-2">Contenido:</label>
+                        <textarea id="contenido" name="contenido" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="nombreCreador" class="block text-gray-700 font-bold mb-2">Nombre del Creador:</label>
+                        <input type="text" id="nombreCreador" name="nombreCreador" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+        <script src="conexionBackend.js"></script>
+        <script src="script.js"></script>
+</body>
+</html> 

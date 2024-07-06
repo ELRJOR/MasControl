@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración</title>
+    <title>Crear Trámite</title>
     <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="images/casa.png">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 
 <body class="flex flex-col min-h-screen">
     <!-- Header -->
@@ -30,7 +30,7 @@
                 
                 <!-- Enlaces de navegación -->
                 <div class="flex flex-col space-y-6 py-11">
-                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="administrador.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg class="icon transition-all duration-300" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
                             <path d="M6 23h-3v-10l8.991-8.005 9.009 8.005v10h-3v-9h-12v9zm1-2h10v2h-10v-2zm0-3h10v2h-10v-2zm10-3v2h-10v-2h10zm-5-14.029l12 10.661-1.328 1.493-10.672-9.481-10.672 9.481-1.328-1.493 12-10.661z"/>
                         </svg>
@@ -76,36 +76,39 @@
             </div>
         </nav>
 
-
-    <!-- Contenedor principal -->
-    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-12 md:-mt-44 pt-0">
-        <div class="flex flex-col justify-center items-center w-full p-4">
-            <div class="text-container mx-auto max-w-xl p-4 text-4xl text-center">BIENVENIDO, ADMINISTRADOR</div>
-            <div class="text-container mx-auto max-w-xl p-4 text-2xl text-center text-gray-500">
-                Desde aquí puede gestionar toda la información y los usuarios de la plataforma MasControl.
-            </div>
-        
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 w-full">
-                <a href="dashboard.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Dashboard</h3>
-                    <p class="text-gray-600">Resumen de la actividad y datos clave.</p>
-                </a>
-                <a href="gestion-usuarios.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Gestión de Usuarios</h3>
-                    <p class="text-gray-600">Administrar cuentas de usuarios y permisos.</p>
-                </a>
-                <a href="reportes.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Reportes</h3>
-                    <p class="text-gray-600">Generar y revisar reportes detallados.</p>
-                </a>
-                <a href="estadisticas.html" class="block p-6 bg-white rounded-lg shadow-lg text-center hover:bg-gray-100 border-solid border-1 border-gray-200">
-                    <h3 class="text-xl font-semibold mb-2">Estadísticas</h3>
-                    <p class="text-gray-600">Ver estadísticas y tendencias.</p>
-                </a>
+    <!-- Contenido Principal -->
+    <div class="bg-white flex-grow p-10 md:ml-14 mt-20 md:mt-0">
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-white shadow-lg border border-blue-800 rounded-lg p-6 mb-6">
+                <h2 class="text-2xl font-bold mb-4 text-center">Crear Trámite</h2>
+                <form form action="" id="anuncioForm" method="POST" enctype="multipart/form-data" id="crearAnuncioForm">
+                    <div class="mb-4">
+                        <label for="titulo" class="block text-gray-700 font-bold mb-2">Título:</label>
+                        <input type="text" id="titulo" name="titulo" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="fechaPublicacion" class="block text-gray-700 font-bold mb-2">Fecha de Publicación:</label>
+                        <input type="date" id="fechaPublicacion" name="fechaPublicacion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="contenido" class="block text-gray-700 font-bold mb-2">Contenido:</label>
+                        <textarea id="contenido" name="contenido" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="fechaPublicacion" class="block text-gray-700 font-bold mb-2">Fecha de Cierre:</label>
+                        <input type="date" id="fechaPublicacion" name="fechaPublicacion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="nombreCreador" class="block text-gray-700 font-bold mb-2">Nombre del Creador:</label>
+                        <input type="text" id="nombreCreador" name="nombreCreador" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Publicar</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </main>
-
+    </div>
     <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
 </html>

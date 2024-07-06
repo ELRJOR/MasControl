@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuncios</title>
+    <title>Tutores</title>
     <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="images/casa.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +36,7 @@
                         </svg>
                         <span class="ml-1">Home</span>
                     </a>
-                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="admin_avisos.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M22 0h-20v24h14l6-6v-18zm-6 18h4.36l-4.36 4.385v-4.385zm-3 1h-8v1h8v-1zm0-3h-8v1h8v-1zm6-2v-1h-14v1h14zm-7.059-4.968c-1.147-.265-2.214-.497-1.697-1.473 1.573-2.97.417-4.559-1.244-4.559-1.694 0-2.821 1.65-1.244 4.559.532.982-.575 1.214-1.697 1.473-1.024.237-1.062.745-1.059 1.635l.001.333h7.997l.001-.323c.004-.896-.03-1.407-1.058-1.645zm7.059.968h-4v1h4v-1zm0-2v-1h-4v1h4zm0-4h-4v1h4v-1z"/></svg>
                         <span class="ml-1">Anuncio</span>
                     </a>
@@ -44,7 +44,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24" viewBox="0 0 24 24"><path d="M7 21h-4v-11h4v11zm7-11h-4v11h4v-11zm7 0h-4v11h4v-11zm2 12h-22v2h22v-2zm-23-13h24l-12-9-12 9z"/></svg>
                         <span class="ml-1">Trámites</span>
                     </a>
-                    <a href="admin_tutor.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                         </svg>
@@ -78,12 +78,12 @@
 
     <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-14 md:-mt-36 pt-0">
         <div class="container mx-auto px-4 py-8">
-            <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Anuncios</h2>
-            <a href="crearanuncio.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
+            <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Tutores</h2>
+            <a href="altatutor.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-2">
                     <path fill="currentColor" d="M288 112v96h96c16.9 0 24.5 20.5 12.9 32.5L245.7 403.6c-9.4 9.4-24.6 9.4-33.9 0L46.1 240.5C34.5 228.5 42.1 208 59 208h96V112c0-13.3 10.7-24 24-24h64c13.3 0 24 10.7 24 24z"/>
                 </svg>
-                Añadir Anuncio
+                Añadir Tutor
             </a>
             <div class="overflow-x-auto">
             <table class="min-w-full bg-white shadow-md border-collapse rounded mb-4">
@@ -99,7 +99,7 @@
                             <td class="py-3 px-6 text-center"></td>
                             <td class="py-3 px-6 text-center"></td>
                             <td class="py-3 px-6 text-center">
-                                <a href="edit_anuncio.html" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
+                                <a href="edit_tutor.html" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
                                 <a href="" class="text-red-600 hover:text-red-900 mx-2 delete-confirm">Eliminar</a>
                             </td>
                         </tr>
@@ -112,7 +112,7 @@
 
     <script>
     function confirmDelete(event) {
-        var confirmationMessage = 'Estás a punto de borrar el anuncio. ¿Deseas continuar?';
+        var confirmationMessage = 'Estás a punto de borrar el tutor. ¿Deseas continuar?';
         return confirm(confirmationMessage);
     }
 

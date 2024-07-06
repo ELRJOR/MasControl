@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuncios</title>
+    <title>Dar de alta tutor</title>
     <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="images/casa.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +36,7 @@
                         </svg>
                         <span class="ml-1">Home</span>
                     </a>
-                    <a href="" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
+                    <a href="admin_avisos.html" class="nav-link group flex items-center text-black hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-m font-medium transition-all duration-300">
                         <svg width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M22 0h-20v24h14l6-6v-18zm-6 18h4.36l-4.36 4.385v-4.385zm-3 1h-8v1h8v-1zm0-3h-8v1h8v-1zm6-2v-1h-14v1h14zm-7.059-4.968c-1.147-.265-2.214-.497-1.697-1.473 1.573-2.97.417-4.559-1.244-4.559-1.694 0-2.821 1.65-1.244 4.559.532.982-.575 1.214-1.697 1.473-1.024.237-1.062.745-1.059 1.635l.001.333h7.997l.001-.323c.004-.896-.03-1.407-1.058-1.645zm7.059.968h-4v1h4v-1zm0-2v-1h-4v1h4zm0-4h-4v1h4v-1z"/></svg>
                         <span class="ml-1">Anuncio</span>
                     </a>
@@ -76,59 +76,39 @@
             </div>
         </nav>
 
-    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-14 md:-mt-36 pt-0">
-        <div class="container mx-auto px-4 py-8">
-            <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Anuncios</h2>
-            <a href="crearanuncio.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-2">
-                    <path fill="currentColor" d="M288 112v96h96c16.9 0 24.5 20.5 12.9 32.5L245.7 403.6c-9.4 9.4-24.6 9.4-33.9 0L46.1 240.5C34.5 228.5 42.1 208 59 208h96V112c0-13.3 10.7-24 24-24h64c13.3 0 24 10.7 24 24z"/>
-                </svg>
-                Añadir Anuncio
-            </a>
-            <div class="overflow-x-auto">
-            <table class="min-w-full bg-white shadow-md border-collapse rounded mb-4">
-                    <thead>
-                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                        </tr>
-                    </thead>
-                    <tbody class="text-gray-600 text-sm font-light">
-                        <tr class="border-b border-gray-200 hover:bg-gray-100">
-                            <td class="py-3 px-6 text-left whitespace-nowrap"></td>
-                            <td class="py-3 px-6 text-left"></td>
-                            <td class="py-3 px-6 text-left"></td>
-                            <td class="py-3 px-6 text-center"></td>
-                            <td class="py-3 px-6 text-center"></td>
-                            <td class="py-3 px-6 text-center">
-                                <a href="edit_anuncio.html" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
-                                <a href="" class="text-red-600 hover:text-red-900 mx-2 delete-confirm">Eliminar</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <!-- Contenido principal -->
+    <main class="container mx-auto flex-grow flex justify-center items-center">
+        <div class="bg-gray-100 shadow-md rounded-lg p-6 w-full max-w-lg border-2 border-blue-600 md:mt-9 mb-6">
+            <h1 class="text-center text-2xl font-bold text-black mb-4">Editar Tutor:</h1>
+            <form action="" id="tutorForm" method="POST" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="name" class="block text-black text-sm font-bold mb-2">Nombres del Tutor:</label>
+                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" placeholder="Nombres">
+                </div>
+                <div class="mb-4">
+                        <label for="lastname" class="block text-black text-sm font-bold mb-2">Apellidos del tutor:</label>
+                        <input type="text" id="lastname" name="lastname" class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" placeholder="Apellidos">
+                </div>
+                <div class="mb-4">
+                    <label for="address" class="block text-black text-sm font-bold mb-2">Dirección:</label>
+                    <input type="text" id="address" name="address" class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" placeholder="Dirección">
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-black text-sm font-bold mb-2">Teléfono:</label>
+                    <input type="text" id="phone" name="phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" placeholder="Teléfono">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-black text-sm font-bold mb-2">Correo Electrónico:</label>
+                    <input type="text" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" placeholder="Correo Electrónico">
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Editar</button>
+                </div>
+            </form>
         </div>
     </main>
 
-
-    <script>
-    function confirmDelete(event) {
-        var confirmationMessage = 'Estás a punto de borrar el anuncio. ¿Deseas continuar?';
-        return confirm(confirmationMessage);
-    }
-
-    var deleteLinks = document.querySelectorAll('.delete-confirm');
-    deleteLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            if (!confirmDelete(event)) {
-                event.preventDefault();
-            }
-        });
-    });
-</script>
-
-
-<script src="script.js"></script>
+    <script src="conexionBackend.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-

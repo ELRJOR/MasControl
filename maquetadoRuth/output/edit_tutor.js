@@ -56,7 +56,7 @@ async function updateTutorData(id_Tutor) {
         });
 
         if (response.ok) {
-            console.log('Tutor actualizado correctamente'); // Log para verificar la respuesta del servidor
+            console.log('Tutor actualizado correctamente');
             alert('Tutor actualizado correctamente');
             window.location.href = 'admin_tutor.html';
         } else {

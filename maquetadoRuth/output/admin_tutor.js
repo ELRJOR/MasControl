@@ -38,7 +38,7 @@ async function fetchTutores() {
                 <td class="py-3 px-6 text-left">${tutor.email}</td>
                 <td class="py-3 px-6 text-center">
                     <a href="edit_tutor.html?id_Tutor=${tutor.id_Tutor}" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
-                    <a href="admin_tutor.html?id_Tutor="${tutor.id_Tutor}" class="text-red-600 hover:text-red-900 mx-2 delete-confirm" ">Eliminar</a>
+                    <a href="#" data-id="${tutor.id_Tutor}" class="text-red-600 hover:text-red-900 mx-2 delete-confirm">Eliminar</a>
                 </td>
             `;
             console.log(tutor.id_Tutor);
@@ -65,10 +65,6 @@ async function fetchTutores() {
 
 // Función para eliminar un tutor por su ID
 async function deleteTutor(id_Tutor) {
-    document.addEventListener('DOMContentLoaded', async function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const id_Tutor = urlParams.get('id_Tutor');
-    });
     try {
         const response = await fetch(`http://localhost:3000/tutor/${id_Tutor}`, {
             method: 'DELETE'
@@ -76,7 +72,6 @@ async function deleteTutor(id_Tutor) {
 
         if (response.ok) {
             alert('Tutor eliminado correctamente');
-            // Opcional: Actualizar la lista de tutores después de eliminar uno
             fetchTutores(); // Llama a la función para volver a cargar la lista de tutores
         } else {
             alert('Error al eliminar el tutor');
@@ -84,7 +79,6 @@ async function deleteTutor(id_Tutor) {
     } catch (error) {
         console.error('Error al eliminar el tutor:', error);
     }
-    
 }
 
 // Llamar a fetchTutores al cargar el documento para mostrar la lista inicial de tutores

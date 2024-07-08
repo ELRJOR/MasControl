@@ -48,7 +48,6 @@ function obtenerTutoresController(req, res) {
             res.status(200).json(tutores);
         }
         catch (error) {
-            console.error('Error al obtener todos los tutores:', error.message);
             res.status(500).json({ error: 'Error al obtener todos los tutores' });
         }
     });
@@ -75,9 +74,8 @@ function buscarTutorController(req, res) {
 // Controlador para actualizar un tutor por su ID
 function actualizarTutorController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const id = parseInt(req.params.id);
+        const id = parseInt(req.params.id_Tutor);
         const { nombre_Tutor, apellido_Tutor, direccion_Tutor, telefono_Tutor, email } = req.body;
-        // Crea un objeto tutor usando la interfaz Tutor
         const tutor = {
             nombre_Tutor,
             apellido_Tutor,
@@ -85,14 +83,13 @@ function actualizarTutorController(req, res) {
             telefono_Tutor,
             email,
         };
+        console.log('Datos recibidos para actualización:', tutor); // Log para verificar los datos recibidos
         try {
-            // Llama a la función actualizarTutor con el ID y el objeto tutor
             yield (0, db_1.actualizarTutor)(id, tutor);
-            // Si la actualización fue exitosa, devuelve una respuesta exitosa
+            console.log(`Tutor con ID ${id} actualizado correctamente`); // Log para verificar la actualización
             res.status(200).json({ message: `Tutor con ID ${id} actualizado correctamente` });
         }
         catch (error) {
-            // Si hubo un error, devuelve un error 500 junto con el mensaje de error
             console.error(`Error al actualizar el tutor con ID ${id}:`, error.message);
             res.status(500).json({ error: `Error al actualizar el tutor con ID ${id}` });
         }
@@ -101,7 +98,7 @@ function actualizarTutorController(req, res) {
 // Controlador para eliminar un tutor por su ID
 function eliminarTutorController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const id = parseInt(req.params.id);
+        const id = parseInt(req.params.id_Tutor); // Asegúrate de usar req.params.id_Tutor
         try {
             // Llama a la función eliminarTutor con el ID del tutor
             yield (0, db_1.eliminarTutor)(id);

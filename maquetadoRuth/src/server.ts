@@ -23,9 +23,9 @@ app.use(express.static(path.join(__dirname, '../output')));
     // Ruta para buscar un tutor por su ID o nombre
     app.get('/tutor/:idOrNombre', buscarTutorController);
     // Ruta para actualizar la información de un tutor por su ID
-    app.put('/tutor/:id', actualizarTutorController);
+    app.put('/tutor/:id_Tutor', actualizarTutorController);
     // Ruta para eliminar un tutor por su ID
-    app.delete('/tutor/:id', eliminarTutorController);
+    app.delete('/tutor/:id_Tutor', eliminarTutorController);
 
 
 // Ruta para hacer login

@@ -237,7 +237,6 @@ export async function verificarUsuario(email: string, password: string): Promise
     }
 }
 
-
 // Funciones para registrar un nuevo usuario
 export async function verificarExistencia(table: string, email: string): Promise<boolean> {
     let pool: mssql.ConnectionPool | null = null;

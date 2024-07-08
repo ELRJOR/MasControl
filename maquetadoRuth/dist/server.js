@@ -24,9 +24,9 @@ app.get('/tutores', tutorController_1.obtenerTutoresController);
 // Ruta para buscar un tutor por su ID o nombre
 app.get('/tutor/:idOrNombre', tutorController_1.buscarTutorController);
 // Ruta para actualizar la información de un tutor por su ID
-app.put('/tutor/:id', tutorController_1.actualizarTutorController);
+app.put('/tutor/:id_Tutor', tutorController_1.actualizarTutorController);
 // Ruta para eliminar un tutor por su ID
-app.delete('/tutor/:id', tutorController_1.eliminarTutorController);
+app.delete('/tutor/:id_Tutor', tutorController_1.eliminarTutorController);
 // Ruta para hacer login
 app.post('/login-global', loginController_1.login);
 // Ruta para registrar un nuevo usuario

@@ -2,6 +2,7 @@ import * as mssql from 'mssql';
 import { Tutor } from './models/Tutor';
 import { Usuario } from './models/Usuario';
 import { Aviso } from './models/Aviso';
+import { Tramite } from './models/Tramite';
 
 // Configuración para la conexión a la base de datos
 const dbConfig: mssql.config = {
@@ -427,6 +428,166 @@ export async function eliminarAviso(id: number): Promise<void> {
     } finally {
         if (pool) {
             await pool.close();
+        }
+    }
+}
+
+// db.ts
+
+// Función para agregar un trámite
+export async function agregarTramite(tramite: Tramite): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
+
+    const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago } = tramite;
+
+    try {
+        pool = await conectarBD();
+        transaction = new mssql.Transaction(pool);
+        await transaction.begin();
+        const query = `
+            INSERT INTO Tramites (titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago)
+            VALUES (@titulo_Tramite, @descripcion_Tramite, @fecha_Cierre, @nombre_Creador, @ficha_Pago)
+        `;
+        await transaction.request()
+            .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
+            .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
+            .input('fecha_Cierre', mssql.Date, fecha_Cierre)
+            .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
+            .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
+            .query(query);
+        await transaction.commit();
+        console.log('Trámite agregado correctamente');
+    } catch (error) {
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.error('Error al agregar el trámite:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+            console.log('Conexión cerrada correctamente');
+        }
+    }
+}
+
+// Función para obtener todos los trámites
+export async function obtenerTodosLosTramites(): Promise<Tramite[]> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        pool = await conectarBD();
+        const result = await pool.request().query('SELECT * FROM Tramites');
+
+        return result.recordset as Tramite[];
+    } catch (error) {
+        console.error('Error al obtener todos los trámites:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}
+
+// Función para buscar un trámite por su ID
+export async function buscarTramitePorId(id_Tramite: number): Promise<Tramite | null> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        pool = await conectarBD();
+        const result = await pool.request()
+            .input('id_Tramite', mssql.Int, id_Tramite)
+            .query('SELECT * FROM Tramites WHERE id_Tramite = @id_Tramite');
+
+        if (result.recordset.length > 0) {
+            return result.recordset[0] as Tramite;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error('Error al buscar el trámite por ID:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}
+
+// Función para actualizar un trámite por su ID
+export async function actualizarTramite(id: number, tramite: Tramite): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
+
+    const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago } = tramite;
+
+    try {
+        pool = await conectarBD();
+        transaction = new mssql.Transaction(pool);
+        await transaction.begin();
+        const query = `
+            UPDATE Tramites
+            SET titulo_Tramite = @titulo_Tramite,
+                descripcion_Tramite = @descripcion_Tramite,
+                fecha_Cierre = @fecha_Cierre,
+                nombre_Creador = @nombre_Creador,
+                ficha_Pago = @ficha_Pago
+            WHERE id_Tramite = @id
+        `;
+        await transaction.request()
+            .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
+            .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
+            .input('fecha_Cierre', mssql.Date, fecha_Cierre)
+            .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
+            .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
+            .input('id', mssql.Int, id)
+            .query(query);
+        await transaction.commit();
+        console.log(`Trámite con ID ${id} actualizado correctamente`);
+    } catch (error) {
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.error(`Error al actualizar el trámite con ID ${id}:`, (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+            console.log('Conexión cerrada correctamente');
+        }
+    }
+}
+
+// Función para eliminar un trámite por su ID
+export async function eliminarTramite(id: number): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
+
+    try {
+        pool = await conectarBD();
+        transaction = new mssql.Transaction(pool);
+        await transaction.begin();
+        const query = `
+            DELETE FROM Tramites
+            WHERE id_Tramite = @id
+        `;
+        await transaction.request()
+            .input('id', mssql.Int, id)
+            .query(query);
+        await transaction.commit();
+        console.log(`Trámite con ID ${id} eliminado correctamente`);
+    } catch (error) {
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.error(`Error al eliminar el trámite con ID ${id}:`, (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+            console.log('Conexión cerrada correctamente');
         }
     }
 }

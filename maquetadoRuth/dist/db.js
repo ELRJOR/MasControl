@@ -46,6 +46,11 @@ exports.obtenerTodosLosAvisos = obtenerTodosLosAvisos;
 exports.buscarAvisoPorId = buscarAvisoPorId;
 exports.actualizarAviso = actualizarAviso;
 exports.eliminarAviso = eliminarAviso;
+exports.agregarTramite = agregarTramite;
+exports.obtenerTodosLosTramites = obtenerTodosLosTramites;
+exports.buscarTramitePorId = buscarTramitePorId;
+exports.actualizarTramite = actualizarTramite;
+exports.eliminarTramite = eliminarTramite;
 const mssql = __importStar(require("mssql"));
 // Configuración para la conexión a la base de datos
 const dbConfig = {
@@ -491,6 +496,172 @@ function eliminarAviso(id) {
         finally {
             if (pool) {
                 yield pool.close();
+            }
+        }
+    });
+}
+// db.ts
+// Función para agregar un trámite
+function agregarTramite(tramite) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        let transaction = null;
+        const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago } = tramite;
+        try {
+            pool = yield conectarBD();
+            transaction = new mssql.Transaction(pool);
+            yield transaction.begin();
+            const query = `
+            INSERT INTO Tramites (titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago)
+            VALUES (@titulo_Tramite, @descripcion_Tramite, @fecha_Cierre, @nombre_Creador, @ficha_Pago)
+        `;
+            yield transaction.request()
+                .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
+                .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
+                .input('fecha_Cierre', mssql.Date, fecha_Cierre)
+                .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
+                .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
+                .query(query);
+            yield transaction.commit();
+            console.log('Trámite agregado correctamente');
+        }
+        catch (error) {
+            if (transaction) {
+                yield transaction.rollback();
+            }
+            console.error('Error al agregar el trámite:', error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+                console.log('Conexión cerrada correctamente');
+            }
+        }
+    });
+}
+// Función para obtener todos los trámites
+function obtenerTodosLosTramites() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        try {
+            pool = yield conectarBD();
+            const result = yield pool.request().query('SELECT * FROM Tramites');
+            return result.recordset;
+        }
+        catch (error) {
+            console.error('Error al obtener todos los trámites:', error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+            }
+        }
+    });
+}
+// Función para buscar un trámite por su ID
+function buscarTramitePorId(id_Tramite) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        try {
+            pool = yield conectarBD();
+            const result = yield pool.request()
+                .input('id_Tramite', mssql.Int, id_Tramite)
+                .query('SELECT * FROM Tramites WHERE id_Tramite = @id_Tramite');
+            if (result.recordset.length > 0) {
+                return result.recordset[0];
+            }
+            else {
+                return null;
+            }
+        }
+        catch (error) {
+            console.error('Error al buscar el trámite por ID:', error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+            }
+        }
+    });
+}
+// Función para actualizar un trámite por su ID
+function actualizarTramite(id, tramite) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        let transaction = null;
+        const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago } = tramite;
+        try {
+            pool = yield conectarBD();
+            transaction = new mssql.Transaction(pool);
+            yield transaction.begin();
+            const query = `
+            UPDATE Tramites
+            SET titulo_Tramite = @titulo_Tramite,
+                descripcion_Tramite = @descripcion_Tramite,
+                fecha_Cierre = @fecha_Cierre,
+                nombre_Creador = @nombre_Creador,
+                ficha_Pago = @ficha_Pago
+            WHERE id_Tramite = @id
+        `;
+            yield transaction.request()
+                .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
+                .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
+                .input('fecha_Cierre', mssql.Date, fecha_Cierre)
+                .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
+                .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
+                .input('id', mssql.Int, id)
+                .query(query);
+            yield transaction.commit();
+            console.log(`Trámite con ID ${id} actualizado correctamente`);
+        }
+        catch (error) {
+            if (transaction) {
+                yield transaction.rollback();
+            }
+            console.error(`Error al actualizar el trámite con ID ${id}:`, error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+                console.log('Conexión cerrada correctamente');
+            }
+        }
+    });
+}
+// Función para eliminar un trámite por su ID
+function eliminarTramite(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        let transaction = null;
+        try {
+            pool = yield conectarBD();
+            transaction = new mssql.Transaction(pool);
+            yield transaction.begin();
+            const query = `
+            DELETE FROM Tramites
+            WHERE id_Tramite = @id
+        `;
+            yield transaction.request()
+                .input('id', mssql.Int, id)
+                .query(query);
+            yield transaction.commit();
+            console.log(`Trámite con ID ${id} eliminado correctamente`);
+        }
+        catch (error) {
+            if (transaction) {
+                yield transaction.rollback();
+            }
+            console.error(`Error al eliminar el trámite con ID ${id}:`, error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+                console.log('Conexión cerrada correctamente');
             }
         }
     });

@@ -500,32 +500,37 @@ function eliminarAviso(id) {
         }
     });
 }
-// db.ts
-// Función para agregar un trámite
+// Función para agregar un trámite en la base de datos
 function agregarTramite(tramite) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
         let transaction = null;
-        const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago } = tramite;
+        const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, fecha_Publicacion } = tramite;
         try {
+            // Conectar a la base de datos
             pool = yield conectarBD();
             transaction = new mssql.Transaction(pool);
             yield transaction.begin();
+            // Query SQL para insertar el trámite
             const query = `
-            INSERT INTO Tramites (titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago)
-            VALUES (@titulo_Tramite, @descripcion_Tramite, @fecha_Cierre, @nombre_Creador, @ficha_Pago)
+            INSERT INTO Tramites (titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, fecha_Publicacion)
+            VALUES (@titulo_Tramite, @descripcion_Tramite, @fecha_Cierre, @nombre_Creador, @ficha_Pago, @fecha_Publicacion)
         `;
+            // Ejecutar la query con parámetros
             yield transaction.request()
                 .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
                 .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
                 .input('fecha_Cierre', mssql.Date, fecha_Cierre)
                 .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
-                .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
+                .input('ficha_Pago', mssql.VarBinary, ficha_Pago)
+                .input('fecha_Publicacion', mssql.Date, fecha_Publicacion)
                 .query(query);
+            // Confirmar transacción si todo va bien
             yield transaction.commit();
             console.log('Trámite agregado correctamente');
         }
         catch (error) {
+            // Deshacer transacción en caso de error
             if (transaction) {
                 yield transaction.rollback();
             }
@@ -533,6 +538,7 @@ function agregarTramite(tramite) {
             throw error;
         }
         finally {
+            // Cerrar conexión con la base de datos al finalizar
             if (pool) {
                 yield pool.close();
                 console.log('Conexión cerrada correctamente');

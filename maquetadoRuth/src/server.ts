@@ -5,7 +5,7 @@ import { agregarTutorController, obtenerTutoresController, buscarTutorController
 import { registrarUsuario } from './controllers/registerController';
 import { login } from './controllers/loginController';
 import { agregarAvisoController, obtenerAvisosController, buscarAvisoController, actualizarAvisoController, eliminarAvisoController } from './controllers/anuncioController';
-import { agregarTramiteController, obtenerTramitesController, buscarTramiteController, actualizarTramiteController, eliminarTramiteController } from './controllers/tramiteController';
+import { agregarTramiteController, obtenerTramitesController, buscarTramiteController, actualizarTramiteController, eliminarTramiteController } from "./controllers/tramiteController";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,19 +17,24 @@ app.use(express.urlencoded({ extended: true }));
 // Servir archivos estáticos desde el directorio "output"
 app.use(express.static(path.join(__dirname, '../output')));
 
-// Rutas para tutores
-app.post('/tutors', agregarTutorController);
-app.get('/tutors', obtenerTutoresController);
-app.get('/tutors/:id', buscarTutorController);
-app.put('/tutors/:id', actualizarTutorController);
-app.delete('/tutors/:id', eliminarTutorController);
+//Middlend para la seccion de tutores
+    // Ruta para agregar un tutor
+    app.post('/alta-tutor', agregarTutorController);
+    // Ruta para obtener todos los tutores
+    app.get('/tutores', obtenerTutoresController);
+    // Ruta para buscar un tutor por su ID o nombre
+    app.get('/tutor/:idOrNombre', buscarTutorController);
+    // Ruta para actualizar la información de un tutor por su ID
+    app.put('/tutor/:id_Tutor', actualizarTutorController);
+    // Ruta para eliminar un tutor por su ID
+    app.delete('/tutor/:id_Tutor', eliminarTutorController);
 
 // Rutas para anuncios
-app.post('/avisos', agregarAvisoController);
+app.post('/alta-aviso', agregarAvisoController);
 app.get('/avisos', obtenerAvisosController);
-app.get('/avisos/:id', buscarAvisoController);
-app.put('/avisos/:id', actualizarAvisoController);
-app.delete('/avisos/:id', eliminarAvisoController);
+app.get('/aviso/:id', buscarAvisoController);
+app.put('/aviso/:id', actualizarAvisoController);
+app.delete('/aviso/:id', eliminarAvisoController);
 
 // Rutas para trámites
 app.post('/tramites', agregarTramiteController);

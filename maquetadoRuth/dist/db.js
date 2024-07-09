@@ -500,7 +500,6 @@ function eliminarAviso(id) {
         }
     });
 }
-// db.ts
 // Función para agregar un trámite
 function agregarTramite(tramite) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -520,7 +519,7 @@ function agregarTramite(tramite) {
                 .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
                 .input('fecha_Cierre', mssql.Date, fecha_Cierre)
                 .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
-                .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
+                .input('ficha_Pago', mssql.VarBinary, ficha_Pago)
                 .query(query);
             yield transaction.commit();
             console.log('Trámite agregado correctamente');

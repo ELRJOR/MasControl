@@ -18,18 +18,23 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // Servir archivos estáticos desde el directorio "output"
 app.use(express_1.default.static(path_1.default.join(__dirname, '../output')));
-// Rutas para tutores
-app.post('/tutors', tutorController_1.agregarTutorController);
-app.get('/tutors', tutorController_1.obtenerTutoresController);
-app.get('/tutors/:id', tutorController_1.buscarTutorController);
-app.put('/tutors/:id', tutorController_1.actualizarTutorController);
-app.delete('/tutors/:id', tutorController_1.eliminarTutorController);
+//Middlend para la seccion de tutores
+// Ruta para agregar un tutor
+app.post('/alta-tutor', tutorController_1.agregarTutorController);
+// Ruta para obtener todos los tutores
+app.get('/tutores', tutorController_1.obtenerTutoresController);
+// Ruta para buscar un tutor por su ID o nombre
+app.get('/tutor/:idOrNombre', tutorController_1.buscarTutorController);
+// Ruta para actualizar la información de un tutor por su ID
+app.put('/tutor/:id_Tutor', tutorController_1.actualizarTutorController);
+// Ruta para eliminar un tutor por su ID
+app.delete('/tutor/:id_Tutor', tutorController_1.eliminarTutorController);
 // Rutas para anuncios
-app.post('/avisos', anuncioController_1.agregarAvisoController);
+app.post('/alta-aviso', anuncioController_1.agregarAvisoController);
 app.get('/avisos', anuncioController_1.obtenerAvisosController);
-app.get('/avisos/:id', anuncioController_1.buscarAvisoController);
-app.put('/avisos/:id', anuncioController_1.actualizarAvisoController);
-app.delete('/avisos/:id', anuncioController_1.eliminarAvisoController);
+app.get('/aviso/:id', anuncioController_1.buscarAvisoController);
+app.put('/aviso/:id', anuncioController_1.actualizarAvisoController);
+app.delete('/aviso/:id', anuncioController_1.eliminarAvisoController);
 // Rutas para trámites
 app.post('/tramites', tramiteController_1.agregarTramiteController);
 app.get('/tramites', tramiteController_1.obtenerTramitesController);

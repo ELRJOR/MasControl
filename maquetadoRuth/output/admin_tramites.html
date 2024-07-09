@@ -76,57 +76,37 @@
             </div>
         </nav>
 
-    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-14 md:-mt-36 pt-0">
-        <div class="container mx-auto px-4 py-8">
-            <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Tutores</h2>
-            <a href="alta_trámite.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-2">
-                    <path fill="currentColor" d="M288 112v96h96c16.9 0 24.5 20.5 12.9 32.5L245.7 403.6c-9.4 9.4-24.6 9.4-33.9 0L46.1 240.5C34.5 228.5 42.1 208 59 208h96V112c0-13.3 10.7-24 24-24h64c13.3 0 24 10.7 24 24z"/>
-                </svg>
-                Añadir Trámite
-            </a>
-            <div class="overflow-x-auto">
-            <table class="min-w-full bg-white shadow-md border-collapse rounded mb-4">
-                    <thead>
-                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                        </tr>
-                    </thead>
-                    <tbody class="text-gray-600 text-sm font-light">
-                        <tr class="border-b border-gray-200 hover:bg-gray-100">
-                            <td class="py-3 px-6 text-left whitespace-nowrap"></td>
-                            <td class="py-3 px-6 text-left"></td>
-                            <td class="py-3 px-6 text-left"></td>
-                            <td class="py-3 px-6 text-center"></td>
-                            <td class="py-3 px-6 text-center"></td>
-                            <td class="py-3 px-6 text-center">
-                                <a href="edit_trámite.html" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
-                                <a href="" class="text-red-600 hover:text-red-900 mx-2 delete-confirm">Eliminar</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-14 md:-mt-36 pt-0">
+            <div class="container mx-auto px-4 py-8">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Trámites</h2>
+                <a href="alta_trámite.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-2">
+                        <path fill="currentColor" d="M288 112v96h96c16.9 0 24.5 20.5 12.9 32.5L245.7 403.6c-9.4 9.4-24.6 9.4-33.9 0L46.1 240.5C34.5 228.5 42.1 208 59 208h96V112c0-13.3 10.7-24 24-24h64c13.3 0 24 10.7 24 24z"/>
+                    </svg>
+                    Añadir Trámite
+                </a>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white shadow-md border-collapse rounded mb-4">
+                        <thead>
+                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-left">Título</th>
+                                <th class="py-3 px-6 text-left">Descripción</th>
+                                <th class="py-3 px-6 text-center">Fecha de Cierre</th>
+                                <th class="py-3 px-6 text-center">Creador</th>
+                                <th class="py-3 px-6 text-center">Ficha de Pago</th>
+                                <th class="py-3 px-6 text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-600 text-sm font-light">
+                            <!-- Aquí se añadirán dinámicamente los datos de los trámites -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+        
 
-
-    <script>
-    function confirmDelete(event) {
-        var confirmationMessage = 'Estás a punto de borrar el trámite. ¿Deseas continuar?';
-        return confirm(confirmationMessage);
-    }
-
-    var deleteLinks = document.querySelectorAll('.delete-confirm');
-    deleteLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            if (!confirmDelete(event)) {
-                event.preventDefault();
-            }
-        });
-    });
-</script>
-
-
+<script src="admin_tramites.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

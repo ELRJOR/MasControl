@@ -77,11 +77,11 @@
         </nav>
 
     <!-- Contenido Principal -->
-    <div class="bg-white flex-grow p-10 md:ml-14 mt-20 md:mt-0">
+    <main class="bg-white flex-grow p-10 md:ml-14 mt-20 md:mt-0">
         <div class="max-w-2xl mx-auto">
             <div class="bg-white shadow-lg border border-blue-800 rounded-lg p-6 mb-6">
                 <h2 class="text-2xl font-bold mb-4 text-center">Crear Trámite</h2>
-                <form form action="" id="anuncioForm" method="POST" enctype="multipart/form-data" id="crearAnuncioForm">
+                <form action="" id="tramiteForm" method="POST" enctype="multipart/form-data">
                     <div class="mb-4">
                         <label for="titulo" class="block text-gray-700 font-bold mb-2">Título:</label>
                         <input type="text" id="titulo" name="titulo" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
@@ -95,20 +95,25 @@
                         <textarea id="contenido" name="contenido" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
                     </div>
                     <div class="mb-4">
-                        <label for="fechaPublicacion" class="block text-gray-700 font-bold mb-2">Fecha de Cierre:</label>
-                        <input type="date" id="fechaPublicacion" name="fechaPublicacion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <label for="fecha_Cierre" class="block text-gray-700 font-bold mb-2">Fecha de Cierre:</label>
+                        <input type="date" id="fecha_Cierre" name="fecha_Cierre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
                     </div>
                     <div class="mb-4">
                         <label for="nombreCreador" class="block text-gray-700 font-bold mb-2">Nombre del Creador:</label>
                         <input type="text" id="nombreCreador" name="nombreCreador" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
                     </div>
+                    <div class="mb-4">
+                        <label for="ficha_Pago" class="block text-gray-700 font-bold mb-2">Ficha de Pago:</label>
+                        <input type="file" id="ficha_Pago" name="ficha_Pago" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
                     <div class="flex items-center justify-between">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Publicar</button>
                     </div>
                 </form>
+                
             </div>
         </div>
-    </div>
+    </main>
     <script src="script.js"></script> <!-- Enlace al archivo JavaScript externo -->
 </body>
 </html>

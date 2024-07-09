@@ -12,11 +12,11 @@ export async function agregarTramiteController(req: Request, res: Response) {
         // Convertir fechas a objetos Date
         const tramite: Tramite = {
             titulo_Tramite: titulo,
+            fecha_Publicacion: fechaPublicacion, // Mantener como string
             descripcion_Tramite: contenido,
             fecha_Cierre: fecha_Cierre, // Mantener como string
             nombre_Creador: nombreCreador,
             ficha_Pago: ficha_Pago,
-            fecha_Publicacion: fechaPublicacion // Mantener como string
         };
 
         await agregarTramite(tramite);

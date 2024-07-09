@@ -1,6 +1,7 @@
 import * as mssql from 'mssql';
 import { Tutor } from './models/Tutor';
 import { Usuario } from './models/Usuario';
+import { Aviso } from './models/Aviso';
 
 // Configuración para la conexión a la base de datos
 const dbConfig: mssql.config = {
@@ -280,4 +281,152 @@ export async function registrarUsuarioEnTablaUsuarios(email: string, password: s
     }
 }
 
+// Función para agregar un aviso
+export async function agregarAviso(aviso: Aviso): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
 
+    const { titulo_Aviso, contenido_Aviso, fecha_Publicacion, nombre_Creador } = aviso; // Se ajusta para incluir nombre_Creador
+
+    try {
+        pool = await conectarBD();
+        transaction = new mssql.Transaction(pool);
+        await transaction.begin();
+        const query = `
+            INSERT INTO Avisos (titulo_Aviso, contenido_Aviso, fecha_Publicacion, nombre_Creador)
+            VALUES (@titulo_Aviso, @contenido_Aviso, @fecha_Publicacion, @nombre_Creador)
+        `;
+        await transaction.request()
+            .input('titulo_Aviso', mssql.NVarChar, titulo_Aviso)
+            .input('contenido_Aviso', mssql.NVarChar, contenido_Aviso)
+            .input('fecha_Publicacion', mssql.DateTime, fecha_Publicacion)
+            .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
+            .query(query);
+        await transaction.commit();
+        console.log('Aviso agregado correctamente');
+    } catch (error) {
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.error('Error al agregar el aviso:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+            console.log('Conexión cerrada correctamente');
+        }
+    }
+}
+
+// Función para obtener todos los avisos
+export async function obtenerTodosLosAvisos(): Promise<Aviso[]> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        pool = await conectarBD();
+        const result = await pool.request().query('SELECT * FROM Avisos');
+
+        return result.recordset as Aviso[];
+    } catch (error) {
+        console.error('Error al obtener todos los avisos:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}
+
+// Función para buscar un aviso por su ID
+export async function buscarAvisoPorId(id_Aviso: number): Promise<Aviso | null> {
+    let pool: mssql.ConnectionPool | null = null;
+
+    try {
+        pool = await conectarBD();
+        const result = await pool.request()
+            .input('id_Aviso', mssql.Int, id_Aviso)
+            .query('SELECT * FROM Avisos WHERE id_Aviso = @id_Aviso');
+
+        if (result.recordset.length > 0) {
+            return result.recordset[0] as Aviso;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error('Error al buscar el aviso por ID:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}
+
+// Función para actualizar un aviso por su ID
+export async function actualizarAviso(id: number, aviso: Aviso): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
+
+    const { titulo_Aviso, contenido_Aviso, fecha_Publicacion, nombre_Creador } = aviso; // Se ajusta para incluir nombre_Creador
+
+    try {
+        pool = await conectarBD();
+        transaction = new mssql.Transaction(pool);
+        await transaction.begin();
+        const query = `
+            UPDATE Avisos
+            SET titulo_Aviso = @titulo_Aviso,
+                contenido_Aviso = @contenido_Aviso,
+                fecha_Publicacion = @fecha_Publicacion,
+                nombre_Creador = @nombre_Creador  -- Se agrega nombre_Creador
+            WHERE id_Aviso = @id
+        `;
+        await transaction.request()
+            .input('titulo_Aviso', mssql.NVarChar, titulo_Aviso)
+            .input('contenido_Aviso', mssql.NVarChar, contenido_Aviso)
+            .input('fecha_Publicacion', mssql.DateTime, fecha_Publicacion)
+            .input('nombre_Creador', mssql.NVarChar, nombre_Creador) // Se añade nombre_Creador como input
+            .input('id', mssql.Int, id)
+            .query(query);
+        await transaction.commit();
+        console.log(`Aviso con ID ${id} actualizado correctamente`);
+    } catch (error) {
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.error('Error al actualizar el aviso:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}
+
+// Función para eliminar un aviso por su ID
+export async function eliminarAviso(id: number): Promise<void> {
+    let pool: mssql.ConnectionPool | null = null;
+    let transaction: mssql.Transaction | null = null;
+
+    try {
+        pool = await conectarBD();
+        transaction = new mssql.Transaction(pool);
+        await transaction.begin();
+        const query = 'DELETE FROM Avisos WHERE id_Aviso = @id';
+        await transaction.request()
+            .input('id', mssql.Int, id)
+            .query(query);
+        await transaction.commit();
+        console.log(`Aviso con ID ${id} eliminado correctamente`);
+    } catch (error) {
+        if (transaction) {
+            await transaction.rollback();
+        }
+        console.error('Error al eliminar el aviso:', (error as Error).message);
+        throw error;
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
+    }
+}

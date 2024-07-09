@@ -4,6 +4,7 @@ import { conectarBD } from './db';
 import { agregarTutorController, obtenerTutoresController, buscarTutorController, actualizarTutorController, eliminarTutorController } from './controllers/tutorController';
 import { registrarUsuario } from './controllers/registerController';
 import { login } from './controllers/loginController';
+import { agregarAvisoController, obtenerAvisosController, buscarAvisoController, actualizarAvisoController, eliminarAvisoController } from './controllers/anuncioController';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,13 +28,17 @@ app.use(express.static(path.join(__dirname, '../output')));
     // Ruta para eliminar un tutor por su ID
     app.delete('/tutor/:id_Tutor', eliminarTutorController);
 
+// Rutas para anuncios
+app.post('/alta-aviso', agregarAvisoController);
+app.get('/avisos', obtenerAvisosController);
+app.get('/aviso/:id', buscarAvisoController);
+app.put('/aviso/:id', actualizarAvisoController);
+app.delete('/aviso/:id', eliminarAvisoController);
 
 // Ruta para hacer login
 app.post('/login-global', login);
 // Ruta para registrar un nuevo usuario
 app.post('/register-global', registrarUsuario);
-// // ruta para registrar un nuevo aviso
-// app.post('/alta-anuncio', agregarAviso);
 
 // Middleware para manejar errores
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

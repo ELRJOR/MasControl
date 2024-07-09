@@ -9,6 +9,7 @@ const db_1 = require("./db");
 const tutorController_1 = require("./controllers/tutorController");
 const registerController_1 = require("./controllers/registerController");
 const loginController_1 = require("./controllers/loginController");
+const anuncioController_1 = require("./controllers/anuncioController");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 // Middleware para parsear el body de las solicitudes JSON
@@ -27,12 +28,16 @@ app.get('/tutor/:idOrNombre', tutorController_1.buscarTutorController);
 app.put('/tutor/:id_Tutor', tutorController_1.actualizarTutorController);
 // Ruta para eliminar un tutor por su ID
 app.delete('/tutor/:id_Tutor', tutorController_1.eliminarTutorController);
+// Rutas para anuncios
+app.post('/alta-aviso', anuncioController_1.agregarAvisoController);
+app.get('/avisos', anuncioController_1.obtenerAvisosController);
+app.get('/aviso/:id', anuncioController_1.buscarAvisoController);
+app.put('/aviso/:id', anuncioController_1.actualizarAvisoController);
+app.delete('/aviso/:id', anuncioController_1.eliminarAvisoController);
 // Ruta para hacer login
 app.post('/login-global', loginController_1.login);
 // Ruta para registrar un nuevo usuario
 app.post('/register-global', registerController_1.registrarUsuario);
-// // ruta para registrar un nuevo aviso
-// app.post('/alta-anuncio', agregarAviso);
 // Middleware para manejar errores
 app.use((err, req, res, next) => {
     console.error(err.stack);

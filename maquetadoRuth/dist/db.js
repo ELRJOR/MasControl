@@ -41,6 +41,11 @@ exports.eliminarTutor = eliminarTutor;
 exports.verificarUsuario = verificarUsuario;
 exports.verificarExistencia = verificarExistencia;
 exports.registrarUsuarioEnTablaUsuarios = registrarUsuarioEnTablaUsuarios;
+exports.agregarAviso = agregarAviso;
+exports.obtenerTodosLosAvisos = obtenerTodosLosAvisos;
+exports.buscarAvisoPorId = buscarAvisoPorId;
+exports.actualizarAviso = actualizarAviso;
+exports.eliminarAviso = eliminarAviso;
 const mssql = __importStar(require("mssql"));
 // Configuración para la conexión a la base de datos
 const dbConfig = {
@@ -324,6 +329,163 @@ function registrarUsuarioEnTablaUsuarios(email, password, role) {
         }
         catch (error) {
             console.error('Error al registrar usuario en tabla Usuarios:', error);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+            }
+        }
+    });
+}
+// Función para agregar un aviso
+function agregarAviso(aviso) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        let transaction = null;
+        const { titulo_Aviso, contenido_Aviso, fecha_Publicacion, nombre_Creador } = aviso; // Se ajusta para incluir nombre_Creador
+        try {
+            pool = yield conectarBD();
+            transaction = new mssql.Transaction(pool);
+            yield transaction.begin();
+            const query = `
+            INSERT INTO Avisos (titulo_Aviso, contenido_Aviso, fecha_Publicacion, nombre_Creador)
+            VALUES (@titulo_Aviso, @contenido_Aviso, @fecha_Publicacion, @nombre_Creador)
+        `;
+            yield transaction.request()
+                .input('titulo_Aviso', mssql.NVarChar, titulo_Aviso)
+                .input('contenido_Aviso', mssql.NVarChar, contenido_Aviso)
+                .input('fecha_Publicacion', mssql.DateTime, fecha_Publicacion)
+                .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
+                .query(query);
+            yield transaction.commit();
+            console.log('Aviso agregado correctamente');
+        }
+        catch (error) {
+            if (transaction) {
+                yield transaction.rollback();
+            }
+            console.error('Error al agregar el aviso:', error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+                console.log('Conexión cerrada correctamente');
+            }
+        }
+    });
+}
+// Función para obtener todos los avisos
+function obtenerTodosLosAvisos() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        try {
+            pool = yield conectarBD();
+            const result = yield pool.request().query('SELECT * FROM Avisos');
+            return result.recordset;
+        }
+        catch (error) {
+            console.error('Error al obtener todos los avisos:', error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+            }
+        }
+    });
+}
+// Función para buscar un aviso por su ID
+function buscarAvisoPorId(id_Aviso) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        try {
+            pool = yield conectarBD();
+            const result = yield pool.request()
+                .input('id_Aviso', mssql.Int, id_Aviso)
+                .query('SELECT * FROM Avisos WHERE id_Aviso = @id_Aviso');
+            if (result.recordset.length > 0) {
+                return result.recordset[0];
+            }
+            else {
+                return null;
+            }
+        }
+        catch (error) {
+            console.error('Error al buscar el aviso por ID:', error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+            }
+        }
+    });
+}
+// Función para actualizar un aviso por su ID
+function actualizarAviso(id, aviso) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        let transaction = null;
+        const { titulo_Aviso, contenido_Aviso, fecha_Publicacion, nombre_Creador } = aviso; // Se ajusta para incluir nombre_Creador
+        try {
+            pool = yield conectarBD();
+            transaction = new mssql.Transaction(pool);
+            yield transaction.begin();
+            const query = `
+            UPDATE Avisos
+            SET titulo_Aviso = @titulo_Aviso,
+                contenido_Aviso = @contenido_Aviso,
+                fecha_Publicacion = @fecha_Publicacion,
+                nombre_Creador = @nombre_Creador  -- Se agrega nombre_Creador
+            WHERE id_Aviso = @id
+        `;
+            yield transaction.request()
+                .input('titulo_Aviso', mssql.NVarChar, titulo_Aviso)
+                .input('contenido_Aviso', mssql.NVarChar, contenido_Aviso)
+                .input('fecha_Publicacion', mssql.DateTime, fecha_Publicacion)
+                .input('nombre_Creador', mssql.NVarChar, nombre_Creador) // Se añade nombre_Creador como input
+                .input('id', mssql.Int, id)
+                .query(query);
+            yield transaction.commit();
+            console.log(`Aviso con ID ${id} actualizado correctamente`);
+        }
+        catch (error) {
+            if (transaction) {
+                yield transaction.rollback();
+            }
+            console.error('Error al actualizar el aviso:', error.message);
+            throw error;
+        }
+        finally {
+            if (pool) {
+                yield pool.close();
+            }
+        }
+    });
+}
+// Función para eliminar un aviso por su ID
+function eliminarAviso(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let pool = null;
+        let transaction = null;
+        try {
+            pool = yield conectarBD();
+            transaction = new mssql.Transaction(pool);
+            yield transaction.begin();
+            const query = 'DELETE FROM Avisos WHERE id_Aviso = @id';
+            yield transaction.request()
+                .input('id', mssql.Int, id)
+                .query(query);
+            yield transaction.commit();
+            console.log(`Aviso con ID ${id} eliminado correctamente`);
+        }
+        catch (error) {
+            if (transaction) {
+                yield transaction.rollback();
+            }
+            console.error('Error al eliminar el aviso:', error.message);
             throw error;
         }
         finally {

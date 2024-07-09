@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (tutorId) {
         await fetchTutorData(tutorId);
     }
-    console.log(tutorId); // Añade esto para verificar el valor de id_Tutor
+    console.log(tutorId); 
     const form = document.getElementById('editTutorForm');
     form.addEventListener('submit', async function(event) {
         event.preventDefault();

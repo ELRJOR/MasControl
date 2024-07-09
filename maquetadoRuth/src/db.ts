@@ -474,9 +474,6 @@ export async function agregarTramite(tramite: Tramite): Promise<void> {
     }
 }
 
-
-
-
 // Función para obtener todos los trámites
 export async function obtenerTodosLosTramites(): Promise<Tramite[]> {
     let pool: mssql.ConnectionPool | null = null;

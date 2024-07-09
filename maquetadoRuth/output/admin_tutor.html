@@ -76,35 +76,37 @@
             </div>
         </nav>
 
-    <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-14 md:-mt-36 pt-0">
-        <div class="container mx-auto px-4 py-8">
-            <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Tutores</h2>
-            <a href="altatutor.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-2">
-                    <path fill="currentColor" d="M288 112v96h96c16.9 0 24.5 20.5 12.9 32.5L245.7 403.6c-9.4 9.4-24.6 9.4-33.9 0L46.1 240.5C34.5 228.5 42.1 208 59 208h96V112c0-13.3 10.7-24 24-24h64c13.3 0 24 10.7 24 24z"/>
-                </svg>
-                Añadir Tutor
-            </a>
-            <div class="overflow-x-auto">
-                <table class="min-w-full bg-white shadow-md border-collapse rounded mb-4">
-                    <thead>
-                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                            <th class="py-3 px-6 text-left">Nombre</th>
-                            <th class="py-3 px-6 text-left">Apellido</th>
-                            <th class="py-3 px-6 text-left">Dirección</th>
-                            <th class="py-3 px-6 text-left">Teléfono</th>
-                            <th class="py-3 px-6 text-left">Email</th>
-                            <th class="py-3 px-6 text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tutorTableBody" class="text-gray-600 text-sm font-light">
-                        <!-- Aquí se insertarán las filas de tutores -->
-                    </tbody>
-                </table>
+        <main id="mainContent" class="flex flex-1 items-center md:ml-44 md:mx-14 md:-mt-36 pt-0">
+            <div class="container mx-auto px-4 py-8">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Lista de Tutores</h2>
+                <a href="altatutor.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-5 w-5 mr-2">
+                        <path fill="currentColor" d="M288 112v96h96c16.9 0 24.5 20.5 12.9 32.5L245.7 403.6c-9.4 9.4-24.6 9.4-33.9 0L46.1 240.5C34.5 228.5 42.1 208 59 208h96V112c0-13.3 10.7-24 24-24h64c13.3 0 24 10.7 24 24z"/>
+                    </svg>
+                    Añadir Tutor
+                </a>
+                <div class="overflow-x-auto">
+                    <div class="max-h-96 overflow-y-auto">
+                        <table class="min-w-full bg-white shadow-md border-collapse rounded mb-4">
+                            <thead>
+                                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-left">Nombre</th>
+                                    <th class="py-3 px-6 text-left">Apellido</th>
+                                    <th class="py-3 px-6 text-left">Dirección</th>
+                                    <th class="py-3 px-6 text-left">Teléfono</th>
+                                    <th class="py-3 px-6 text-left">Email</th>
+                                    <th class="py-3 px-6 text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tutorTableBody" class="text-gray-600 text-sm font-light">
+                                <!-- Aquí se insertarán las filas de tutores -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
-    </main>
-
+        </main>
+        
 <script src="admin_tutor.js"></script>
 <script src="script.js"></script>
 </body>

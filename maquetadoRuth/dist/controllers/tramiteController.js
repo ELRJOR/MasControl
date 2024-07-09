@@ -20,13 +20,15 @@ function agregarTramiteController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { titulo, fechaPublicacion, contenido, fecha_Cierre, nombreCreador, ficha_Pago } = req.body;
+            console.log('Valor de fecha_Cierre recibido:', req.body.fecha_Cierre);
+            // Convertir fechas a objetos Date
             const tramite = {
                 titulo_Tramite: titulo,
                 descripcion_Tramite: contenido,
-                fecha_Cierre: new Date(fecha_Cierre), // Convertir fecha_Cierre a objeto Date
+                fecha_Cierre: fecha_Cierre, // Mantener como string
                 nombre_Creador: nombreCreador,
                 ficha_Pago: ficha_Pago,
-                fecha_Publicacion: new Date(fechaPublicacion) // Convertir fechaPublicacion a objeto Date
+                fecha_Publicacion: fechaPublicacion // Mantener como string
             };
             yield (0, db_1.agregarTramite)(tramite);
             res.status(201).send('Trámite agregado correctamente');

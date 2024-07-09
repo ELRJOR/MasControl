@@ -517,10 +517,10 @@ function agregarTramite(tramite) {
             yield transaction.request()
                 .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
                 .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
-                .input('fecha_Cierre', mssql.Date, fecha_Cierre) // Usar mssql.Date para fechas
+                .input('fecha_Cierre', mssql.Date, new Date(fecha_Cierre)) // Convertir string a Date
                 .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
                 .input('ficha_Pago', mssql.VarBinary, ficha_Pago)
-                .input('fecha_Publicacion', mssql.Date, fecha_Publicacion) // Usar mssql.Date para fechas
+                .input('fecha_Publicacion', mssql.Date, new Date(fecha_Publicacion)) // Convertir string a Date
                 .query(query);
             yield transaction.commit();
             console.log('Trámite agregado correctamente');
@@ -540,7 +540,7 @@ function agregarTramite(tramite) {
         }
     });
 }
-// Función para obtener todos los trámites
+// Otras funciones se mantienen igual
 function obtenerTodosLosTramites() {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
@@ -560,7 +560,6 @@ function obtenerTodosLosTramites() {
         }
     });
 }
-// Función para buscar un trámite por su ID
 function buscarTramitePorId(id_Tramite) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
@@ -587,12 +586,11 @@ function buscarTramitePorId(id_Tramite) {
         }
     });
 }
-// Función para actualizar un trámite por su ID
 function actualizarTramite(id, tramite) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
         let transaction = null;
-        const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago } = tramite;
+        const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, fecha_Publicacion } = tramite;
         try {
             pool = yield conectarBD();
             transaction = new mssql.Transaction(pool);
@@ -603,15 +601,17 @@ function actualizarTramite(id, tramite) {
                 descripcion_Tramite = @descripcion_Tramite,
                 fecha_Cierre = @fecha_Cierre,
                 nombre_Creador = @nombre_Creador,
-                ficha_Pago = @ficha_Pago
+                ficha_Pago = @ficha_Pago,
+                fecha_Publicacion = @fecha_Publicacion
             WHERE id_Tramite = @id
         `;
             yield transaction.request()
                 .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
                 .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
-                .input('fecha_Cierre', mssql.Date, fecha_Cierre)
+                .input('fecha_Cierre', mssql.Date, new Date(fecha_Cierre)) // Convertir string a Date
                 .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
                 .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
+                .input('fecha_Publicacion', mssql.Date, new Date(fecha_Publicacion)) // Convertir string a Date
                 .input('id', mssql.Int, id)
                 .query(query);
             yield transaction.commit();
@@ -632,7 +632,6 @@ function actualizarTramite(id, tramite) {
         }
     });
 }
-// Función para eliminar un trámite por su ID
 function eliminarTramite(id) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;

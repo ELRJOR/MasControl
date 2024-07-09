@@ -505,22 +505,22 @@ function agregarTramite(tramite) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
         let transaction = null;
-        const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, fecha_Publicacion } = tramite;
+        const { titulo_Tramite, fecha_Publicacion, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, } = tramite;
         try {
             pool = yield conectarBD();
             transaction = new mssql.Transaction(pool);
             yield transaction.begin();
             const query = `
-            INSERT INTO Tramites (titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, fecha_Publicacion)
-            VALUES (@titulo_Tramite, @descripcion_Tramite, @fecha_Cierre, @nombre_Creador, @ficha_Pago, @fecha_Publicacion)
+            INSERT INTO Tramites (titulo_Tramite, fecha_Publicacion, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, )
+            VALUES (@titulo_Tramite, @fecha_Publicacion, @descripcion_Tramite, @fecha_Cierre, @nombre_Creador, @ficha_Pago, )
         `;
             yield transaction.request()
                 .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
+                .input('fecha_Publicacion', mssql.Date, new Date(fecha_Publicacion)) // Convertir string a Date
                 .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
                 .input('fecha_Cierre', mssql.Date, new Date(fecha_Cierre)) // Convertir string a Date
                 .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
                 .input('ficha_Pago', mssql.VarBinary, ficha_Pago)
-                .input('fecha_Publicacion', mssql.Date, new Date(fecha_Publicacion)) // Convertir string a Date
                 .query(query);
             yield transaction.commit();
             console.log('Trámite agregado correctamente');

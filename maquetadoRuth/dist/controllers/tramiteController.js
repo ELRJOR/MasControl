@@ -24,11 +24,11 @@ function agregarTramiteController(req, res) {
             // Convertir fechas a objetos Date
             const tramite = {
                 titulo_Tramite: titulo,
+                fecha_Publicacion: fechaPublicacion, // Mantener como string
                 descripcion_Tramite: contenido,
                 fecha_Cierre: fecha_Cierre, // Mantener como string
                 nombre_Creador: nombreCreador,
                 ficha_Pago: ficha_Pago,
-                fecha_Publicacion: fechaPublicacion // Mantener como string
             };
             yield (0, db_1.agregarTramite)(tramite);
             res.status(201).send('Trámite agregado correctamente');

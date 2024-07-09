@@ -9,6 +9,7 @@ document.getElementById("anuncioForm").addEventListener("submit", async function
     };
 
     try {
+        console.log(formData);
         const response = await fetch('http://localhost:3000/alta-aviso', {
             method: 'POST',
             headers: {

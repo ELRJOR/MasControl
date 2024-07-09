@@ -452,10 +452,10 @@ export async function agregarTramite(tramite: Tramite): Promise<void> {
         await transaction.request()
             .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
             .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
-            .input('fecha_Cierre', mssql.Date, fecha_Cierre) // Usar mssql.Date para fechas
+            .input('fecha_Cierre', mssql.Date, new Date(fecha_Cierre)) // Convertir string a Date
             .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
             .input('ficha_Pago', mssql.VarBinary, ficha_Pago)
-            .input('fecha_Publicacion', mssql.Date, fecha_Publicacion) // Usar mssql.Date para fechas
+            .input('fecha_Publicacion', mssql.Date, new Date(fecha_Publicacion)) // Convertir string a Date
             .query(query);
 
         await transaction.commit();
@@ -474,7 +474,7 @@ export async function agregarTramite(tramite: Tramite): Promise<void> {
     }
 }
 
-// Función para obtener todos los trámites
+// Otras funciones se mantienen igual
 export async function obtenerTodosLosTramites(): Promise<Tramite[]> {
     let pool: mssql.ConnectionPool | null = null;
 
@@ -493,7 +493,6 @@ export async function obtenerTodosLosTramites(): Promise<Tramite[]> {
     }
 }
 
-// Función para buscar un trámite por su ID
 export async function buscarTramitePorId(id_Tramite: number): Promise<Tramite | null> {
     let pool: mssql.ConnectionPool | null = null;
 
@@ -518,12 +517,11 @@ export async function buscarTramitePorId(id_Tramite: number): Promise<Tramite | 
     }
 }
 
-// Función para actualizar un trámite por su ID
 export async function actualizarTramite(id: number, tramite: Tramite): Promise<void> {
     let pool: mssql.ConnectionPool | null = null;
     let transaction: mssql.Transaction | null = null;
 
-    const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago } = tramite;
+    const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, fecha_Publicacion } = tramite;
 
     try {
         pool = await conectarBD();
@@ -535,15 +533,17 @@ export async function actualizarTramite(id: number, tramite: Tramite): Promise<v
                 descripcion_Tramite = @descripcion_Tramite,
                 fecha_Cierre = @fecha_Cierre,
                 nombre_Creador = @nombre_Creador,
-                ficha_Pago = @ficha_Pago
+                ficha_Pago = @ficha_Pago,
+                fecha_Publicacion = @fecha_Publicacion
             WHERE id_Tramite = @id
         `;
         await transaction.request()
             .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
             .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
-            .input('fecha_Cierre', mssql.Date, fecha_Cierre)
+            .input('fecha_Cierre', mssql.Date, new Date(fecha_Cierre)) // Convertir string a Date
             .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
             .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
+            .input('fecha_Publicacion', mssql.Date, new Date(fecha_Publicacion)) // Convertir string a Date
             .input('id', mssql.Int, id)
             .query(query);
         await transaction.commit();
@@ -562,7 +562,6 @@ export async function actualizarTramite(id: number, tramite: Tramite): Promise<v
     }
 }
 
-// Función para eliminar un trámite por su ID
 export async function eliminarTramite(id: number): Promise<void> {
     let pool: mssql.ConnectionPool | null = null;
     let transaction: mssql.Transaction | null = null;

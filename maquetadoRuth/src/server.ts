@@ -1,13 +1,16 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+import multer from 'multer';
 import path from 'path';
 import { conectarBD } from './db';
 import { agregarTutorController, obtenerTutoresController, buscarTutorController, actualizarTutorController, eliminarTutorController } from './controllers/tutorController';
 import { registrarUsuario } from './controllers/registerController';
 import { login } from './controllers/loginController';
 import { agregarAvisoController, obtenerAvisosController, buscarAvisoController, actualizarAvisoController, eliminarAvisoController } from './controllers/anuncioController';
-import { agregarTramiteController, obtenerTramitesController, buscarTramiteController, actualizarTramiteController, eliminarTramiteController } from "./controllers/tramiteController";
+import { agregarTramiteController, obtenerTramitesController, buscarTramiteController, actualizarTramiteController, eliminarTramiteController, downloadPaymentReceipt } from "./controllers/tramiteController";
 
 const app = express();
+const upload = multer();
 const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear el body de las solicitudes JSON
@@ -37,11 +40,13 @@ app.put('/aviso/:id', actualizarAvisoController);
 app.delete('/aviso/:id', eliminarAvisoController);
 
 // Rutas para trámites
-app.post('/tramites', agregarTramiteController);
+app.post('/tramites', upload.single('ficha_Pago'), agregarTramiteController);
 app.get('/tramites', obtenerTramitesController);
 app.get('/tramites/:id', buscarTramiteController);
-app.put('/tramites/:id', actualizarTramiteController);
+app.put('/tramites/:id', upload.single('ficha_Pago'), actualizarTramiteController);
 app.delete('/tramites/:id', eliminarTramiteController);
+// Ruta para descargar ficha de pago
+app.get('/download/payment/:id', downloadPaymentReceipt);   
 
 // Ruta para hacer login
 app.post('/login-global', login);

@@ -5,5 +5,5 @@ export interface Tramite {
     descripcion_Tramite: string;
     fecha_Cierre: string;
     nombre_Creador: string;
-    ficha_Pago: string
+    ficha_Pago?: Buffer
 }

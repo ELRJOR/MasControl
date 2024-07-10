@@ -9,9 +9,6 @@ document.getElementById("tramiteForm").addEventListener("submit", async function
     formData.append('nombreCreador', document.getElementById("nombreCreador").value);
     formData.append('ficha_Pago', document.getElementById("ficha_Pago").files[0]);
 
-    console.log('Valor de fecha_Cierre:', document.getElementById("fecha_Cierre").value);
-    console.log('Valor de fecha_Cierre:', document.getElementById("fecha_Cierre").value);
-
     try {
         console.log('Enviando los siguientes datos:', formData);
         const response = await fetch('http://localhost:3000/tramites', {

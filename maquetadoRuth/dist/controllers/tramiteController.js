@@ -8,19 +8,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.downloadPaymentReceipt = void 0;
 exports.agregarTramiteController = agregarTramiteController;
 exports.obtenerTramitesController = obtenerTramitesController;
 exports.buscarTramiteController = buscarTramiteController;
 exports.actualizarTramiteController = actualizarTramiteController;
 exports.eliminarTramiteController = eliminarTramiteController;
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 const db_1 = require("../db");
 // Controlador para agregar un trámite
 function agregarTramiteController(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { titulo, fechaPublicacion, contenido, fecha_Cierre, nombreCreador, ficha_Pago } = req.body;
-            console.log('Valor de fecha_Cierre recibido:', req.body.fecha_Cierre);
+            const { titulo, fechaPublicacion, contenido, fecha_Cierre, nombreCreador } = req.body;
+            const ficha_Pago = req.file; // Para manejar el archivo
+            console.log('Datos recibidos:', {
+                titulo,
+                fechaPublicacion,
+                contenido,
+                fecha_Cierre,
+                nombreCreador,
+                ficha_Pago
+            });
             // Convertir fechas a objetos Date
             const tramite = {
                 titulo_Tramite: titulo,
@@ -28,7 +42,7 @@ function agregarTramiteController(req, res) {
                 descripcion_Tramite: contenido,
                 fecha_Cierre: fecha_Cierre, // Mantener como string
                 nombre_Creador: nombreCreador,
-                ficha_Pago: ficha_Pago,
+                ficha_Pago: ficha_Pago ? ficha_Pago.buffer : Buffer.alloc(0) // Usar el buffer del archivo o un buffer vacío
             };
             yield (0, db_1.agregarTramite)(tramite);
             res.status(201).send('Trámite agregado correctamente');
@@ -92,3 +106,43 @@ function eliminarTramiteController(req, res) {
         }
     });
 }
+const downloadPaymentReceipt = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = parseInt(req.params.id);
+        const tramite = yield (0, db_1.buscarTramitePorId)(id);
+        if (!tramite || !tramite.ficha_Pago || tramite.ficha_Pago.length === 0) {
+            return res.status(404).json({ message: 'Ficha de pago no encontrada' });
+        }
+        const fileName = `ficha_pago_${id}.pdf`; // Nombre del archivo para descargar
+        const uploadDir = path_1.default.join(__dirname, '../../output/uploads'); // Directorio de uploads
+        const filePath = path_1.default.join(uploadDir, fileName); // Ruta completa del archivo
+        // Verificar si el directorio de uploads existe, si no, crearlo
+        if (!fs_1.default.existsSync(uploadDir)) {
+            fs_1.default.mkdirSync(uploadDir, { recursive: true });
+        }
+        // Escribir el archivo en el sistema de archivos de manera asincrónica
+        fs_1.default.writeFile(filePath, tramite.ficha_Pago, (err) => __awaiter(void 0, void 0, void 0, function* () {
+            if (err) {
+                console.error('Error al escribir el archivo:', err);
+                return res.status(500).json({ message: 'Error al descargar la ficha de pago' });
+            }
+            // Configurar headers para la respuesta
+            res.setHeader('Content-disposition', `attachment; filename=${fileName}`);
+            res.setHeader('Content-type', 'application/pdf'); // Tipo de archivo: PDF en este ejemplo
+            // Leer el archivo y enviarlo como respuesta
+            const fileStream = fs_1.default.createReadStream(filePath);
+            fileStream.pipe(res);
+            // Eliminar el archivo después de enviarlo al cliente (opcional)
+            fs_1.default.unlink(filePath, (err) => {
+                if (err) {
+                    console.error('Error al eliminar el archivo:', err);
+                }
+            });
+        }));
+    }
+    catch (error) {
+        console.error('Error al descargar la ficha de pago:', error);
+        res.status(500).json({ message: 'Error al descargar la ficha de pago' });
+    }
+});
+exports.downloadPaymentReceipt = downloadPaymentReceipt;

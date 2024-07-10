@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const multer_1 = __importDefault(require("multer"));
 const path_1 = __importDefault(require("path"));
 const db_1 = require("./db");
 const tutorController_1 = require("./controllers/tutorController");
@@ -12,6 +13,7 @@ const loginController_1 = require("./controllers/loginController");
 const anuncioController_1 = require("./controllers/anuncioController");
 const tramiteController_1 = require("./controllers/tramiteController");
 const app = (0, express_1.default)();
+const upload = (0, multer_1.default)();
 const PORT = process.env.PORT || 3000;
 // Middleware para parsear el body de las solicitudes JSON
 app.use(express_1.default.json());
@@ -36,11 +38,13 @@ app.get('/aviso/:id', anuncioController_1.buscarAvisoController);
 app.put('/aviso/:id', anuncioController_1.actualizarAvisoController);
 app.delete('/aviso/:id', anuncioController_1.eliminarAvisoController);
 // Rutas para trámites
-app.post('/tramites', tramiteController_1.agregarTramiteController);
+app.post('/tramites', upload.single('ficha_Pago'), tramiteController_1.agregarTramiteController);
 app.get('/tramites', tramiteController_1.obtenerTramitesController);
 app.get('/tramites/:id', tramiteController_1.buscarTramiteController);
-app.put('/tramites/:id', tramiteController_1.actualizarTramiteController);
+app.put('/tramites/:id', upload.single('ficha_Pago'), tramiteController_1.actualizarTramiteController);
 app.delete('/tramites/:id', tramiteController_1.eliminarTramiteController);
+// Ruta para descargar ficha de pago
+app.get('/download/payment/:id', tramiteController_1.downloadPaymentReceipt);
 // Ruta para hacer login
 app.post('/login-global', loginController_1.login);
 // Ruta para registrar un nuevo usuario

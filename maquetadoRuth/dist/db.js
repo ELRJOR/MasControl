@@ -505,22 +505,22 @@ function agregarTramite(tramite) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
         let transaction = null;
-        const { titulo_Tramite, fecha_Publicacion, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, } = tramite;
+        const { titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, fecha_Publicacion } = tramite;
         try {
             pool = yield conectarBD();
             transaction = new mssql.Transaction(pool);
             yield transaction.begin();
             const query = `
-            INSERT INTO Tramites (titulo_Tramite, fecha_Publicacion, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, )
-            VALUES (@titulo_Tramite, @fecha_Publicacion, @descripcion_Tramite, @fecha_Cierre, @nombre_Creador, @ficha_Pago, )
+            INSERT INTO Tramites (titulo_Tramite, descripcion_Tramite, fecha_Cierre, nombre_Creador, ficha_Pago, fecha_Publicacion)
+            VALUES (@titulo_Tramite, @descripcion_Tramite, @fecha_Cierre, @nombre_Creador, @ficha_Pago, @fecha_Publicacion)
         `;
             yield transaction.request()
                 .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
-                .input('fecha_Publicacion', mssql.Date, new Date(fecha_Publicacion)) // Convertir string a Date
                 .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
-                .input('fecha_Cierre', mssql.Date, new Date(fecha_Cierre)) // Convertir string a Date
+                .input('fecha_Cierre', mssql.Date, fecha_Cierre) // Usar mssql.Date para fechas
                 .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
-                .input('ficha_Pago', mssql.VarBinary, ficha_Pago)
+                .input('ficha_Pago', mssql.VarBinary, ficha_Pago) // Usar mssql.VarBinary para el archivo
+                .input('fecha_Publicacion', mssql.Date, fecha_Publicacion) // Usar mssql.Date para fechas
                 .query(query);
             yield transaction.commit();
             console.log('Trámite agregado correctamente');
@@ -540,7 +540,7 @@ function agregarTramite(tramite) {
         }
     });
 }
-// Otras funciones se mantienen igual
+// Función para obtener todos los trámites
 function obtenerTodosLosTramites() {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
@@ -560,6 +560,7 @@ function obtenerTodosLosTramites() {
         }
     });
 }
+// Función para buscar un trámite por su ID
 function buscarTramitePorId(id_Tramite) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
@@ -586,6 +587,7 @@ function buscarTramitePorId(id_Tramite) {
         }
     });
 }
+// Función para actualizar un trámite por su ID
 function actualizarTramite(id, tramite) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
@@ -608,10 +610,10 @@ function actualizarTramite(id, tramite) {
             yield transaction.request()
                 .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
                 .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
-                .input('fecha_Cierre', mssql.Date, new Date(fecha_Cierre)) // Convertir string a Date
+                .input('fecha_Cierre', mssql.Date, fecha_Cierre) // Usar mssql.Date para fechas
                 .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
-                .input('ficha_Pago', mssql.NVarChar, ficha_Pago)
-                .input('fecha_Publicacion', mssql.Date, new Date(fecha_Publicacion)) // Convertir string a Date
+                .input('ficha_Pago', mssql.VarBinary, ficha_Pago) // Usar mssql.VarBinary para el archivo
+                .input('fecha_Publicacion', mssql.Date, fecha_Publicacion) // Usar mssql.Date para fechas
                 .input('id', mssql.Int, id)
                 .query(query);
             yield transaction.commit();
@@ -627,11 +629,11 @@ function actualizarTramite(id, tramite) {
         finally {
             if (pool) {
                 yield pool.close();
-                console.log('Conexión cerrada correctamente');
             }
         }
     });
 }
+// Función para eliminar un trámite por su ID
 function eliminarTramite(id) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
@@ -640,10 +642,7 @@ function eliminarTramite(id) {
             pool = yield conectarBD();
             transaction = new mssql.Transaction(pool);
             yield transaction.begin();
-            const query = `
-            DELETE FROM Tramites
-            WHERE id_Tramite = @id
-        `;
+            const query = 'DELETE FROM Tramites WHERE id_Tramite = @id';
             yield transaction.request()
                 .input('id', mssql.Int, id)
                 .query(query);
@@ -654,13 +653,12 @@ function eliminarTramite(id) {
             if (transaction) {
                 yield transaction.rollback();
             }
-            console.error(`Error al eliminar el trámite con ID ${id}:`, error.message);
+            console.error('Error al eliminar el trámite:', error.message);
             throw error;
         }
         finally {
             if (pool) {
                 yield pool.close();
-                console.log('Conexión cerrada correctamente');
             }
         }
     });

@@ -35,25 +35,25 @@ async function fetchTramites() {
                 <td class="py-3 px-6 text-left">${tramite.descripcion_Tramite}</td>
                 <td class="py-3 px-6 text-center">${formatDate(tramite.fecha_Cierre)}</td>
                 <td class="py-3 px-6 text-center">${tramite.nombre_Creador}</td>
-                <td class="py-3 px-6 text-center">${tramite.ficha_Pago}</td>
                 <td class="py-3 px-6 text-center">
-                    <a href="edit_tramite.html?id_Tramite=${tramite.id_Tramite}" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
+                    <a href="#" data-id="${tramite.id_Tramite}" class="text-blue-600 hover:text-blue-900 mx-2 download-link">Ver/Descargar</a>
+                </td>
+                <td class="py-3 px-6 text-center">
+                    <a href="edit_trámite.html?id_Tramite=${tramite.id_Tramite}" class="text-indigo-600 hover:text-indigo-900 mx-2">Editar</a>
                     <a href="#" data-id="${tramite.id_Tramite}" class="text-red-600 hover:text-red-900 mx-2 delete-confirm">Eliminar</a>
                 </td>
             `;
-
+        
             tramitesTableBody.appendChild(row);
         });
 
-        // Agregar event listener para los botones de eliminar
-        const deleteLinks = document.querySelectorAll('.delete-confirm');
-        deleteLinks.forEach(link => {
+        // Agregar event listener para los enlaces de descarga
+        const downloadLinks = document.querySelectorAll('.download-link');
+        downloadLinks.forEach(link => {
             link.addEventListener('click', function(event) {
                 event.preventDefault();
                 const tramiteId = this.dataset.id; // Obtener el ID del trámite desde data-id
-                if (confirm('Estás a punto de borrar el trámite. ¿Deseas continuar?')) {
-                    deleteTramite(tramiteId);
-                }
+                downloadTramite(tramiteId);
             });
         });
 
@@ -62,21 +62,39 @@ async function fetchTramites() {
     }
 }
 
-// Función para eliminar un trámite por su ID
-async function deleteTramite(id_Tramite) {
+// Función para descargar una ficha de pago por su ID
+async function downloadTramite(id_Tramite) {
     try {
-        const response = await fetch(`http://localhost:3000/tramite/${id_Tramite}`, {
-            method: 'DELETE'
-        });
-
-        if (response.ok) {
-            alert('Trámite eliminado correctamente');
-            fetchTramites(); // Llama a la función para volver a cargar la lista de trámites
-        } else {
-            alert('Error al eliminar el trámite');
+        const response = await fetch(`http://localhost:3000/download/payment/${id_Tramite}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+
+        // Extraer el nombre del archivo del encabezado Content-Disposition
+        const contentDisposition = response.headers.get('content-disposition');
+        let fileName = 'ficha_pago.pdf'; // Nombre predeterminado en caso de no poder extraerlo
+        if (contentDisposition) {
+            const fileNameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+            const matches = fileNameRegex.exec(contentDisposition);
+            if (matches && matches[1]) {
+                fileName = matches[1].replace(/['"]/g, '');
+            }
+        }
+
+        // Convertir la respuesta a un blob y crear un enlace de descarga
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+
     } catch (error) {
-        console.error('Error al eliminar el trámite:', error);
+        console.error('Error al descargar la ficha de pago:', error);
     }
 }
 

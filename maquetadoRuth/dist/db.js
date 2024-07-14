@@ -587,8 +587,8 @@ function buscarTramitePorId(id_Tramite) {
         }
     });
 }
-// Función para actualizar un trámite por su ID
-function actualizarTramite(id, tramite) {
+// Función para actualizar un trámite en la base de datos
+function actualizarTramite(tramite, id) {
     return __awaiter(this, void 0, void 0, function* () {
         let pool = null;
         let transaction = null;
@@ -603,32 +603,35 @@ function actualizarTramite(id, tramite) {
                 descripcion_Tramite = @descripcion_Tramite,
                 fecha_Cierre = @fecha_Cierre,
                 nombre_Creador = @nombre_Creador,
-                ficha_Pago = @ficha_Pago,
+                ${ficha_Pago ? 'ficha_Pago = @ficha_Pago,' : ''}
                 fecha_Publicacion = @fecha_Publicacion
             WHERE id_Tramite = @id
         `;
-            yield transaction.request()
+            const request = transaction.request()
                 .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
                 .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
-                .input('fecha_Cierre', mssql.Date, fecha_Cierre) // Usar mssql.Date para fechas
+                .input('fecha_Cierre', mssql.Date, fecha_Cierre)
                 .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
-                .input('ficha_Pago', mssql.VarBinary, ficha_Pago) // Usar mssql.VarBinary para el archivo
-                .input('fecha_Publicacion', mssql.Date, fecha_Publicacion) // Usar mssql.Date para fechas
-                .input('id', mssql.Int, id)
-                .query(query);
+                .input('fecha_Publicacion', mssql.Date, fecha_Publicacion)
+                .input('id', mssql.Int, id);
+            if (ficha_Pago) {
+                request.input('ficha_Pago', mssql.VarBinary, ficha_Pago);
+            }
+            yield request.query(query);
             yield transaction.commit();
-            console.log(`Trámite con ID ${id} actualizado correctamente`);
+            console.log('Trámite actualizado correctamente');
         }
         catch (error) {
             if (transaction) {
                 yield transaction.rollback();
             }
-            console.error(`Error al actualizar el trámite con ID ${id}:`, error.message);
+            console.error('Error al actualizar el trámite:', error.message);
             throw error;
         }
         finally {
             if (pool) {
                 yield pool.close();
+                console.log('Conexión cerrada correctamente');
             }
         }
     });

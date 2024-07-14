@@ -33,6 +33,7 @@ async function fetchTramites() {
             row.innerHTML = `
                 <td class="py-3 px-6 text-left whitespace-nowrap">${tramite.titulo_Tramite}</td>
                 <td class="py-3 px-6 text-left">${tramite.descripcion_Tramite}</td>
+                <td class="py-3 px-6 text-center">${formatDate(tramite.fecha_Publicacion)}</td>
                 <td class="py-3 px-6 text-center">${formatDate(tramite.fecha_Cierre)}</td>
                 <td class="py-3 px-6 text-center">${tramite.nombre_Creador}</td>
                 <td class="py-3 px-6 text-center">
@@ -103,3 +104,33 @@ function formatDate(dateString) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('es-ES', options);
 }
+
+// Función para eliminar un trámite por su ID
+async function deleteTramite(id_Tramite) {
+    try {
+        const response = await fetch(`http://localhost:3000/tramites/${id_Tramite}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            alert('Trámite eliminado correctamente');
+            fetchTramites(); // Volver a cargar la lista de trámites
+        } else {
+            alert('Error al eliminar el trámite');
+        }
+    } catch (error) {
+        console.error('Error al eliminar el trámite:', error);
+    }
+}
+
+// Agregar event listener para los enlaces de eliminación
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('delete-confirm')) {
+        event.preventDefault();
+        const confirmDelete = confirm('¿Estás seguro de eliminar este trámite?');
+        if (confirmDelete) {
+            const tramiteId = event.target.dataset.id; // Obtener el ID del trámite desde data-id
+            deleteTramite(tramiteId);
+        }
+    }
+});

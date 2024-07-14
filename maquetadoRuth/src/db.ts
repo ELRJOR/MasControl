@@ -518,8 +518,8 @@ export async function buscarTramitePorId(id_Tramite: number): Promise<Tramite | 
     }
 }
 
-// Función para actualizar un trámite por su ID
-export async function actualizarTramite(id: number, tramite: Tramite): Promise<void> {
+// Función para actualizar un trámite en la base de datos
+export async function actualizarTramite(tramite: Tramite, id: number): Promise<void> {
     let pool: mssql.ConnectionPool | null = null;
     let transaction: mssql.Transaction | null = null;
 
@@ -536,35 +536,41 @@ export async function actualizarTramite(id: number, tramite: Tramite): Promise<v
                 descripcion_Tramite = @descripcion_Tramite,
                 fecha_Cierre = @fecha_Cierre,
                 nombre_Creador = @nombre_Creador,
-                ficha_Pago = @ficha_Pago,
+                ${ficha_Pago ? 'ficha_Pago = @ficha_Pago,' : ''}
                 fecha_Publicacion = @fecha_Publicacion
             WHERE id_Tramite = @id
         `;
 
-        await transaction.request()
+        const request = transaction.request()
             .input('titulo_Tramite', mssql.NVarChar, titulo_Tramite)
             .input('descripcion_Tramite', mssql.NVarChar, descripcion_Tramite)
-            .input('fecha_Cierre', mssql.Date, fecha_Cierre) // Usar mssql.Date para fechas
+            .input('fecha_Cierre', mssql.Date, fecha_Cierre)
             .input('nombre_Creador', mssql.NVarChar, nombre_Creador)
-            .input('ficha_Pago', mssql.VarBinary, ficha_Pago) // Usar mssql.VarBinary para el archivo
-            .input('fecha_Publicacion', mssql.Date, fecha_Publicacion) // Usar mssql.Date para fechas
-            .input('id', mssql.Int, id)
-            .query(query);
+            .input('fecha_Publicacion', mssql.Date, fecha_Publicacion)
+            .input('id', mssql.Int, id);
 
+        if (ficha_Pago) {
+            request.input('ficha_Pago', mssql.VarBinary, ficha_Pago);
+        }
+
+        await request.query(query);
         await transaction.commit();
-        console.log(`Trámite con ID ${id} actualizado correctamente`);
+        console.log('Trámite actualizado correctamente');
     } catch (error) {
         if (transaction) {
             await transaction.rollback();
         }
-        console.error(`Error al actualizar el trámite con ID ${id}:`, (error as Error).message);
+        console.error('Error al actualizar el trámite:', (error as Error).message);
         throw error;
     } finally {
         if (pool) {
             await pool.close();
+            console.log('Conexión cerrada correctamente');
         }
     }
 }
+
+
 
 // Función para eliminar un trámite por su ID
 export async function eliminarTramite(id: number): Promise<void> {

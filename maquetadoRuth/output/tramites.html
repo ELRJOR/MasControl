@@ -70,136 +70,18 @@
 </nav>
     
 
-    <!-- Contenido principal -->
-<main id="mainContent" class="flex flex-1 flex-col items-center justify-center md:ml-44  pt-12 md:pb-10">
+<main id="mainContent" class="flex flex-1 flex-col items-center justify-center md:ml-44 pt-12 md:pb-10">
     <div class="text-container mx-auto max-w-xl text-center px-4 md:px-0">
-        <h1 class="text-4xl font-bold mb-4">Novedades y Actualizaciones</h1>
-        <p class="text-2xl text-gray-500">Mantente al día con las últimas noticias y actualizaciones de su institución.</p>
+        <h1 class="text-4xl font-bold mb-4">Tramites</h1>
+        <p class="text-2xl text-gray-500">Mantente al día con los ultimos procesos y actualizaciones de su institución.</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mt-12 w-full px-4">
-        <!-- Contenedor para el botón de PayPal -->
-        <div id="paypal-button-container-1" class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
-            <h3 class="text-xl font-semibold mb-4">Trámite 1</h3>
-            <p class="text-gray-600 mb-4">Descripción del trámite 1</p>
-            <!-- Botón de PayPal -->
-            <div id="paypal-button-1"></div>
-        </div>
-        <!-- Contenedor para el botón de PayPal -->
-        <div id="paypal-button-container-2" class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
-            <h3 class="text-xl font-semibold mb-4">Trámite 2</h3>
-            <p class="text-gray-600 mb-4">Descripción del trámite 2</p>
-            <!-- Botón de PayPal -->
-            <div id="paypal-button-2"></div>
-        </div>
-        <!-- Contenedor para el botón de PayPal -->
-        <div id="paypal-button-container-3" class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
-            <h3 class="text-xl font-semibold mb-4">Trámite 3</h3>
-            <p class="text-gray-600 mb-4">Descripción del trámite 3</p>
-            <!-- Botón de PayPal -->
-            <div id="paypal-button-3"></div>
-        </div>
-        <!-- Contenedor para el botón de PayPal -->
-        <div id="paypal-button-container-4" class="block p-6 bg-white rounded-lg shadow-lg text-center transition-transform transform hover:scale-105 border-solid border border-gray-200">
-            <h3 class="text-xl font-semibold mb-4">Trámite 4</h3>
-            <p class="text-gray-600 mb-4">Descripción del trámite 4</p>
-            <!-- Botón de PayPal -->
-            <div id="paypal-button-4"></div>
-        </div>
+    <div id="tramitesContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mt-12 w-full px-4">
+
     </div>
 </main>
-    <script src="script.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=AUIscGRaYrMBi3X_-oLO2L-8l-Yd03mtyqMdmHulYfehWXGKBqG-jUdfACb0-iOCsoP4vNWuD6mSlBb5&currency=MXN"></script>
-    <script>
-        // Agrega los botones de PayPal
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                // Esta función configura la orden al hacer clic en el botón
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '10.00' // Monto del pago
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                // Esta función captura la aprobación del pago
-                return actions.order.capture().then(function(details) {
-                    // Aquí puedes mostrar un mensaje de confirmación al usuario
-                    alert('Pago completado con éxito');
-                });
-            }
-        }).render('#paypal-button-1'); 
+<script src="script.js"></script>
+<script src="tramites.js"></script>
 
-
-
-                // Agrega los botones de PayPal
-                paypal.Buttons({
-            createOrder: function(data, actions) {
-                // Esta función configura la orden al hacer clic en el botón
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '30.00' // Monto del pago
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                // Esta función captura la aprobación del pago
-                return actions.order.capture().then(function(details) {
-                    // Aquí puedes mostrar un mensaje de confirmación al usuario
-                    alert('Pago completado con éxito');
-                });
-            }
-        }).render('#paypal-button-2'); 
-
-
-
-
-                        // Agrega los botones de PayPal
-                        paypal.Buttons({
-            createOrder: function(data, actions) {
-                // Esta función configura la orden al hacer clic en el botón
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '100.00' // Monto del pago
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                // Esta función captura la aprobación del pago
-                return actions.order.capture().then(function(details) {
-                    // Aquí puedes mostrar un mensaje de confirmación al usuario
-                    alert('Pago completado con éxito');
-                });
-            }
-        }).render('#paypal-button-3'); 
-
-
-                        // Agrega los botones de PayPal
-                        paypal.Buttons({
-            createOrder: function(data, actions) {
-                // Esta función configura la orden al hacer clic en el botón
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '1500.00' // Monto del pago
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                // Esta función captura la aprobación del pago
-                return actions.order.capture().then(function(details) {
-                    // Aquí puedes mostrar un mensaje de confirmación al usuario
-                    alert('Pago completado con éxito');
-                });
-            }
-        }).render('#paypal-button-4'); 
-    </script>
 </body>
 </html>

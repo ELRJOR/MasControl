@@ -62,46 +62,6 @@ export async function buscarTramiteController(req: Request, res: Response) {
     }
 }
 
-// Controlador para actualizar un trámite
-export async function actualizarTramiteController(req: Request, res: Response) {
-    try {
-        const id = parseInt(req.params.id);
-        const { titulo, fechaPublicacion, contenido, fecha_Cierre, nombreCreador } = req.body;
-        const ficha_Pago = req.file; // Multer guardará el archivo aquí si existe
-
-        // Convertir fechas a objetos Date si es necesario
-        const tramite: Tramite = {
-            titulo_Tramite: titulo,
-            fecha_Publicacion: fechaPublicacion, // Mantener como string si lo prefieres
-            descripcion_Tramite: contenido,
-            fecha_Cierre: fecha_Cierre, // Mantener como string si lo prefieres
-            nombre_Creador: nombreCreador,
-            ficha_Pago: ficha_Pago ? ficha_Pago.buffer : undefined // Usar el buffer del archivo si existe
-        };
-
-        await actualizarTramite(tramite, id);
-
-        res.status(200).send('Trámite actualizado correctamente');
-    } catch (error) {
-        console.error('Error al actualizar el trámite:', error);
-        res.status(500).send('Error al actualizar el trámite');
-    }
-}
-
-
-
-
-export async function eliminarTramiteController(req: Request, res: Response) {
-    try {
-        const id = parseInt(req.params.id);
-        await eliminarTramite(id);
-        res.status(200).send('Trámite eliminado correctamente');
-    } catch (error) {
-        res.status(500).send('Error al eliminar el trámite');
-    }
-}
-
-
 export const downloadPaymentReceipt = async (req: Request, res: Response) => {
     try {
         const id = parseInt(req.params.id);
@@ -147,3 +107,39 @@ export const downloadPaymentReceipt = async (req: Request, res: Response) => {
         res.status(500).json({ message: 'Error al descargar la ficha de pago' });
     }
 };
+
+// Controlador para actualizar un trámite
+export async function actualizarTramiteController(req: Request, res: Response) {
+    try {
+        const id = parseInt(req.params.id);
+        const { titulo, fechaPublicacion, contenido, fecha_Cierre, nombreCreador } = req.body;
+        const ficha_Pago = req.file; // Multer guardará el archivo aquí si existe
+
+        // Convertir fechas a objetos Date si es necesario
+        const tramite: Tramite = {
+            titulo_Tramite: titulo,
+            fecha_Publicacion: fechaPublicacion, // Mantener como string si lo prefieres
+            descripcion_Tramite: contenido,
+            fecha_Cierre: fecha_Cierre, // Mantener como string si lo prefieres
+            nombre_Creador: nombreCreador,
+            ficha_Pago: ficha_Pago ? ficha_Pago.buffer : undefined // Usar el buffer del archivo si existe
+        };
+
+        await actualizarTramite(tramite, id);
+
+        res.status(200).send('Trámite actualizado correctamente');
+    } catch (error) {
+        console.error('Error al actualizar el trámite:', error);
+        res.status(500).send('Error al actualizar el trámite');
+    }
+}
+
+export async function eliminarTramiteController(req: Request, res: Response) {
+    try {
+        const id = parseInt(req.params.id);
+        await eliminarTramite(id);
+        res.status(200).send('Trámite eliminado correctamente');
+    } catch (error) {
+        res.status(500).send('Error al eliminar el trámite');
+    }
+}

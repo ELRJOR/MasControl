@@ -66,7 +66,7 @@ const mssql = __importStar(require("mssql"));
 // Configuración para la conexión a la base de datos
 const dbConfig = {
     user: 'Jorge1',
-    password: '4321',
+    password: '1234',
     server: 'JORGEA',
     database: 'MasControlDB',
     options: {

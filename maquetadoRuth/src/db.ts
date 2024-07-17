@@ -18,8 +18,8 @@ import { Tramite } from './models/Tramite';
 
 // Configuración para la conexión a la base de datos
 const dbConfig: mssql.config = {
-    user: 'AyalaPro',
-    password: '1234',
+    user: 'Jorge1',
+    password: '4321',
     server: 'JORGEA',
     database: 'MasControlDB',
     options: {

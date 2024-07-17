@@ -65,8 +65,8 @@ const mssql = __importStar(require("mssql"));
 // };
 // Configuración para la conexión a la base de datos
 const dbConfig = {
-    user: 'AyalaPro',
-    password: '1234',
+    user: 'Jorge1',
+    password: '4321',
     server: 'JORGEA',
     database: 'MasControlDB',
     options: {

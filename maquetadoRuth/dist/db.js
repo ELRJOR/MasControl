@@ -63,6 +63,17 @@ const dbConfig = {
         trustServerCertificate: true,
     },
 };
+// // Configuración para la conexión a la base de datos
+// const dbConfig: mssql.config = {
+//     user: 'AyalaPro',
+//     password: '1234',
+//     server: '(Pon el nombre de tu servidor/computadora',
+//     database: 'MasControlDB',
+//     options: {
+//         encrypt: true,
+//         trustServerCertificate: true,
+//     },
+// };
 // Función para conectar a la base de datos
 function conectarBD() {
     return __awaiter(this, void 0, void 0, function* () {

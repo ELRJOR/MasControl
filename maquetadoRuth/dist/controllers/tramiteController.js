@@ -81,43 +81,6 @@ function buscarTramiteController(req, res) {
         }
     });
 }
-// Controlador para actualizar un trámite
-function actualizarTramiteController(req, res) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const id = parseInt(req.params.id);
-            const { titulo, fechaPublicacion, contenido, fecha_Cierre, nombreCreador } = req.body;
-            const ficha_Pago = req.file; // Multer guardará el archivo aquí si existe
-            // Convertir fechas a objetos Date si es necesario
-            const tramite = {
-                titulo_Tramite: titulo,
-                fecha_Publicacion: fechaPublicacion, // Mantener como string si lo prefieres
-                descripcion_Tramite: contenido,
-                fecha_Cierre: fecha_Cierre, // Mantener como string si lo prefieres
-                nombre_Creador: nombreCreador,
-                ficha_Pago: ficha_Pago ? ficha_Pago.buffer : undefined // Usar el buffer del archivo si existe
-            };
-            yield (0, db_1.actualizarTramite)(tramite, id);
-            res.status(200).send('Trámite actualizado correctamente');
-        }
-        catch (error) {
-            console.error('Error al actualizar el trámite:', error);
-            res.status(500).send('Error al actualizar el trámite');
-        }
-    });
-}
-function eliminarTramiteController(req, res) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const id = parseInt(req.params.id);
-            yield (0, db_1.eliminarTramite)(id);
-            res.status(200).send('Trámite eliminado correctamente');
-        }
-        catch (error) {
-            res.status(500).send('Error al eliminar el trámite');
-        }
-    });
-}
 const downloadPaymentReceipt = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = parseInt(req.params.id);
@@ -158,3 +121,40 @@ const downloadPaymentReceipt = (req, res) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.downloadPaymentReceipt = downloadPaymentReceipt;
+// Controlador para actualizar un trámite
+function actualizarTramiteController(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const id = parseInt(req.params.id);
+            const { titulo, fechaPublicacion, contenido, fecha_Cierre, nombreCreador } = req.body;
+            const ficha_Pago = req.file; // Multer guardará el archivo aquí si existe
+            // Convertir fechas a objetos Date si es necesario
+            const tramite = {
+                titulo_Tramite: titulo,
+                fecha_Publicacion: fechaPublicacion, // Mantener como string si lo prefieres
+                descripcion_Tramite: contenido,
+                fecha_Cierre: fecha_Cierre, // Mantener como string si lo prefieres
+                nombre_Creador: nombreCreador,
+                ficha_Pago: ficha_Pago ? ficha_Pago.buffer : undefined // Usar el buffer del archivo si existe
+            };
+            yield (0, db_1.actualizarTramite)(tramite, id);
+            res.status(200).send('Trámite actualizado correctamente');
+        }
+        catch (error) {
+            console.error('Error al actualizar el trámite:', error);
+            res.status(500).send('Error al actualizar el trámite');
+        }
+    });
+}
+function eliminarTramiteController(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const id = parseInt(req.params.id);
+            yield (0, db_1.eliminarTramite)(id);
+            res.status(200).send('Trámite eliminado correctamente');
+        }
+        catch (error) {
+            res.status(500).send('Error al eliminar el trámite');
+        }
+    });
+}

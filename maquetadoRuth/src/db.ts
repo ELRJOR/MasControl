@@ -4,29 +4,29 @@ import { Usuario } from './models/Usuario';
 import { Aviso } from './models/Aviso';
 import { Tramite } from './models/Tramite';
 
-// Configuración para la conexión a la base de datos
-const dbConfig: mssql.config = {
-    user: 'Jessie',
-    password: '1234',
-    server: 'FAVORITECHILD',
-    database: 'MasControlDB',
-    options: {
-        encrypt: true,
-        trustServerCertificate: true,
-    },
-};
-
 // // Configuración para la conexión a la base de datos
 // const dbConfig: mssql.config = {
-//     user: 'AyalaPro',
+//     user: 'Jessie',
 //     password: '1234',
-//     server: '(Pon el nombre de tu servidor/computadora',
+//     server: 'FAVORITECHILD',
 //     database: 'MasControlDB',
 //     options: {
 //         encrypt: true,
 //         trustServerCertificate: true,
 //     },
 // };
+
+// Configuración para la conexión a la base de datos
+const dbConfig: mssql.config = {
+    user: 'AyalaPro',
+    password: '1234',
+    server: 'JORGEA',
+    database: 'MasControlDB',
+    options: {
+        encrypt: true,
+        trustServerCertificate: true,
+    },
+};
 
 // Función para conectar a la base de datos
 export async function conectarBD(): Promise<mssql.ConnectionPool> {

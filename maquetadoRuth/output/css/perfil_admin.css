@@ -1,17 +1,4 @@
-    <!DOCTYPE html>
-    <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mi perfil</title>
-        <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    </head>
-
-    <body>
-
-    <style type="text/css">
     html {
         -webkit-text-size-adjust: 100%;
         -ms-text-size-adjust: 100%;
@@ -253,7 +240,7 @@
         }
     }
 
-            .boton-retorno {
+    .boton-retorno {
             position: absolute;
             top: 1rem;
             left: 1rem;
@@ -266,56 +253,5 @@
         .boton-retorno:hover {
             transform: scale(1.2);
         }
-    </style>
+        
 
-    <section class="seccion-perfil-usuario">
-        <a href="javascript:history.back()" class="boton-retorno"><i class="fas fa-arrow-left"></i></a>
-        <div class="perfil-usuario-header">
-            <div class="perfil-usuario-portada">
-                <div class="perfil-usuario-avatar">
-                    <img src="images/persona.jpg" alt="img-avatar">
-                    <button type="button" class="boton-avatar">
-                        <i class="far fa-image"></i>
-                    </button>
-                </div>
-                <button type="button" class="boton-portada">
-                    <i class="far fa-image"></i> Cambiar fondo
-                </button>
-            </div>
-        </div>
-        <div class="perfil-usuario-body">
-            <div class="perfil-usuario-bio">
-                <h3 class="titulo">Rupencio Diaz Gomez</h3>
-                <p class="texto">Soy un experto administrador, llevo años trabajando en el sector escolar y estoy seguro que mi trabajo será de calidad.</p>
-            </div>
-            <div class="perfil-usuario-footer">
-                <ul class="lista-datos">
-                    <li><i class="icono fas fa-map-signs"></i> Dirección: <b> Calle 141 por 17 y 40</b></li>
-                    <li><i class="icono fas fa-phone-alt"></i> Telefono:<b>9997591250</b></li>
-                    <li><i class="icono1 fas fa-building"></i> Rol:<b>Administrativo</b></li>
-                </ul>
-                <ul class="lista-datos">
-                    <li><i class="icono fas fa-school"></i> Escuela:<b>Félipe Carillo Puerto</b></li>
-                    <li><i class="icono2 fas fa-calendar-alt"></i> Fecha nacimiento: <b>18/02/2004</b></li>
-                    <li><i class="icono3 fas fa-envelope"></i> Correo:<b>Rupencio21@gmail.com</b></li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <style>
-    .mensaje a {
-        color: inherit;
-        margin-right: .5rem;
-        display: inline-block;
-    }
-    .mensaje a:hover {
-        color: #309B76;
-        transform: scale(1.4)
-    }
-    </style>
-
-    </body>
-
-    </html>
